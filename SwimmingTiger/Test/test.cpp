@@ -5,7 +5,7 @@
 #include "win32api.h"
 #include <math.h>
 
-void circle(POINT *center,int radius)
+/*void circle(POINT *center,int radius)
 {
     HWND    hwnd;
     HDC    hdc;
@@ -43,13 +43,13 @@ void circle(POINT *center,int radius)
         }
         point.x++;
     }
-}
+}*/
 
 int main()
 {
-    HWND    hwnd;
-    HDC    hdc;
-    int    i;
+    HWND hwnd;
+    HDC hdc;
+    unsigned char ch;
 
 	//获取console的设备上下文句柄
     hwnd = GetConsoleWindow();
@@ -70,8 +70,10 @@ int main()
     {
         LineTo(hdc,point[i].x,point[i].y);
     }*/
-    _getch();
-
+while((ch=getch())!=0x1B) /* ESC to quit */
+{
+   printf("%d ", ch);
+}
     return 0;
 }
 
