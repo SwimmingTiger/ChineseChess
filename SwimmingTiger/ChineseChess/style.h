@@ -10,7 +10,6 @@
 */
 #define _STYLE_H_
 
-
 /** @brief 前景背景颜色设置命令 */
 #define CHESSBOARD_COLOR "color 3D"
 
@@ -53,5 +52,5 @@
 /** @brief 棋盘线颜色 */
 #define CHESSBOARD_LINE_COLOR RGB(255,0,0)
 
-
+/*预处理结束*/
 #endif

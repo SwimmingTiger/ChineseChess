@@ -62,7 +62,8 @@ void SetWindowSize(int width, int height)
 	rc.Bottom = height - 1;
 
     hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-
+    
+    SetConsoleFont(hOut, 18);
     SetConsoleWindowInfo(hOut, TRUE, &rc);
     SetConsoleScreenBufferSize(hOut, size);
     SetConsoleCursorInfo(hOut, &cursor);
@@ -84,5 +85,6 @@ void DrawChessBoard()
     {
         DrawLine(CHESSBOARD_RECT_LEFT, y, CHESSBOARD_RECT_RIGHT, y, CHESSBOARD_LINE_STYLE, CHESSBOARD_LINE_WIDTH, CHESSBOARD_LINE_COLOR);
     }
-	printf("帅车马炮相仕兵\n");
+
+	printf("帅车马炮相仕兵\n%d\n", GetNumberOfConsoleFonts());
 }

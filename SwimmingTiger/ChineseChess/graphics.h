@@ -16,4 +16,5 @@ void DrawChessBoard();
 /*改变控制台窗口大小*/
 void SetWindowSize(int width, int height);
 
+/*预处理结束*/
 #endif

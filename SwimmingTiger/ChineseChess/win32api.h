@@ -1,9 +1,17 @@
-/**
-* @brief Windows API 函数声明
-*/
+#ifndef _WIN32API_H_
+/** @brief Windows API 函数声明*/
+#define _WIN32API_H_
 
-/**
-* @brief 获得控制台窗口句柄
-*/
-extern "C" HWND WINAPI GetConsoleWindow(void);
-extern "C" bool WINAPI SetConsoleFont(HANDLE,DWORD);
+typedef struct _CONSOLE_FONT {
+    DWORD index;
+    COORD dim;
+} CONSOLE_FONT;
+
+extern "C" HWND WINAPI GetConsoleWindow();
+//extern "C" BOOL WINAPI SetConsoleFont(HANDLE hOutput, DWORD fontIndex);
+extern "C" BOOL WINAPI GetConsoleFontInfo(HANDLE hOutput, BOOL bMaximize, DWORD numFonts, CONSOLE_FONT* info);
+extern "C" DWORD WINAPI GetNumberOfConsoleFonts();
+extern "C" BOOL WINAPI SetConsoleIcon(HICON hIcon);
+
+/*预处理结束*/
+#endif
