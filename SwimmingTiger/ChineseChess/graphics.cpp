@@ -20,14 +20,23 @@ void DrawLine(int x1, int y1, int x2, int y2)
 {
     HWND hwnd;
     HDC hdc;
+	HPEN hPen;
+	HPEN hPenOld;
 
 	//获取控制台设备句柄
     hwnd = GetConsoleWindow();
     hdc = GetDC(hwnd);
 
+    hPen = CreatePen(PS_SOLID, 5, RGB(255, 0, 0));
+    hPenOld = (HPEN)SelectObject(hdc, hPen);
+
 	//画线
     MoveToEx(hdc, x1, y1, NULL);
     LineTo(hdc, x2, y2);
+	SelectObject(hdc, hPenOld);
+	DeleteObject(hPen);
+
+	ReleaseDC(hwnd,hdc);
 }
 
 /**
@@ -36,10 +45,18 @@ void DrawLine(int x1, int y1, int x2, int y2)
 void SetWindowSize(int width, int height)
 {
     HANDLE hOut;
-    COORD size = {width, height};
-    SMALL_RECT rc = {0, 0, width-1, height-1};
+    COORD size;
+    SMALL_RECT rc;
     CONSOLE_CURSOR_INFO cursor = {1, FALSE};
-    
+
+	size.X = width;
+	size.Y = height;
+
+    rc.Left = 0;
+    rc.Top = 0;
+	rc.Right = width - 1;
+	rc.Bottom = height - 1;
+
     hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 
     SetConsoleWindowInfo(hOut, TRUE, &rc);
@@ -55,12 +72,13 @@ void DrawChessBoard()
     int x, y;
 
     //改变控制台窗口大小
-    SetWindowSize(80, 40);
+    SetWindowSize(CHESSBOARD_WINDOW_WIDTH, CHESSBOARD_WINDOW_HEIGHT);
 	//调整控制台背景颜色
     system(CHESSBOARD_COLOR);
 
-    for (y=0; y<=640; y+=64)
+    for (y=CHESSBOARD_RECT_TOP; y<=CHESSBOARD_RECT_BOTTOM; y+=CHESSBOARD_LINE_HEIGHT)
     {
-        DrawLine(0, y, 640, y);
+        DrawLine(CHESSBOARD_RECT_LEFT, y, CHESSBOARD_RECT_RIGHT, y);
     }
+	//printf("帅车马炮相仕兵\n");
 }
