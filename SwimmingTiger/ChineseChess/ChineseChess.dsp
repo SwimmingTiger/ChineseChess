@@ -87,6 +87,10 @@ LINK32=link.exe
 
 SOURCE=.\chess.cpp
 # End Source File
+# Begin Source File
+
+SOURCE=.\graphics.cpp
+# End Source File
 # End Group
 # Begin Group "Header Files"
 
@@ -98,6 +102,18 @@ SOURCE=.\chess.h
 # Begin Source File
 
 SOURCE=.\control.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\graphics.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\style.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\win32api.h
 # End Source File
 # End Group
 # Begin Group "Resource Files"

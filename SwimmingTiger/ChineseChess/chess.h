@@ -61,8 +61,8 @@ enum ChessType
 */
 typedef struct ChessBoard
 {
-    char map[9][10]; ///< 棋盘格子数据，
-                     ///< 一个九列十行的二维数组，前五行为黑方棋盘，后五行为红方棋盘。
+    char map[10][9]; ///< 棋盘格子数据，
+                     ///< 一个十行九列的二维数组，前五行为黑方棋盘，后五行为红方棋盘。
                      ///< （当前玩家是黑方时，虽将黑方绘制在下，但黑方棋盘数据仍在前五行。）
                      ///< 每个数组元素代表棋盘上的一个交叉点，其值为棋子类型枚举值。
     char player; ///< 当前玩家，其值为玩家枚举类型，用于联网对战标识玩家，当前无效。
@@ -74,5 +74,7 @@ typedef struct ChessBoard
 
 /*函数声明*/
 
+/*初始化棋盘*/
+void InitChessBoard(ChessBoard *cp, enum Player player);
 
 #endif
