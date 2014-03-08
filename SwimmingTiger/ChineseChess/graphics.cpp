@@ -16,7 +16,7 @@
 /**
 * @brief 绘制直线
 */
-void DrawLine(int x1, int y1, int x2, int y2)
+void DrawLine(int x1, int y1, int x2, int y2, int lineStyle, int lineWight, COLORREF lineColor)
 {
     HWND hwnd;
     HDC hdc;
@@ -27,15 +27,19 @@ void DrawLine(int x1, int y1, int x2, int y2)
     hwnd = GetConsoleWindow();
     hdc = GetDC(hwnd);
 
-    hPen = CreatePen(PS_SOLID, 5, RGB(255, 0, 0));
+	//修改线条类型和颜色
+    hPen = CreatePen(lineStyle, lineWight, lineColor);
     hPenOld = (HPEN)SelectObject(hdc, hPen);
 
 	//画线
     MoveToEx(hdc, x1, y1, NULL);
     LineTo(hdc, x2, y2);
+
+    //还原线条类型和颜色
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
 
+	//释放句柄
 	ReleaseDC(hwnd,hdc);
 }
 
@@ -78,7 +82,7 @@ void DrawChessBoard()
 
     for (y=CHESSBOARD_RECT_TOP; y<=CHESSBOARD_RECT_BOTTOM; y+=CHESSBOARD_LINE_HEIGHT)
     {
-        DrawLine(CHESSBOARD_RECT_LEFT, y, CHESSBOARD_RECT_RIGHT, y);
+        DrawLine(CHESSBOARD_RECT_LEFT, y, CHESSBOARD_RECT_RIGHT, y, CHESSBOARD_LINE_STYLE, CHESSBOARD_LINE_WIDTH, CHESSBOARD_LINE_COLOR);
     }
-	//printf("帅车马炮相仕兵\n");
+	printf("帅车马炮相仕兵\n");
 }

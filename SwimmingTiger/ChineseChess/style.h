@@ -15,10 +15,10 @@
 #define CHESSBOARD_COLOR "color 3D"
 
 /** @brief 窗口宽度（字符） */
-#define CHESSBOARD_WINDOW_WIDTH 40
+#define CHESSBOARD_WINDOW_WIDTH 80
 
 /** @brief 窗口高度（字符） */
-#define CHESSBOARD_WINDOW_HEIGHT 20
+#define CHESSBOARD_WINDOW_HEIGHT 40
 
 /** @brief 棋盘列宽（像素） */
 #define CHESSBOARD_ROW_WIDTH 40
@@ -43,6 +43,15 @@
 
 /** @brief 棋盘底边纵坐标（像素） */
 #define CHESSBOARD_RECT_BOTTOM (CHESSBOARD_HEIGHT+CHESSBOARD_RECT_TOP)
+
+/** @brief 棋盘线类型 */
+#define CHESSBOARD_LINE_STYLE PS_DASH
+
+/** @brief 棋盘线宽度 */
+#define CHESSBOARD_LINE_WIDTH 2
+
+/** @brief 棋盘线颜色 */
+#define CHESSBOARD_LINE_COLOR RGB(255,0,0)
 
 
 #endif
