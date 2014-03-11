@@ -7,7 +7,9 @@
 */
 #define _WIN32API_H_
 
-typedef struct _CONSOLE_FONT {
+/** @brief 控制台字体信息结构 */
+typedef struct _CONSOLE_FONT
+{
     DWORD index;
     COORD dim;
 } CONSOLE_FONT;

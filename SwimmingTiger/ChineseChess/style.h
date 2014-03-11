@@ -23,7 +23,7 @@
 #define CHESSBOARD_WINDOW_WIDTH 80
 
 /** @brief 窗口高度（字符） */
-#define CHESSBOARD_WINDOW_HEIGHT 42
+#define CHESSBOARD_WINDOW_HEIGHT 40
 
 /** @brief 棋盘列宽（像素） */
 #define CHESSBOARD_ROW_WIDTH 70
