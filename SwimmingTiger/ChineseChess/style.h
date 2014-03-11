@@ -11,25 +11,37 @@
 #define _STYLE_H_
 
 /** @brief 前景背景颜色设置命令 */
-#define CHESSBOARD_COLOR "color 3D"
+#define CONSOLE_COLOR "color 60"
 
-/** @brief 窗口宽度（字符） */
-#define CHESSBOARD_WINDOW_WIDTH 80
+/** @brief 窗口左上角横坐标（相对屏幕，像素） */
+#define CONSOLE_WINDOW_LEFT 15
 
-/** @brief 窗口高度（字符） */
-#define CHESSBOARD_WINDOW_HEIGHT 40
+/** @brief 窗口左上角纵坐标（相对屏幕，像素） */
+#define CONSOLE_WINDOW_TOP 10
+
+/** @brief 控制台内容宽度（字符） */
+#define CONSOLE_CONTENT_WIDTH 80
+
+/** @brief 控制台内容高度（字符） */
+#define CONSOLE_CONTENT_HEIGHT 42
+
+/** @brief 控制台窗口宽度（像素） */
+#define CONSOLE_WINDOW_WIDTH 1024
+
+/** @brief 控制台窗口高度（像素） */
+#define CONSOLE_WINDOW_HEIGHT 768
 
 /** @brief 棋盘列宽（像素） */
-#define CHESSBOARD_ROW_WIDTH 40
+#define CHESSBOARD_ROW_WIDTH 70
 
 /** @brief 棋盘行高（像素） */
-#define CHESSBOARD_LINE_HEIGHT 50
+#define CHESSBOARD_LINE_HEIGHT 65
 
 /** @brief 棋盘左边横坐标（像素） */
-#define CHESSBOARD_RECT_LEFT 10
+#define CHESSBOARD_RECT_LEFT 35
 
 /** @brief 棋盘顶边纵坐标（像素） */
-#define CHESSBOARD_RECT_TOP 10
+#define CHESSBOARD_RECT_TOP 38
 
 /** @brief 棋盘宽度（像素） */
 #define CHESSBOARD_WIDTH (CHESSBOARD_ROW_WIDTH*8)
@@ -44,13 +56,28 @@
 #define CHESSBOARD_RECT_BOTTOM (CHESSBOARD_HEIGHT+CHESSBOARD_RECT_TOP)
 
 /** @brief 棋盘线类型 */
-#define CHESSBOARD_LINE_STYLE PS_DASH
+#define CHESSBOARD_BORDER_STYLE PS_DASH
 
 /** @brief 棋盘线宽度 */
-#define CHESSBOARD_LINE_WIDTH 2
+#define CHESSBOARD_BORDER_WIDTH 2
 
 /** @brief 棋盘线颜色 */
-#define CHESSBOARD_LINE_COLOR RGB(255,0,0)
+#define CHESSBOARD_BORDER_COLOR 0x000000
+
+/** @brief 棋子边框类型 */
+#define CHESS_BORDER_STYLE PS_DASH
+
+/** @brief 棋子边框宽度 */
+#define CHESS_BORDER_WIDTH 2
+
+/** @brief 棋子边框颜色 */
+#define CHESS_BORDER_COLOR 0xb0b0b0
+
+/** @brief 棋子内部颜色 */
+#define CHESS_INSIDE_COLOR 0xc0c0c0
+
+/** @brief 棋子半径 */
+#define CHESS_RADIUS 25
 
 /*预处理结束*/
 #endif
