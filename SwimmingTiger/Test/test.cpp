@@ -50,6 +50,8 @@ int main()
     HWND hwnd;
     HDC hdc;
     unsigned char ch;
+    int a[10];
+    *((int*)0) = 20;
     
     //获取console的设备上下文句柄
     hwnd = GetConsoleWindow();
