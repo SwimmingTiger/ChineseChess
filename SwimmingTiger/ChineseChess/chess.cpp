@@ -10,8 +10,9 @@
 #include <stdio.h>
 #include <conio.h>
 #include <windows.h>
-#include "graphics.h"
 #include "chess.h"
+#include "graphics.h"
+#include "style.h"
 
 /**
 * @brief 主函数
@@ -20,13 +21,20 @@
 */
 int main()
 {
-    ChessBoard mainChessBoard;
+    struct ChessBoard mainChessBoard;
     ChessBoard *cp; //指向主棋盘的指针
 
     cp = &mainChessBoard;
     
+    //初始化棋盘数据
     InitChessBoard(cp, PL_BOTH);
+
+    //改变控制台窗口的大小和位置，并使窗口总是置顶（防止窗口被其他窗口挡住使绘制的图形消失）
+    SetWindowSize(CHESSBOARD_WINDOW_WIDTH, CHESSBOARD_WINDOW_HEIGHT, CHESSBOARD_WINDOW_LEFT, CHESSBOARD_WINDOW_TOP, HWND_TOPMOST);
+    //绘制棋盘
 	DrawChessBoard();
+
+    DrawAllChessPiece(cp);
     
     getch();
     return 0;
@@ -35,7 +43,7 @@ int main()
 /**
 * @brief 初始化棋盘
 */
-void InitChessBoard(ChessBoard *cp, enum Player player)
+void InitChessBoard(struct ChessBoard *cp, enum Player player)
 {
     //清空棋盘
     memset(cp, CT_NULL, sizeof(*cp));
