@@ -63,7 +63,7 @@ void SetWindowSize(int width, int height)
 
     hOut = GetStdHandle(STD_OUTPUT_HANDLE);
     
-    SetConsoleFont(hOut, 18);
+    //SetConsoleFont(hOut, 18);
     SetConsoleWindowInfo(hOut, TRUE, &rc);
     SetConsoleScreenBufferSize(hOut, size);
     SetConsoleCursorInfo(hOut, &cursor);

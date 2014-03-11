@@ -25,7 +25,7 @@ int main()
 
     cp = &mainChessBoard;
     
-    InitChessBoard(cp, PL_BOTH);
+    InitChessBoard(cp, PLY_BOTH);
 	DrawChessBoard();
     
     getch();
@@ -38,47 +38,47 @@ int main()
 void InitChessBoard(ChessBoard *cp, enum Player player)
 {
     //清空棋盘
-    memset(cp, CT_NULL, sizeof(*cp));
+    memset(cp, CHESS_NULL, sizeof(*cp));
 
     //摆放红方棋子
-    cp->map[0][0] = CT_K_JU;
-    cp->map[0][1] = CT_K_MA;
-    cp->map[0][2] = CT_K_XIANG;
-    cp->map[0][3] = CT_K_SHI;
-    cp->map[0][4] = CT_K_JIANG;
-    cp->map[0][5] = CT_K_SHI;
-    cp->map[0][6] = CT_K_XIANG;
-    cp->map[0][7] = CT_K_MA;
-    cp->map[0][8] = CT_K_JU;
+    cp->map[0][0] = CHESS_K_JU;
+    cp->map[0][1] = CHESS_K_MA;
+    cp->map[0][2] = CHESS_K_XIANG;
+    cp->map[0][3] = CHESS_K_SHI;
+    cp->map[0][4] = CHESS_K_JIANG;
+    cp->map[0][5] = CHESS_K_SHI;
+    cp->map[0][6] = CHESS_K_XIANG;
+    cp->map[0][7] = CHESS_K_MA;
+    cp->map[0][8] = CHESS_K_JU;
 
-    cp->map[2][1] = CT_K_PAO;
-    cp->map[2][7] = CT_K_PAO;
+    cp->map[2][1] = CHESS_K_PAO;
+    cp->map[2][7] = CHESS_K_PAO;
 
-    cp->map[3][0] = CT_K_JU;
-    cp->map[3][2] = CT_K_JU;
-    cp->map[3][4] = CT_K_JU;
-    cp->map[3][6] = CT_K_JU;
-    cp->map[3][8] = CT_K_JU;
+    cp->map[3][0] = CHESS_K_JU;
+    cp->map[3][2] = CHESS_K_JU;
+    cp->map[3][4] = CHESS_K_JU;
+    cp->map[3][6] = CHESS_K_JU;
+    cp->map[3][8] = CHESS_K_JU;
     
     //摆放黑方棋子
-    cp->map[9][0] = CT_K_JU;
-    cp->map[9][1] = CT_K_MA;
-    cp->map[9][2] = CT_K_XIANG;
-    cp->map[9][3] = CT_K_SHI;
-    cp->map[9][4] = CT_K_JIANG;
-    cp->map[9][5] = CT_K_SHI;
-    cp->map[9][6] = CT_K_XIANG;
-    cp->map[9][7] = CT_K_MA;
-    cp->map[9][8] = CT_K_JU;
+    cp->map[9][0] = CHESS_K_JU;
+    cp->map[9][1] = CHESS_K_MA;
+    cp->map[9][2] = CHESS_K_XIANG;
+    cp->map[9][3] = CHESS_K_SHI;
+    cp->map[9][4] = CHESS_K_JIANG;
+    cp->map[9][5] = CHESS_K_SHI;
+    cp->map[9][6] = CHESS_K_XIANG;
+    cp->map[9][7] = CHESS_K_MA;
+    cp->map[9][8] = CHESS_K_JU;
 
-    cp->map[7][1] = CT_K_PAO;
-    cp->map[7][7] = CT_K_PAO;
+    cp->map[7][1] = CHESS_K_PAO;
+    cp->map[7][7] = CHESS_K_PAO;
 
-    cp->map[6][0] = CT_K_JU;
-    cp->map[6][2] = CT_K_JU;
-    cp->map[6][4] = CT_K_JU;
-    cp->map[6][6] = CT_K_JU;
-    cp->map[6][8] = CT_K_JU;
+    cp->map[6][0] = CHESS_K_JU;
+    cp->map[6][2] = CHESS_K_JU;
+    cp->map[6][4] = CHESS_K_JU;
+    cp->map[6][6] = CHESS_K_JU;
+    cp->map[6][8] = CHESS_K_JU;
 
     //设置玩家
     cp->player = player;

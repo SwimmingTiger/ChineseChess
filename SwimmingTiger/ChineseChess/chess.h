@@ -13,16 +13,16 @@
 /********************************数据类型声明********************************/
 
 /**
-* @brief 玩家枚举类型
+* @brief 玩家枚举
 * 
 * 用来标识玩家是红方还是黑方。
 * 象棋规则中红方先手，黑方后手。
 */
 enum Player
 {
-    PL_BOTH, ///< 红方玩家和黑方玩家在同一台电脑上，两者交替操作
-    PL_RED, ///< 当前为红方玩家
-    PL_BLACK, ///< 当前为黑方玩家
+    PLY_BOTH, ///< 红方玩家和黑方玩家在同一台电脑上，两者交替操作
+    PLY_RED, ///< 当前为红方玩家
+    PLY_BLACK, ///< 当前为黑方玩家
 };
 
 /**
@@ -34,27 +34,27 @@ enum Player
 */
 enum ChessType
 {
-    CT_NULL, ///< 无棋子
+    CHESS_NULL, ///< 无棋子
     
-    CT_R_SHUAI, ///< 红方帅
-    CT_R_JU, ///< 红方车
-    CT_R_MA, ///< 红方马
-    CT_R_PAO, ///< 红方炮
-    CT_R_XIANG, ///< 红方相
-    CT_R_SHI, ///< 红方仕
-    CT_R_BING, ///< 红方兵
+    CHESS_R_SHUAI, ///< 红方帅
+    CHESS_R_JU, ///< 红方车
+    CHESS_R_MA, ///< 红方马
+    CHESS_R_PAO, ///< 红方炮
+    CHESS_R_XIANG, ///< 红方相
+    CHESS_R_SHI, ///< 红方仕
+    CHESS_R_BING, ///< 红方兵
     
-    CT_K_JIANG, ///< 黑方将
-    CT_K_JU, ///< 黑方车
-    CT_K_MA, ///< 黑方马
-    CT_K_PAO, ///< 黑方炮
-    CT_K_XIANG, ///< 黑方象
-    CT_K_SHI, ///< 黑方士
-    CT_K_ZU, ///< 黑方卒
+    CHESS_K_JIANG, ///< 黑方将
+    CHESS_K_JU, ///< 黑方车
+    CHESS_K_MA, ///< 黑方马
+    CHESS_K_PAO, ///< 黑方炮
+    CHESS_K_XIANG, ///< 黑方象
+    CHESS_K_SHI, ///< 黑方士
+    CHESS_K_ZU, ///< 黑方卒
 };
 
 /**
-* @brief 棋盘结构体
+* @brief 棋盘结构
 * 
 * 包括棋盘格子数据、红黑方的位置
 */

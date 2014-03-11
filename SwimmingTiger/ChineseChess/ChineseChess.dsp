@@ -89,6 +89,10 @@ SOURCE=.\chess.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\control.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\graphics.cpp
 # End Source File
 # End Group
