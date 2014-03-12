@@ -10,6 +10,8 @@
 */
 #define _CONTROL_H_
 
+/**********************************常量声明**********************************/
+
 /**
 * @brief 每个操作最多绑定的按键数量
 * 
@@ -45,6 +47,8 @@
 */
 #define KEYCODE_LOCK {/*空格键*/{32,-1}, /*回车键*/{13,-1}}
 
+/********************************数据类型声明********************************/
+
 /**
 * @brief 按键状态结构
 */
@@ -57,11 +61,11 @@ struct KeyState
 };
 
 /**
-* @brief 操作类型枚举
+* @brief 动作类型枚举
 */
 enum ActionType
 {
-    ACT_UNKNOWN, ///< 未知操作
+    ACT_UNKNOWN, ///< 未知动作
     ACT_KEY_UP, ///< 向上移动光标
     ACT_KEY_DOWN, ///< 向下移动光标
     ACT_KEY_LEFT, ///< 向左移动光标
@@ -69,5 +73,13 @@ enum ActionType
     ACT_KEY_LOCK, ///< 锁定/解锁棋子（锁定棋子再移动光标时棋子也相应移动，再解锁棋子将其放到新位置）
 };
 
-/*预处理结束*/
+/**********************************函数声明**********************************/
+
+/*判断按键键值是否在当前键值数组内*/
+char MatchKey(signed char key, signed char keycode[][2], int keycodeSize, struct KeyState *keyStat);
+
+/*解析按键键值为动作类型*/
+char ParseKey(signed char key, struct KeyState *keyStat);
+
+/*********************************预处理结束*********************************/
 #endif

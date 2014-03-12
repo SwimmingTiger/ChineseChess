@@ -72,5 +72,5 @@ struct ChessBoard
 /*初始化棋盘*/
 void InitChessBoard(ChessBoard *cp, enum Player player);
 
-/*预处理结束*/
+/*********************************预处理结束*********************************/
 #endif

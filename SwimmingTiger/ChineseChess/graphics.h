@@ -10,6 +10,8 @@
 */
 #define _GRAPHICS_H_
 
+/**********************************函数声明**********************************/
+
 /*绘制直线*/
 void DrawLine(int x1, int y1, int x2, int y2, int lineStyle, int lineWight, COLORREF lineColor);
 
@@ -34,5 +36,5 @@ void DrawAllChessPiece(struct ChessBoard *cp);
 /*改变控制台窗口的大小和位置*/
 void SetWindowSize(int contentWidth, int contentHeight, int width, int height, int left, int top, HWND zIndex);
 
-/*预处理结束*/
+/*********************************预处理结束*********************************/
 #endif

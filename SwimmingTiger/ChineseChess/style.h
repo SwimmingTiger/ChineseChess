@@ -10,6 +10,8 @@
 */
 #define _STYLE_H_
 
+/**********************************常量声明**********************************/
+
 /** @brief 前景背景颜色设置命令 */
 #define CONSOLE_COLOR "color 60"
 
@@ -23,7 +25,7 @@
 #define CONSOLE_CONTENT_WIDTH 80
 
 /** @brief 控制台内容高度（字符） */
-#define CONSOLE_CONTENT_HEIGHT 42
+#define CONSOLE_CONTENT_HEIGHT 48
 
 /** @brief 控制台窗口宽度（像素） */
 #define CONSOLE_WINDOW_WIDTH 1024
@@ -79,5 +81,5 @@
 /** @brief 棋子半径 */
 #define CHESS_RADIUS 25
 
-/*预处理结束*/
+/*********************************预处理结束*********************************/
 #endif

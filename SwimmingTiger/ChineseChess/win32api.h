@@ -7,12 +7,19 @@
 */
 #define _WIN32API_H_
 
-/** @brief 控制台字体信息结构 */
+/********************************数据类型声明********************************/
+
+/** @brief 控制台字体信息结构
+* 
+* 该结构及其声明方式由Windows API确定，这里仅复制代码
+*/
 typedef struct _CONSOLE_FONT
 {
     DWORD index;
     COORD dim;
 } CONSOLE_FONT;
+
+/****************************Windows API函数声明*****************************/
 
 /** @brief 获取控制台窗口句柄 */
 extern "C" HWND WINAPI GetConsoleWindow();
@@ -29,5 +36,5 @@ extern "C" BOOL WINAPI SetConsoleDisplayMode(HANDLE hOut, DWORD dwNewMode, LPDWO
 /** @brief 设置绘图时的画刷颜色 */
 extern "C" COLORREF WINAPI SetDCBrushColor(HDC hdc, COLORREF crColor);
 
-/*预处理结束*/
+/*********************************预处理结束*********************************/
 #endif
