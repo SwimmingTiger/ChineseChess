@@ -70,7 +70,7 @@ int main()
     {
         LineTo(hdc,point[i].x,point[i].y);
     }*/
-    while((ch=getch())!=0x1B) /* ESC to quit */
+    while((ch=getch())!='q') /* ESC to quit */
     {
         printf("%d ", ch);
     }

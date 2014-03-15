@@ -18,20 +18,29 @@ void DrawLine(int x1, int y1, int x2, int y2, int lineStyle, int lineWight, COLO
 /*绘制棋盘线*/
 void DrawChessBoardLine(int x1, int y1, int x2, int y2);
 
+/*绘制字符串*/
+void DrawString(char *str, COLORREF textColor, COLORREF backgroundColor,
+				COLORREF borderColor, int borderStyle, int borderWeight,
+				int fontHeight, int fontWidth, int fontWeight, DWORD fontFamily, char* fontName,
+				int offsetX, int offsetY);
+
 /*绘制矩形*/
-void DrawRect(int left, int top, int right, int bottom, int borderStyle, int borderWight, COLORREF borderColor, COLORREF insideColor);
+void DrawRect(int left, int top, int right, int bottom, int borderStyle, int borderWidth, COLORREF borderColor, COLORREF insideColor);
 
 /*绘制圆形*/
-void DrawCircle(int radius, int centerX, int centerY, int borderStyle, int borderWight, COLORREF borderColor, COLORREF insideColor);
+void DrawCircle(int radius, int centerX, int centerY, int borderStyle, int borderWidth, COLORREF borderColor, COLORREF insideColor);
 
 /*绘制棋盘*/
-void DrawChessBoard();
+void DrawChessBoard(struct ChessBoard *cp);
+
+/*绘制光标*/
+void DrawCursor(struct ChessPos cursor, char player);
 
 /*绘制棋子*/
-void DrawChessPiece(char chessType, int line, int row);
+void DrawChess(char chessType, struct ChessPos pos);
 
 /*绘制所有棋子*/
-void DrawAllChessPiece(struct ChessBoard *cp);
+void DrawAllChess(struct ChessBoard *cp);
 
 /*改变控制台窗口的大小和位置*/
 void SetWindowSize(int contentWidth, int contentHeight, int width, int height, int left, int top, HWND zIndex);

@@ -29,23 +29,27 @@
 * 
 * 如果增加了按键数量，则需要增加常量KEYCODE_MAX_NUM的值。
 */
-#define KEYCODE_UP {/*光标上键*/{72,224}, /*w键*/{119,-1}}
+#define KEYCODE_UP {/*光标上键*/{(char)72,(char)224}, /*w键*/{(char)119,(char)-1}}
 /**
 * 向下移动光标的键值，写法同 KEYCODE_UP
 */
-#define KEYCODE_DOWN {/*光标下键*/{80,224}, /*s键*/{115,-1}}
+#define KEYCODE_DOWN {/*光标下键*/{(char)80,(char)224}, /*s键*/{(char)115,(char)-1}}
 /**
 * 向左移动光标的键值，写法同 KEYCODE_UP
 */
-#define KEYCODE_LEFT {/*光标左键*/{75,224}, /*a键*/{97,-1}}
+#define KEYCODE_LEFT {/*光标左键*/{(char)75,(char)224}, /*a键*/{(char)97,(char)-1}}
 /**
 * 向右移动光标的键值，写法同 KEYCODE_UP
 */
-#define KEYCODE_RIGHT {/*光标右键*/{77,224}, /*d键*/{100,-1}}
+#define KEYCODE_RIGHT {/*光标右键*/{(char)77,(char)224}, /*d键*/{(char)100,(char)-1}}
 /**
 * 锁定/解锁棋子的键值，写法同 KEYCODE_UP
 */
-#define KEYCODE_LOCK {/*空格键*/{32,-1}, /*回车键*/{13,-1}}
+#define KEYCODE_LOCK {/*空格键*/{(char)32,(char)-1}, /*回车键*/{(char)13,(char)-1}}
+/**
+* 结束游戏的键值，写法同 KEYCODE_UP
+*/
+#define KEYCODE_STOP_GAME {/*Esc键*/{(char)27,(char)-1}, /*F12键*/{(char)134,(char)224}}
 
 /********************************数据类型声明********************************/
 
@@ -57,7 +61,7 @@ struct KeyState
     char ctrlState; ///< ctrl键状态，0未按下，1按下
     char altState; ///< alt键状态，0未按下，1按下
     char shiftState; ///< shift键状态，0未按下，1按下
-    char lastKey; ///< 存储上一个键。如果按键的键值是双字节则存储按键的首字节。
+    signed char lastKey; ///< 存储上一个键。如果按键的键值是双字节则存储按键的首字节。
 };
 
 /**
@@ -71,6 +75,9 @@ enum ActionType
     ACT_KEY_LEFT, ///< 向左移动光标
     ACT_KEY_RIGHT, ///< 向右移动光标
     ACT_KEY_LOCK, ///< 锁定/解锁棋子（锁定棋子再移动光标时棋子也相应移动，再解锁棋子将其放到新位置）
+    ACT_STOP_GAME, ///< 结束游戏
+    ACT_PAUSE_GAME, ///< 暂停游戏
+    ACT_RESTART_GAME, ///< 重新开始游戏
 };
 
 /**********************************函数声明**********************************/

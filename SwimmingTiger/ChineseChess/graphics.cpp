@@ -57,7 +57,8 @@ void DrawChessBoardLine(int x1, int y1, int x2, int y2)
 /**
 * @brief 绘制矩形
 */
-void DrawRect(int left, int top, int right, int bottom, int borderStyle, int borderWight, COLORREF borderColor, COLORREF insideColor) {
+void DrawRect(int left, int top, int right, int bottom, int borderStyle, int borderWidth, COLORREF borderColor, COLORREF insideColor)
+{
     HWND hwnd;
     HDC hdc;
     HPEN hPen;
@@ -70,7 +71,7 @@ void DrawRect(int left, int top, int right, int bottom, int borderStyle, int bor
     hdc = GetDC(hwnd);
 
 	//修改矩形边框和内部颜色
-    hPen = CreatePen(borderStyle, borderWight, borderColor);
+    hPen = CreatePen(borderStyle, borderWidth, borderColor);
     hPenOld = (HPEN)SelectObject(hdc, hPen);
     hBrush = CreateSolidBrush(insideColor);
     hBrushOld = (HBRUSH)SelectObject(hdc, hBrush);
@@ -88,10 +89,68 @@ void DrawRect(int left, int top, int right, int bottom, int borderStyle, int bor
 	ReleaseDC(hwnd,hdc);
 }
 
+/** 
+* @brief 绘制字符串
+*/
+void DrawString(char *str, COLORREF textColor, COLORREF backgroundColor,
+				COLORREF borderColor, int borderStyle, int borderWeight,
+				int fontHeight, int fontWidth, int fontWeight, DWORD fontFamily, char* fontName,
+				int offsetX, int offsetY)
+{
+    HWND hwnd;
+    HDC hdc;
+	/*
+	HPEN hPen;
+	HPEN hPenOld;
+    HBRUSH hBrush;
+	HBRUSH hBrushOld;
+	*/
+	HFONT hFont;
+    HFONT hFontOld;
+	COLORREF backgroundColorOld;
+	COLORREF textColorOld;
+
+	//设置绘图范围
+
+	//获取控制台设备句柄
+    hwnd = GetConsoleWindow();
+    hdc = GetDC(hwnd);
+
+	//修改字体样式
+	/*
+    hPen = CreatePen(borderStyle, borderWidth, borderColor);
+    hPenOld = (HPEN)SelectObject(hdc, hPen);
+    hBrush = CreateSolidBrush(backgroundColor);
+    hBrushOld = (HBRUSH)SelectObject(hdc, hBrush);
+	*/
+	hFont = CreateFont(fontHeight, fontWidth, 0, 0, fontWeight, 0, 0, 0, GB2312_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, PROOF_QUALITY, fontFamily, fontName);
+    hFontOld = (HFONT)SelectObject(hdc, hFont);
+	backgroundColorOld = SetBkColor(hdc, backgroundColor);
+	textColorOld = SetTextColor(hdc, textColor);
+
+	//绘制字体
+	TextOut(hdc, offsetX, offsetY, str, strlen(str));
+
+    //还原字体状态
+	/*
+	SelectObject(hdc, hPenOld);
+	SelectObject(hdc, hBrushOld);
+	DeleteObject(hBrush);
+    DeleteObject(hPen);
+	*/
+	SelectObject(hdc, hFontOld);
+	DeleteObject(hFont);
+	SetBkColor(hdc, backgroundColorOld);
+	SetTextColor(hdc, textColorOld);
+
+	//释放句柄
+	ReleaseDC(hwnd,hdc);
+}
+
 /**
 * @brief 绘制圆形
 */
-void DrawCircle(int radius, int centerX, int centerY, int borderStyle, int borderWight, COLORREF borderColor, COLORREF insideColor)
+void DrawCircle(int radius, int centerX, int centerY, int borderStyle, int borderWidth, COLORREF borderColor, COLORREF insideColor)
 {
     HWND hwnd;
     HDC hdc;
@@ -115,7 +174,7 @@ void DrawCircle(int radius, int centerX, int centerY, int borderStyle, int borde
     hdc = GetDC(hwnd);
 
 	//修改圆形边框和内部颜色
-    hPen = CreatePen(borderStyle, borderWight, borderColor);
+    hPen = CreatePen(borderStyle, borderWidth, borderColor);
     hPenOld = (HPEN)SelectObject(hdc, hPen);
     hBrush = CreateSolidBrush(insideColor);
     hBrushOld = (HBRUSH)SelectObject(hdc, hBrush);
@@ -163,7 +222,7 @@ void SetWindowSize(int contentWidth, int contentHeight, int width, int height, i
 /**
 * @brief 绘制棋盘
 */
-void DrawChessBoard()
+void DrawChessBoard(struct ChessBoard *cp)
 {
     int x;
     int y;
@@ -179,9 +238,19 @@ void DrawChessBoard()
     int rNineGridTop;
     int rNineGridRight;
     int rNineGridBottom;
+    //光标
+    struct ChessPos *cursor;
 
 	//调整控制台背景颜色
     system(CONSOLE_COLOR);
+    
+    //绘制棋盘背景
+    DrawRect(0, 0, CONSOLE_WINDOW_WIDTH, CONSOLE_WINDOW_HEIGHT, 0, 0, CHESSBOARD_BACKGROUND_COLOR, CHESSBOARD_BACKGROUND_COLOR);
+
+    //取得当前活动玩家的光标
+    cursor = GetActiveCursor(cp);
+    //绘制光标
+    DrawCursor(*cursor, cp->activePlayer);
 
     //计算河界坐标
     centerLineTop = CHESSBOARD_RECT_TOP + (CHESSBOARD_LINE_HEIGHT * 4);
@@ -220,37 +289,86 @@ void DrawChessBoard()
 }
 
 /**
-* @brief 绘制棋子
+* @brief 绘制光标
 */
-void DrawChessPiece(char chessType, int line, int row)
+void DrawCursor(struct ChessPos cursor, char player)
 {
     int centerX;
     int centerY;
 
-    centerX = CHESSBOARD_RECT_LEFT + (CHESSBOARD_ROW_WIDTH * row);
-    centerY = CHESSBOARD_RECT_TOP + (CHESSBOARD_LINE_HEIGHT * line);
+    centerX = CHESSBOARD_RECT_LEFT + (CHESSBOARD_ROW_WIDTH * cursor.row);
+    centerY = CHESSBOARD_RECT_TOP + (CHESSBOARD_LINE_HEIGHT * cursor.line);
+    RECT rect= CURSOR_RECT;
 
-    DrawCircle(CHESS_RADIUS, centerX, centerY, CHESS_BORDER_STYLE, CHESS_BORDER_WIDTH, CHESS_BORDER_COLOR, CHESS_INSIDE_COLOR);
+    DrawRect(centerX + rect.left, centerY + rect.top, centerX + rect.right, centerY + rect.bottom,
+             CURSOR_BORDER_STYLE, CURSOR_BORDER_WIDTH, CURSOR_BORDER_COLOR, CURSOR_INSIDE_COLOR);
+}
+
+/**
+* @brief 绘制棋子
+*/
+void DrawChess(char chessType, struct ChessPos pos)
+{
+    int centerX;
+    int centerY;
+    COLORREF chessColor;
+    char chessName[3];
+
+    centerX = CHESSBOARD_RECT_LEFT + (CHESSBOARD_ROW_WIDTH * pos.row);
+    centerY = CHESSBOARD_RECT_TOP + (CHESSBOARD_LINE_HEIGHT * pos.line);
+
+    if (chessType >= CHESS_R_SHUAI && chessType <= CHESS_R_BING)
+    {
+        chessColor = CHESS_RED_COLOR;
+    }
+    else if (chessType >= CHESS_K_JIANG && chessType <= CHESS_K_ZU)
+    {
+        chessColor = CHESS_BLACK_COLOR;
+    }
+
+    GetChessName(chessType, chessName);
+
+    DrawCircle(CHESS_RADIUS + CHESS_BORDER_WIDTH, centerX , centerY, CHESS_BORDER_STYLE, 0, CHESS_INSIDE_COLOR, CHESS_INSIDE_COLOR);
+    DrawCircle(CHESS_RADIUS, centerX, centerY, CHESS_BORDER_STYLE, CHESS_BORDER_WIDTH, chessColor, CHESS_INSIDE_COLOR);
+	DrawString(chessName, chessColor, CHESS_INSIDE_COLOR,
+		       0xffffff, 0, 0,
+			   CHESS_FONT_HEIGHT, CHESS_FONT_WIDTH, CHESS_FONT_WEIGHT, CHESS_FONT_FAMILY, CHESS_FONT_NAME,
+			   centerX+CHESS_FONT_OFFSET_X, centerY+CHESS_FONT_OFFSET_Y);
 }
 
 /**
 * @brief 绘制所有棋子
 */
-void DrawAllChessPiece(struct ChessBoard *cp)
+void DrawAllChess(struct ChessBoard *cp)
 {
     int line;
     int row;
     char chessPiece;
+    struct ChessPos pos;
+/*  struct ChessPos cursor;
 
-    for (line=0; line<10; line++)
+    if (cp->activePlayer == PLY_RED)
     {
-        for (row=0; row<9; row++)
+        cursor = cp->CursorRed;
+    }
+    else
+    {
+        cursor = cp->CursorBlack;
+    }
+
+    DrawCursor(cursor, cp->activePlayer);*/
+
+    for (line=0; line<CHESSBOARD_LINE; line++)
+    {
+        for (row=0; row<CHESSBOARD_ROW; row++)
         {
             chessPiece = cp->map[line][row];
+            pos.line = line;
+            pos.row = row;
 
             if (chessPiece != CHESS_NULL)
             {
-                DrawChessPiece(chessPiece, line, row);
+                DrawChess(chessPiece, pos);
             }
         }
     }
