@@ -52,6 +52,7 @@ char ParseKey(signed char key, struct KeyState *keyStat)
     signed char keycodeRight[KEYCODE_MAX_NUM][2] = KEYCODE_RIGHT;
     signed char keycodeLock[KEYCODE_MAX_NUM][2] = KEYCODE_LOCK;
     signed char keycodeStopGame[KEYCODE_MAX_NUM][2] = KEYCODE_STOP_GAME;
+    signed char keycodeRefreshScreen[KEYCODE_MAX_NUM][2] = KEYCODE_REFRESH_SCREEN;
 	char action = ACT_UNKNOWN;
 
     if (MatchKey(key, keycodeUp, KEYCODE_MAX_NUM, keyStat))
@@ -77,6 +78,10 @@ char ParseKey(signed char key, struct KeyState *keyStat)
     else if (MatchKey(key, keycodeStopGame, KEYCODE_MAX_NUM, keyStat))
 	{
 	    action = ACT_STOP_GAME;
+	}
+    else if (MatchKey(key, keycodeRefreshScreen, KEYCODE_MAX_NUM, keyStat))
+	{
+	    action = ACT_REFRESH_SCREEN;
 	}
 
 	keyStat->lastKey = key;

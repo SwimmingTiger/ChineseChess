@@ -14,6 +14,9 @@
 
 /********************控制台窗口样式*******************/
 
+/** @brief 控制台窗口标题 */
+#define CONSOLE_WINDOW_TITLE "中国象棋"
+
 /** @brief 控制台文字及背景颜色设置命令 */
 #define CONSOLE_COLOR "color 60"
 
@@ -134,6 +137,9 @@
 
 /** @brief 光标边框颜色 */
 #define CURSOR_BORDER_COLOR 0x00ff00
+
+/** @brief 锁定光标边框颜色 */
+#define LOCK_CURSOR_BORDER_COLOR 0x0000ff
 
 /** @brief 光标内部颜色 */
 #define CURSOR_INSIDE_COLOR 0x008080

@@ -93,6 +93,10 @@ SOURCE=.\control.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\debug.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\graphics.cpp
 # End Source File
 # End Group
@@ -106,6 +110,10 @@ SOURCE=.\chess.h
 # Begin Source File
 
 SOURCE=.\control.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\debug.h
 # End Source File
 # Begin Source File
 

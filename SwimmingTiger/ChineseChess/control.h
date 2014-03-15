@@ -50,6 +50,10 @@
 * 结束游戏的键值，写法同 KEYCODE_UP
 */
 #define KEYCODE_STOP_GAME {/*Esc键*/{(char)27,(char)-1}, /*F12键*/{(char)134,(char)224}}
+/**
+* 刷新屏幕显示，写法同 KEYCODE_UP
+*/
+#define KEYCODE_REFRESH_SCREEN {/*F5键*/{(char)63,(char)0}, /*退格键*/{(char)8,(char)-1}}
 
 /********************************数据类型声明********************************/
 
@@ -78,6 +82,7 @@ enum ActionType
     ACT_STOP_GAME, ///< 结束游戏
     ACT_PAUSE_GAME, ///< 暂停游戏
     ACT_RESTART_GAME, ///< 重新开始游戏
+    ACT_REFRESH_SCREEN, ///< 刷新屏幕显示
 };
 
 /**********************************函数声明**********************************/

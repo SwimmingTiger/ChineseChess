@@ -238,8 +238,6 @@ void DrawChessBoard(struct ChessBoard *cp)
     int rNineGridTop;
     int rNineGridRight;
     int rNineGridBottom;
-    //光标
-    struct ChessPos *cursor;
 
 	//调整控制台背景颜色
     system(CONSOLE_COLOR);
@@ -247,10 +245,13 @@ void DrawChessBoard(struct ChessBoard *cp)
     //绘制棋盘背景
     DrawRect(0, 0, CONSOLE_WINDOW_WIDTH, CONSOLE_WINDOW_HEIGHT, 0, 0, CHESSBOARD_BACKGROUND_COLOR, CHESSBOARD_BACKGROUND_COLOR);
 
-    //取得当前活动玩家的光标
-    cursor = GetActiveCursor(cp);
     //绘制光标
-    DrawCursor(*cursor, cp->activePlayer);
+    DrawCursor(*cp->activeCursor, cp->activePlayer);
+    if (cp->chessLocked)
+    {
+        //棋子锁定光标是两玩家共用的
+        DrawCursor(cp->lockedCursor, PLY_BOTH);
+    }
 
     //计算河界坐标
     centerLineTop = CHESSBOARD_RECT_TOP + (CHESSBOARD_LINE_HEIGHT * 4);
@@ -295,13 +296,24 @@ void DrawCursor(struct ChessPos cursor, char player)
 {
     int centerX;
     int centerY;
+    COLORREF borderColor;
+
+    //两玩家共用的是锁定光标，用另一种颜色绘制
+    if (player == PLY_BOTH)
+    {
+        borderColor = LOCK_CURSOR_BORDER_COLOR;
+    }
+    else
+    {
+        borderColor = CURSOR_BORDER_COLOR;
+    }
 
     centerX = CHESSBOARD_RECT_LEFT + (CHESSBOARD_ROW_WIDTH * cursor.row);
     centerY = CHESSBOARD_RECT_TOP + (CHESSBOARD_LINE_HEIGHT * cursor.line);
     RECT rect= CURSOR_RECT;
 
     DrawRect(centerX + rect.left, centerY + rect.top, centerX + rect.right, centerY + rect.bottom,
-             CURSOR_BORDER_STYLE, CURSOR_BORDER_WIDTH, CURSOR_BORDER_COLOR, CURSOR_INSIDE_COLOR);
+             CURSOR_BORDER_STYLE, CURSOR_BORDER_WIDTH, borderColor, CURSOR_INSIDE_COLOR);
 }
 
 /**

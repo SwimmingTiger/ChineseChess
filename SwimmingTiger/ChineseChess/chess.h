@@ -84,8 +84,12 @@ struct ChessBoard
     char player; ///< 本机玩家，其值为玩家枚举类型，用于联网对战标识玩家，目前无意义。
     char activePlayer; ///< 当前活动玩家，其值为玩家枚举类型。该玩家可移动棋子。
 
+    char chessLocked; ///< 棋子是否锁定，锁定为1，未锁定为0
+    struct ChessPos lockedCursor; ///< 锁定棋子的光标位置
+
     struct ChessPos cursorRed; ///< 红方玩家光标
     struct ChessPos cursorBlack; ///< 黑方玩家光标
+    struct ChessPos *activeCursor; ///< 指向当前活动玩家光标的指针
 };
 
 /**********************************函数声明**********************************/
@@ -111,11 +115,16 @@ char GetChessType(struct ChessBoard *cp, struct ChessPos pos);
 /*设置棋子类型*/
 void SetChessType(struct ChessBoard *cp, struct ChessPos pos, char chessType);
 
-/*取得当前活动玩家光标*/
-struct ChessPos * GetActiveCursor(struct ChessBoard *cp);
+/*取得棋子所属的玩家*/
+char GetChessPlayer(char chessType);
+
+/*切换当前活动玩家*/
+void SwitchActivePlayer(struct ChessBoard *cp);
 
 /*摆放棋子到指定位置*/
 void PutChess(struct ChessBoard *cp, char line, char row, char chessType);
+
+/*统计起点到终点沿途的棋子个数（不包括起点和终点）*/
 
 /*移动棋子*/
 char MoveChess(struct ChessBoard *cp, struct ChessPos destPos, struct ChessPos sourPos, char player);
