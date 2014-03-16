@@ -33,10 +33,10 @@
 #define CONSOLE_CONTENT_HEIGHT 42
 
 /** @brief 控制台窗口宽度（像素） */
-#define CONSOLE_WINDOW_WIDTH 1024
+#define CONSOLE_WINDOW_WIDTH 680
 
 /** @brief 控制台窗口高度（像素） */
-#define CONSOLE_WINDOW_HEIGHT 768
+#define CONSOLE_WINDOW_HEIGHT 740
 
 /**********************棋盘样式*********************/
 

@@ -142,7 +142,7 @@ void InitChessBoard(ChessBoard *cp, enum Player player);
 void GetChessName(char chessType, char *ipName);
 
 /*游戏流程控制函数*/
-void StartGame(struct ChessBoard *cp);
+void StartGame(HDC hMemDc, HDC hdc, struct ChessBoard *cp);
 
 /*创建棋子坐标结构*/
 struct ChessPos CreatePos(char line, char row);
@@ -192,7 +192,7 @@ void PutChess(struct ChessBoard *cp, char line, char row, char chessType);
 /*统计起点到终点沿途的棋子个数（不包括起点和终点）*/
 
 /*移动棋子*/
-char MoveChess(struct ChessBoard *cp, struct ChessPos destPos, struct ChessPos sourPos, char player);
+char MoveChess(HDC hMemDc, HDC hdc, struct ChessBoard *cp, struct ChessPos destPos, struct ChessPos sourPos, char player);
 
 /*********************************宏函数声明*********************************/
 

@@ -12,6 +12,7 @@
 #include <windows.h>
 #include <math.h>
 #include "chess.h"
+#include "win32api.h"
 #include "graphics.h"
 #include "style.h"
 #include "control.h"
@@ -25,11 +26,19 @@
 int main()
 {
     struct ChessBoard mainChessBoard;
-    struct ChessBoard *cp; //指向主棋盘的指针
+    struct ChessBoard *cp; //指向棋盘的指针
     char action = ACT_UNKNOWN;
     signed char key = -1;
     struct KeyState keyStat={-1, -1, -1, -1};
+    //绘图用变量
+    HDC hMemDc;
+    HWND hwnd;
+    HDC hdc;
+    HBITMAP hBmp;
+    HBITMAP hOldBmp;
 
+
+    //指向棋盘的指针
     cp = &mainChessBoard;
 
     /*while (action != ACT_STOP_GAME)
@@ -54,12 +63,25 @@ int main()
     SetWindowSize(CONSOLE_CONTENT_WIDTH, CONSOLE_CONTENT_HEIGHT, CONSOLE_WINDOW_WIDTH, CONSOLE_WINDOW_HEIGHT, CONSOLE_WINDOW_LEFT, CONSOLE_WINDOW_TOP, HWND_TOPMOST);
     //设置窗口标题
     SetConsoleTitle(CONSOLE_WINDOW_TITLE);
-    //绘制棋盘
-    DrawChessBoard(cp);
-    //绘制所有棋子
-    DrawAllChess(cp);
+
+    //获取控制台设备句柄
+    hwnd = GetConsoleWindow();
+    hdc = GetDC(hwnd);
+
+    //创建绘图缓冲
+    hMemDc = CreateCompatibleDC(hdc);
+    hBmp = CreateCompatibleBitmap(hdc, CONSOLE_WINDOW_WIDTH, CONSOLE_WINDOW_HEIGHT);
+    hOldBmp = (HBITMAP)SelectObject(hMemDc, hBmp);
     
-    StartGame(cp);
+    //绘制棋盘
+    DrawChessBoard(hMemDc, cp);
+    //绘制所有棋子
+    DrawAllChess(hMemDc, cp);
+
+    //刷新屏幕显示
+    BitBlt(hdc, 0, 0, CONSOLE_WINDOW_WIDTH, CONSOLE_WINDOW_WIDTH, hMemDc, 0, 0, SRCCOPY);
+
+    StartGame(hMemDc, hdc, cp);
 
     return 0;
 }
@@ -67,7 +89,7 @@ int main()
 /**
 * @brief 游戏流程控制函数
 */
-void StartGame(struct ChessBoard *cp)
+void StartGame(HDC hMemDc, HDC hdc, struct ChessBoard *cp)
 {
 	char action = ACT_UNKNOWN;
     signed char key = -1;
@@ -104,6 +126,7 @@ void StartGame(struct ChessBoard *cp)
             if (ActiveCursor(cp)->line > 0)
             {
                 ActiveCursor(cp)->line--;
+                RefreshPos(hdc, hMemDc, cp, *ActiveCursor(cp));
             }
             break;
 
@@ -154,7 +177,7 @@ void StartGame(struct ChessBoard *cp)
                     cp->lockedCursor = *ActiveCursor(cp);
                 }
                 //棋子移动成功则解锁光标，切换活动用户
-                else if (MoveChess(cp, cp->lockedCursor, *ActiveCursor(cp), cp->activePlayer))
+                else if (MoveChess(hdc, hMemDc, cp, cp->lockedCursor, *ActiveCursor(cp), cp->activePlayer))
                 {
                     cp->chessLocked = 0;
                     SwitchActivePlayer(cp);
@@ -169,17 +192,16 @@ void StartGame(struct ChessBoard *cp)
 
         case ACT_REFRESH_SCREEN:
             //绘制棋盘
-            DrawChessBoard(cp);
+            DrawChessBoard(hMemDc, cp);
             //绘制所有棋子
-            DrawAllChess(cp);
+            DrawAllChess(hMemDc, cp);
+            //刷新屏幕显示
+            BitBlt(hdc, 0, 0, 100, 100, hMemDc, 0, 0, SRCCOPY);
             break;
 
         default:
             break;
         }
-
-        DrawChessBoard(cp);
-        DrawAllChess(cp);
     }
 }
 
@@ -651,7 +673,7 @@ int ChessCount(struct ChessBoard *cp, struct ChessPos destPos, struct ChessPos s
 * 
 * 成功移动返回1，移动失败或不允许移动返回0
 */
-char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos destPos, char player)
+char MoveChess(HDC hMemDc, HDC hdc, struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos destPos, char player)
 {
     char moveSuccess = 0;
     char destType;
@@ -1030,6 +1052,11 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
 
         if (moveSuccess)
         {
+            //将发生变化的区域绘制到屏幕上
+            DrawChessBoard(hMemDc, cp);
+            DrawAllChess(hMemDc, cp);
+            BitBlt(hdc, 0, 0, CONSOLE_WINDOW_WIDTH, CONSOLE_WINDOW_WIDTH, hMemDc, 0, 0, SRCCOPY);
+
             SetChessType(cp, sourPos, CHESS_NULL);
             SetChessType(cp, destPos, sourType);
 
