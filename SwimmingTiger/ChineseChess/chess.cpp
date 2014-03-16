@@ -26,8 +26,26 @@ int main()
 {
     struct ChessBoard mainChessBoard;
     struct ChessBoard *cp; //指向主棋盘的指针
-    
+    char action = ACT_UNKNOWN;
+    signed char key = -1;
+    struct KeyState keyStat={-1, -1, -1, -1};
+
     cp = &mainChessBoard;
+
+    /*while (action != ACT_STOP_GAME)
+    {
+        key = getch();
+        action = ParseKey(key, &keyStat);
+
+        switch (action)
+        {
+        case 0:
+            break;
+
+        default:
+            break;
+        }
+    }*/
     
     //初始化棋盘数据
     InitChessBoard(cp, PLY_BOTH);
@@ -54,40 +72,59 @@ void StartGame(struct ChessBoard *cp)
 	char action = ACT_UNKNOWN;
     signed char key = -1;
     struct KeyState keyStat={-1, -1, -1, -1};
-
+    char actionMap[GAME_CONTROL_KEY_NUM] =
+    {
+        ACT_KEY_UP,
+        ACT_KEY_DOWN,
+        ACT_KEY_LEFT,
+        ACT_KEY_RIGHT,
+        ACT_KEY_LOCK,
+        ACT_STOP_GAME,
+        ACT_REFRESH_SCREEN
+    };
+    struct KeyCode keyMap[GAME_CONTROL_KEY_NUM][KEYCODE_MAX_NUM] =
+    {
+        KEYCODE_UP,
+        KEYCODE_DOWN,
+        KEYCODE_LEFT,
+        KEYCODE_RIGHT,
+        KEYCODE_LOCK,
+        KEYCODE_STOP_GAME,
+        KEYCODE_REFRESH_SCREEN
+    };
 
     while (action != ACT_STOP_GAME)
     {
         key = getch();
-        action = ParseKey(key, &keyStat);
+        action = ParseKey(key, &keyStat, actionMap, (struct KeyCode*)keyMap, GAME_CONTROL_KEY_NUM, KEYCODE_MAX_NUM);
 
         switch (action)
         {
         case ACT_KEY_UP:
-            if (cp->activeCursor->line > 0)
+            if (ActiveCursor(cp)->line > 0)
             {
-                cp->activeCursor->line--;
+                ActiveCursor(cp)->line--;
             }
             break;
 
         case ACT_KEY_DOWN:
-            if (cp->activeCursor->line < CHESSBOARD_LINE-1)
+            if (ActiveCursor(cp)->line < CHESSBOARD_LINE-1)
             {
-                cp->activeCursor->line++;
+                ActiveCursor(cp)->line++;
             }
             break;
 
         case ACT_KEY_LEFT:
-            if (cp->activeCursor->row > 0)
+            if (ActiveCursor(cp)->row > 0)
             {
-                cp->activeCursor->row--;
+                ActiveCursor(cp)->row--;
             }
             break;
 
         case ACT_KEY_RIGHT:
-            if (cp->activeCursor->row < CHESSBOARD_ROW-1)
+            if (ActiveCursor(cp)->row < CHESSBOARD_ROW-1)
             {
-                cp->activeCursor->row++;
+                ActiveCursor(cp)->row++;
             }
             break;
 
@@ -96,14 +133,14 @@ void StartGame(struct ChessBoard *cp)
             if (cp->chessLocked == 0)
             {
                 //只有棋子属于当前玩家才能锁定
-                if (cp->activePlayer == GetChessPlayer(GetChessType(cp, *cp->activeCursor)))
+                if (cp->activePlayer == GetChessPlayer(GetChessType(cp, *ActiveCursor(cp))))
                 {
                     cp->chessLocked = 1;
-                    cp->lockedCursor = *cp->activeCursor;
+                    cp->lockedCursor = *ActiveCursor(cp);
                 }
             }
             //已锁定且位置未变，则解除锁定
-            else if (MatchPos(cp->lockedCursor, cp->activeCursor->line, cp->activeCursor->row))
+            else if (MatchPos(cp->lockedCursor, ActiveCursor(cp)->line, ActiveCursor(cp)->row))
             {
                 cp->chessLocked = 0;
             }
@@ -111,13 +148,13 @@ void StartGame(struct ChessBoard *cp)
             else
             {
                 //如果移动位置是玩家自己的棋子，则切换锁定的棋子
-                if (cp->activePlayer == GetChessPlayer(GetChessType(cp, *cp->activeCursor)))
+                if (cp->activePlayer == GetChessPlayer(GetChessType(cp, *ActiveCursor(cp))))
                 {
                     cp->chessLocked = 1;
-                    cp->lockedCursor = *cp->activeCursor;
+                    cp->lockedCursor = *ActiveCursor(cp);
                 }
                 //棋子移动成功则解锁光标，切换活动用户
-                else if (MoveChess(cp, cp->lockedCursor, *cp->activeCursor, cp->activePlayer))
+                else if (MoveChess(cp, cp->lockedCursor, *ActiveCursor(cp), cp->activePlayer))
                 {
                     cp->chessLocked = 0;
                     SwitchActivePlayer(cp);
@@ -193,18 +230,25 @@ void InitChessBoard(struct ChessBoard *cp, enum Player player)
     PutChess(cp, 6, 4, CHESS_K_ZU);
     PutChess(cp, 6, 6, CHESS_K_ZU);
     PutChess(cp, 6, 8, CHESS_K_ZU);
+
+    //棋子总数
+    cp->redChessNum = CHESS_NUM_SUM;
+    cp->blackChessNum = CHESS_NUM_SUM;
+    //双方首领均存在
+    cp->redShuaiExists = 1;
+    cp->blackJiangExists =1;
     
     //设置玩家
     cp->player = player;
     //象棋规则：红方先手
     cp->activePlayer = PLY_RED;
-    cp->activeCursor = &cp->cursorRed;
-
     //光标初始化
     cp->cursorRed = CreatePos(2, 4);
     cp->cursorBlack = CreatePos(7, 4);
     //棋子未锁定
     cp->chessLocked = 0;
+    //游戏进行中
+    cp->gameState = GSTAT_ACTIVE;
 }
 
 /**
@@ -308,7 +352,7 @@ char GetChessType(struct ChessBoard *cp, struct ChessPos pos)
     }
     else
     {
-        errPrint("GetChessType(): 坐标异常，行号或列号超出预期\n");
+        printErr("GetChessType(): 坐标异常，行号或列号超出预期\n");
     }
     
     return chessType;
@@ -325,7 +369,7 @@ void SetChessType(struct ChessBoard *cp, struct ChessPos pos, char chessType)
     }
     else
     {
-        errPrint("SetChessType(): 坐标异常，行号或列号超出预期\n");
+        printErr("SetChessType(): 坐标异常，行号或列号超出预期\n");
     }
 }
 
@@ -358,12 +402,154 @@ void SwitchActivePlayer(struct ChessBoard *cp)
     if (cp->activePlayer == PLY_RED)
     {
         cp->activePlayer = PLY_BLACK;
-        cp->activeCursor = &cp->cursorBlack;
     }
     else
     {
         cp->activePlayer = PLY_RED;
-        cp->activeCursor = &cp->cursorRed;
+    }
+}
+
+/**
+* @brief 返回当前活动玩家
+*/
+char ActivePlayer(struct ChessBoard *cp)
+{
+    char ply;
+
+    if (cp->activePlayer == PLY_RED)
+    {
+        ply = PLY_RED;
+    }
+    else
+    {
+        ply = PLY_BLACK;
+    }
+
+    return ply;
+}
+
+/**
+* @brief 返回当前非活动玩家
+*/
+char InactivePlayer(struct ChessBoard *cp)
+{
+    char ply;
+
+    if (cp->activePlayer == PLY_BLACK)
+    {
+        ply = PLY_RED;
+    }
+    else
+    {
+        ply = PLY_BLACK;
+    }
+
+    return ply;
+}
+
+/**
+* @brief 取当前活动玩家光标
+*/
+struct ChessPos * ActiveCursor(struct ChessBoard *cp)
+{
+    struct ChessPos *pos;
+
+    if (cp->activePlayer == PLY_RED)
+    {
+        pos = &cp->cursorRed;
+    }
+    else
+    {
+        pos = &cp->cursorBlack;
+    }
+
+    return pos;
+}
+
+/**
+* @brief 取当前非活动玩家光标
+*/
+struct ChessPos * InactiveCursor(struct ChessBoard *cp)
+{
+    struct ChessPos *pos;
+
+    if (cp->activePlayer == PLY_BLACK)
+    {
+        pos = &cp->cursorRed;
+    }
+    else
+    {
+        pos = &cp->cursorBlack;
+    }
+
+    return pos;
+}
+
+/**
+* @brief 取当前活动玩家棋子数指针
+*/
+char * ActiveChessNum(struct ChessBoard *cp)
+{
+    char *num;
+
+    if (cp->activePlayer == PLY_RED)
+    {
+        num = &cp->redChessNum;
+    }
+    else
+    {
+        num = &cp->blackChessNum;
+    }
+
+    return num;
+}
+
+/**
+* @brief 取当前非活动玩家棋子数指针
+*/
+char * InactiveChessNum(struct ChessBoard *cp)
+{
+    char *num;
+
+    if (cp->activePlayer == PLY_BLACK)
+    {
+        num = &cp->redChessNum;
+    }
+    else
+    {
+        num = &cp->blackChessNum;
+    }
+
+    return num;
+}
+
+/**
+* @brief 当前活动玩家获胜
+*/
+void ActivePlayerWin(struct ChessBoard *cp)
+{
+    if (cp->activePlayer == PLY_RED)
+    {
+        cp->gameState = GSTAT_RED_WIN;
+    }
+    else
+    {
+        cp->gameState = GSTAT_BLACK_WIN;
+    }
+}
+
+/**
+* @brief 当前非活动玩家获胜
+*/
+void InactivePlayerWin(struct ChessBoard *cp)
+{
+    if (cp->activePlayer == PLY_BLACK)
+    {
+        cp->gameState = GSTAT_RED_WIN;
+    }
+    else
+    {
+        cp->gameState = GSTAT_BLACK_WIN;
     }
 }
 
@@ -381,7 +567,7 @@ void PutChess(struct ChessBoard *cp, char line, char row, char chessType)
     }
     else
     {
-        errPrint("PutChess(): 坐标异常，行号或列号超出预期\n");
+        printErr("PutChess(): 坐标异常，行号或列号超出预期\n");
     }
 }
 
@@ -470,12 +656,19 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
     char moveSuccess = 0;
     char destType;
     char sourType;
+    char oppChiefLost = 0; //对方将军要被吃掉
+    struct ChessPos tmpPos;
     
     destType = GetChessType(cp, destPos);
     sourType = GetChessType(cp, sourPos);
 
+    //游戏不在进行状态，不可移子
+    if (cp->gameState != GSTAT_ACTIVE)
+    {
+        moveSuccess = 0;
+    }
     //没有棋子可供移动
-    if (sourType == CHESS_NULL)
+    else if (sourType == CHESS_NULL)
     {
         moveSuccess = 0;
     }
@@ -496,14 +689,20 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
     }
     else
     {
+        //试图吃掉对方将军
+        if (destType == CHESS_R_SHUAI || GetChessType(cp, destPos) == CHESS_K_JIANG)
+        {
+            oppChiefLost = 1;
+        }
+
         switch (sourType)
         {
-        //红方帅
+        /*******************红方帅******************/
         case CHESS_R_SHUAI:
             //在九宫外
             if (sourPos.line > 2 || sourPos.row < 3 || sourPos.row > 5)
             {
-                errPrint("MoveChess(): 棋子位置异常，红方帅在九宫外\n");
+                printErr("MoveChess(): 棋子位置异常，红方帅在九宫外\n");
                 moveSuccess = 0;
             }
             //试图走出九宫
@@ -536,12 +735,12 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
             }
             break;
             
-        //黑方将
+        /*******************黑方将*******************/
         case CHESS_K_JIANG:
             //在九宫外
             if (sourPos.line < 7 || sourPos.line > 9 || sourPos.row < 3 || sourPos.row > 5)
             {
-                errPrint("MoveChess(): 棋子位置异常，黑方将在九宫外\n");
+                printErr("MoveChess(): 棋子位置异常，黑方将在九宫外\n");
                 moveSuccess = 0;
             }
             //试图走出九宫
@@ -574,7 +773,7 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
             }
             break;
 
-        //红黑方车
+        /*******************红黑方车*******************/
         case CHESS_R_JU:
         case CHESS_K_JU:
             //试图走斜线
@@ -594,7 +793,7 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
             }
             break;
 
-        //红黑方炮
+        /*******************红黑方炮*******************/
         case CHESS_R_PAO:
         case CHESS_K_PAO:
             //试图走斜线
@@ -619,6 +818,212 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
             }
             break;
 
+	    /*******************红方兵*******************/
+		case CHESS_R_BING:
+			//试图后退
+			if (destPos.line < sourPos.line)
+			{
+			    moveSuccess = 0;
+			}
+			//试图走斜线
+			else if (destPos.line != sourPos.line && destPos.row != sourPos.row)
+			{
+			    moveSuccess = 0;
+			}
+			//过河前试图横走
+			else if (sourPos.line <= 4 && destPos.row != sourPos.row)
+			{
+			    moveSuccess = 0;
+			}
+            //试图一次走多格
+			else if (abs(destPos.line - sourPos.line) > 1 || abs(destPos.row - sourPos.row) > 1)
+			{
+			    moveSuccess = 0;
+			}
+			//棋子可移动
+			else
+			{
+			    moveSuccess = 1;
+			}
+			break;
+
+		/*******************黑方卒*******************/
+		case CHESS_K_ZU:
+			//试图后退
+			if (destPos.line > sourPos.line)
+			{
+			    moveSuccess = 0;
+			}
+			//试图走斜线
+			else if (destPos.line != sourPos.line && destPos.row != sourPos.row)
+			{
+			    moveSuccess = 0;
+			}
+			//过河前试图横走
+			else if (sourPos.line >= 5 && destPos.row != sourPos.row)
+			{
+			    moveSuccess = 0;
+			}
+			//试图一次走多格
+			else if (abs(destPos.line - sourPos.line) > 1 || abs(destPos.row - sourPos.row) > 1)
+			{
+			    moveSuccess = 0;
+			}
+			//棋子可移动
+			else
+			{
+			    moveSuccess = 1;
+			}
+			break;
+
+	    /*******************红方仕*******************/
+		case CHESS_R_SHI:
+			//不在正常位置（正常位置：九宫边角和中间）
+			if (!MatchPos(sourPos, 0, 3) && !MatchPos(sourPos, 0, 5) && !MatchPos(sourPos, 1, 4) &&
+				!MatchPos(sourPos, 2, 3) && !MatchPos(sourPos, 2, 5))
+			{
+			    printErr("MoveChess(): 棋子位置异常，红方仕不在预期位置\n");
+				moveSuccess = 0;
+			}
+            //试图走出九宫
+            else if (destPos.line > 2 || destPos.row < 3 || destPos.row > 5)
+            {
+                moveSuccess = 0;
+            }
+			//试图不走斜线
+			else if (destPos.line == sourPos.line || destPos.row == sourPos.row)
+			{
+			    moveSuccess = 0;
+			}
+			//试图一次走多格
+			else if (abs(destPos.line - sourPos.line) > 1 || abs(destPos.row - sourPos.row) > 1)
+			{
+			    moveSuccess = 0;
+			}
+			//棋子可移动
+			else
+			{
+			    moveSuccess = 1;
+			}
+			break;
+
+		/*******************黑方士*******************/
+		case CHESS_K_SHI:
+			//不在正常位置（正常位置：九宫边角和中间）
+			if (!MatchPos(sourPos, 7, 3) && !MatchPos(sourPos, 7, 5) && !MatchPos(sourPos, 8, 4) &&
+				!MatchPos(sourPos, 9, 3) && !MatchPos(sourPos, 9, 5))
+			{
+			    printErr("MoveChess(): 棋子位置异常，黑方士不在预期位置\n");
+				moveSuccess = 0;
+			}
+            //试图走出九宫
+            else if (destPos.line < 7 || destPos.line > 9 || destPos.row < 3 || destPos.row > 5)
+            {
+                moveSuccess = 0;
+            }
+			//试图不走斜线
+			else if (destPos.line == sourPos.line || destPos.row == sourPos.row)
+			{
+			    moveSuccess = 0;
+			}
+			//试图一次走多格
+			else if (abs(destPos.line - sourPos.line) > 1 || abs(destPos.row - sourPos.row) > 1)
+			{
+			    moveSuccess = 0;
+			}
+			//棋子可移动
+			else
+			{
+			    moveSuccess = 1;
+			}
+			break;
+
+        /*******************红黑方马*******************/
+        case CHESS_R_MA:
+        case CHESS_K_MA:
+            //走横日字
+            if (abs(destPos.line - sourPos.line) == 1 && abs(destPos.row - sourPos.row) == 2)
+            {
+                //“马腿”的坐标
+                tmpPos.line = sourPos.line;
+                tmpPos.row = MAX2(sourPos.row, destPos.row) - 1;
+
+                //蹩马腿
+                if (GetChessType(cp, tmpPos) != CHESS_NULL)
+                {
+                    moveSuccess = 0;
+                }
+                else
+                {
+                    moveSuccess = 1;
+                }
+            }
+            //走纵日字
+            else if (abs(destPos.line - sourPos.line) == 2 && abs(destPos.row - sourPos.row) == 1)
+            {
+                //“马腿”的坐标
+                tmpPos.row = sourPos.row;
+                tmpPos.line = MAX2(sourPos.line, destPos.line) - 1;
+
+                //蹩马腿
+                if (GetChessType(cp, tmpPos) != CHESS_NULL)
+                {
+                    moveSuccess = 0;
+                }
+                //棋子可移动
+                else
+                {
+                    moveSuccess = 1;
+                }
+            }
+            //不走日字
+            else
+            {
+                moveSuccess = 0;
+            }
+            break;
+
+        /*******************红黑方相/象*******************/
+        case CHESS_R_XIANG:
+        case CHESS_K_XIANG:
+            //不在正常位置（已过河界）
+            if ((sourType == CHESS_R_XIANG && sourPos.line > 4) ||
+                (sourType == CHESS_K_XIANG && sourPos.line < 5))
+            {
+                printErr("MoveChess(): 棋子位置异常，相/象已过河界\n");
+                moveSuccess = 0;
+            }
+            //试图走过河界
+            else if ((sourType == CHESS_R_XIANG && destPos.line > 4) ||
+                (sourType == CHESS_K_XIANG && destPos.line < 5))
+            {
+                moveSuccess = 0;
+            }
+            //走田字
+            else if (abs(destPos.line - sourPos.line) == 2 && abs(destPos.row - sourPos.row) == 2)
+            {
+                //“象眼”的坐标
+                tmpPos.line = MAX2(sourPos.line, destPos.line) - 1;
+                tmpPos.row = MAX2(sourPos.row, destPos.row) - 1;
+                
+                //塞象眼
+                if (GetChessType(cp, tmpPos) != CHESS_NULL)
+                {
+                    moveSuccess = 0;
+                }
+                //棋子可移动
+                else
+                {
+                    moveSuccess = 1;
+                }
+            }
+            //不走田字
+            else
+            {
+                moveSuccess = 0;
+            }
+            break;
+
         default:
             break;
         }
@@ -627,7 +1032,27 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
         {
             SetChessType(cp, sourPos, CHESS_NULL);
             SetChessType(cp, destPos, sourType);
+
+            //吃掉对方棋子则对方棋子数减1
+            if (destType != CHESS_NULL)
+            {
+                (*InactiveChessNum(cp))--;
+            }
+
+            //对方没有棋子，己方获胜
+            if (*InactiveChessNum(cp) == 0)
+            {
+                ActivePlayerWin(cp);
+            }
+
+            //对方将军被吃掉，己方获胜
+            if (oppChiefLost)
+            {
+                ActivePlayerWin(cp);
+            }
         }
+
+    /******包含 switch (棋子) 的 else 分支结束******/
     }
 
     return moveSuccess;

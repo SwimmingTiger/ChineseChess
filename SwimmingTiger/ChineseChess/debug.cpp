@@ -14,7 +14,7 @@
 /**
 * @brief Êä³ö´íÎóÌáÊ¾
 */
-void errPrint(char *str)
+void printErr(char *str)
 {
     system("cls");
     printf("%s", str);

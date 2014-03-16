@@ -99,12 +99,6 @@ void DrawString(char *str, COLORREF textColor, COLORREF backgroundColor,
 {
     HWND hwnd;
     HDC hdc;
-	/*
-	HPEN hPen;
-	HPEN hPenOld;
-    HBRUSH hBrush;
-	HBRUSH hBrushOld;
-	*/
 	HFONT hFont;
     HFONT hFontOld;
 	COLORREF backgroundColorOld;
@@ -117,12 +111,6 @@ void DrawString(char *str, COLORREF textColor, COLORREF backgroundColor,
     hdc = GetDC(hwnd);
 
 	//修改字体样式
-	/*
-    hPen = CreatePen(borderStyle, borderWidth, borderColor);
-    hPenOld = (HPEN)SelectObject(hdc, hPen);
-    hBrush = CreateSolidBrush(backgroundColor);
-    hBrushOld = (HBRUSH)SelectObject(hdc, hBrush);
-	*/
 	hFont = CreateFont(fontHeight, fontWidth, 0, 0, fontWeight, 0, 0, 0, GB2312_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, PROOF_QUALITY, fontFamily, fontName);
     hFontOld = (HFONT)SelectObject(hdc, hFont);
 	backgroundColorOld = SetBkColor(hdc, backgroundColor);
@@ -132,12 +120,6 @@ void DrawString(char *str, COLORREF textColor, COLORREF backgroundColor,
 	TextOut(hdc, offsetX, offsetY, str, strlen(str));
 
     //还原字体状态
-	/*
-	SelectObject(hdc, hPenOld);
-	SelectObject(hdc, hBrushOld);
-	DeleteObject(hBrush);
-    DeleteObject(hPen);
-	*/
 	SelectObject(hdc, hFontOld);
 	DeleteObject(hFont);
 	SetBkColor(hdc, backgroundColorOld);
@@ -246,7 +228,7 @@ void DrawChessBoard(struct ChessBoard *cp)
     DrawRect(0, 0, CONSOLE_WINDOW_WIDTH, CONSOLE_WINDOW_HEIGHT, 0, 0, CHESSBOARD_BACKGROUND_COLOR, CHESSBOARD_BACKGROUND_COLOR);
 
     //绘制光标
-    DrawCursor(*cp->activeCursor, cp->activePlayer);
+    DrawCursor(*ActiveCursor(cp), cp->activePlayer);
     if (cp->chessLocked)
     {
         //棋子锁定光标是两玩家共用的

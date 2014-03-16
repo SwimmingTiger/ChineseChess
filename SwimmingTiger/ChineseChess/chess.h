@@ -17,7 +17,41 @@
 /** @brief 棋盘列数 */
 #define CHESSBOARD_ROW 9
 
+/** @brief 各方棋子数 */
+#define CHESS_NUM_ARR \
+{\
+    {CHESS_R_SHUAI, 1},\
+    {CHESS_R_JU, 2},\
+    {CHESS_R_MA, 2},\
+    {CHESS_R_PAO, 2},\
+    {CHESS_R_XIANG, 2},\
+    {CHESS_R_SHI, 2},\
+    {CHESS_R_BING, 5},\
+    \
+    {CHESS_K_JIANG, 1},\
+    {CHESS_K_JU, 2},\
+    {CHESS_K_MA, 2},\
+    {CHESS_K_PAO, 2},\
+    {CHESS_K_XIANG, 2},\
+    {CHESS_K_SHI, 2},\
+    {CHESS_K_ZU, 5}\
+}
+/** @brief 一方棋子总数 */
+#define CHESS_NUM_SUM 16
+
 /********************************数据类型声明********************************/
+
+/**
+* @brief 游戏状态枚举
+*/
+enum GameState
+{
+    GSTAT_ACTIVE, ///< 游戏正在进行
+    GSTAT_PAUSE, ///< 游戏暂停
+    GSTAT_DRAW, ///< 和棋
+    GSTAT_RED_WIN, ///< 红方玩家获胜
+    GSTAT_BLACK_WIN, ///< 黑方玩家获胜
+};
 
 /**
 * @brief 玩家枚举
@@ -89,7 +123,14 @@ struct ChessBoard
 
     struct ChessPos cursorRed; ///< 红方玩家光标
     struct ChessPos cursorBlack; ///< 黑方玩家光标
-    struct ChessPos *activeCursor; ///< 指向当前活动玩家光标的指针
+
+    char redChessNum; ///< 红方棋子数
+    char blackChessNum; ///< 黑方棋子数
+
+    char redShuaiExists; ///< 红方帅是否存在，是1否0
+    char blackJiangExists; ///< 黑方将是否存在，是1否0
+
+	char gameState; ///< 游戏状态
 };
 
 /**********************************函数声明**********************************/
@@ -121,6 +162,30 @@ char GetChessPlayer(char chessType);
 /*切换当前活动玩家*/
 void SwitchActivePlayer(struct ChessBoard *cp);
 
+/*返回当前活动玩家*/
+char ActivePlayer(struct ChessBoard *cp);
+
+/*返回当前非活动玩家*/
+char InactivePlayer(struct ChessBoard *cp);
+
+/*取当前活动玩家光标指针*/
+struct ChessPos * ActiveCursor(struct ChessBoard *cp);
+
+/*取当前非活动玩家光标指针*/
+struct ChessPos * InactiveCursor(struct ChessBoard *cp);
+
+/*取当前活动玩家棋子数指针*/
+char * ActiveChessNum(struct ChessBoard *cp);
+
+/*取当前非活动玩家棋子数指针*/
+char * InactiveChessNum(struct ChessBoard *cp);
+
+/*当前活动玩家获胜*/
+void ActivePlayerWin(struct ChessBoard *cp);
+
+/*当前非活动玩家获胜*/
+void InactivePlayerWin(struct ChessBoard *cp);
+
 /*摆放棋子到指定位置*/
 void PutChess(struct ChessBoard *cp, char line, char row, char chessType);
 
@@ -128,6 +193,14 @@ void PutChess(struct ChessBoard *cp, char line, char row, char chessType);
 
 /*移动棋子*/
 char MoveChess(struct ChessBoard *cp, struct ChessPos destPos, struct ChessPos sourPos, char player);
+
+/*********************************宏函数声明*********************************/
+
+/** @brief 求两数的最大值（宏）*/
+#define MAX2(a,b) ((a)>(b)?(a):(b))
+
+/** @brief 求两数的最小值（宏）*/
+#define MIN2(a,b) ((a)<(b)?(a):(b))
 
 /*********************************预处理结束*********************************/
 #endif

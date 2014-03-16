@@ -54,6 +54,12 @@
 * 刷新屏幕显示，写法同 KEYCODE_UP
 */
 #define KEYCODE_REFRESH_SCREEN {/*F5键*/{(char)63,(char)0}, /*退格键*/{(char)8,(char)-1}}
+/**
+* 用于游戏操作的按键数量
+* 
+* 上面定义了几种按键类型，这里就是几
+*/
+#define GAME_CONTROL_KEY_NUM 7
 
 /********************************数据类型声明********************************/
 
@@ -66,6 +72,15 @@ struct KeyState
     char altState; ///< alt键状态，0未按下，1按下
     char shiftState; ///< shift键状态，0未按下，1按下
     signed char lastKey; ///< 存储上一个键。如果按键的键值是双字节则存储按键的首字节。
+};
+
+/**
+* @brief 按键键值结构
+*/
+struct KeyCode
+{
+    signed char first;
+    signed char second;
 };
 
 /**
@@ -88,10 +103,10 @@ enum ActionType
 /**********************************函数声明**********************************/
 
 /*判断按键键值是否在当前键值数组内*/
-char MatchKey(signed char key, signed char keycode[][2], int keycodeSize, struct KeyState *keyStat);
+char MatchKey(signed char key, struct KeyCode *keycode, int keycodeSize, struct KeyState *keyStat);
 
 /*解析按键键值为动作类型*/
-char ParseKey(signed char key, struct KeyState *keyStat);
+char ParseKey(signed char key, struct KeyState *keyStat, char *actionMap, struct KeyCode *keyMap, int actionSize, int keycodeSize);
 
 /*********************************预处理结束*********************************/
 #endif
