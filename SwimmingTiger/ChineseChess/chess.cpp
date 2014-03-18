@@ -192,59 +192,59 @@ void InitChessBoard(struct ChessBoard *cp, enum Player player)
     memset(cp, CHESS_NULL, sizeof(cp->map));
     
     //摆放红方棋子
-    PutChess(cp, 0, 0, CHESS_R_JU);
-    PutChess(cp, 0, 1, CHESS_R_MA);
-    PutChess(cp, 0, 2, CHESS_R_XIANG);
-    PutChess(cp, 0, 3, CHESS_R_SHI);
-    PutChess(cp, 0, 4, CHESS_R_SHUAI);
-    PutChess(cp, 0, 5, CHESS_R_SHI);
-    PutChess(cp, 0, 6, CHESS_R_XIANG);
-    PutChess(cp, 0, 7, CHESS_R_MA);
-    PutChess(cp, 0, 8, CHESS_R_JU);
+    PutChess(cp, 9, 0, CHESS_R_JU);
+    PutChess(cp, 9, 1, CHESS_R_MA);
+    PutChess(cp, 9, 2, CHESS_R_XIANG);
+    PutChess(cp, 9, 3, CHESS_R_SHI);
+    PutChess(cp, 9, 4, CHESS_R_SHUAI);
+    PutChess(cp, 9, 5, CHESS_R_SHI);
+    PutChess(cp, 9, 6, CHESS_R_XIANG);
+    PutChess(cp, 9, 7, CHESS_R_MA);
+    PutChess(cp, 9, 8, CHESS_R_JU);
     
-    PutChess(cp, 2, 1, CHESS_R_PAO);
-    PutChess(cp, 2, 7, CHESS_R_PAO);
+    PutChess(cp, 7, 1, CHESS_R_PAO);
+    PutChess(cp, 7, 7, CHESS_R_PAO);
     
-    PutChess(cp, 3, 0, CHESS_R_BING);
-    PutChess(cp, 3, 2, CHESS_R_BING);
-    PutChess(cp, 3, 4, CHESS_R_BING);
-    PutChess(cp, 3, 6, CHESS_R_BING);
-    PutChess(cp, 3, 8, CHESS_R_BING);
+    PutChess(cp, 6, 0, CHESS_R_BING);
+    PutChess(cp, 6, 2, CHESS_R_BING);
+    PutChess(cp, 6, 4, CHESS_R_BING);
+    PutChess(cp, 6, 6, CHESS_R_BING);
+    PutChess(cp, 6, 8, CHESS_R_BING);
     
     //摆放黑方棋子
-    PutChess(cp, 9, 0, CHESS_K_JU);
-    PutChess(cp, 9, 1, CHESS_K_MA);
-    PutChess(cp, 9, 2, CHESS_K_XIANG);
-    PutChess(cp, 9, 3, CHESS_K_SHI);
-    PutChess(cp, 9, 4, CHESS_K_JIANG);
-    PutChess(cp, 9, 5, CHESS_K_SHI);
-    PutChess(cp, 9, 6, CHESS_K_XIANG);
-    PutChess(cp, 9, 7, CHESS_K_MA);
-    PutChess(cp, 9, 8, CHESS_K_JU);
+    PutChess(cp, 0, 0, CHESS_K_JU);
+    PutChess(cp, 0, 1, CHESS_K_MA);
+    PutChess(cp, 0, 2, CHESS_K_XIANG);
+    PutChess(cp, 0, 3, CHESS_K_SHI);
+    PutChess(cp, 0, 4, CHESS_K_JIANG);
+    PutChess(cp, 0, 5, CHESS_K_SHI);
+    PutChess(cp, 0, 6, CHESS_K_XIANG);
+    PutChess(cp, 0, 7, CHESS_K_MA);
+    PutChess(cp, 0, 8, CHESS_K_JU);
     
-    PutChess(cp, 7, 1, CHESS_K_PAO);
-    PutChess(cp, 7, 7, CHESS_K_PAO);
+    PutChess(cp, 2, 1, CHESS_K_PAO);
+    PutChess(cp, 2, 7, CHESS_K_PAO);
     
-    PutChess(cp, 6, 0, CHESS_K_ZU);
-    PutChess(cp, 6, 2, CHESS_K_ZU);
-    PutChess(cp, 6, 4, CHESS_K_ZU);
-    PutChess(cp, 6, 6, CHESS_K_ZU);
-    PutChess(cp, 6, 8, CHESS_K_ZU);
+    PutChess(cp, 3, 0, CHESS_K_ZU);
+    PutChess(cp, 3, 2, CHESS_K_ZU);
+    PutChess(cp, 3, 4, CHESS_K_ZU);
+    PutChess(cp, 3, 6, CHESS_K_ZU);
+    PutChess(cp, 3, 8, CHESS_K_ZU);
 
     //棋子总数
     cp->redChessNum = CHESS_NUM_SUM;
     cp->blackChessNum = CHESS_NUM_SUM;
     //双方首领均存在
     cp->redShuaiExists = 1;
-    cp->blackJiangExists =1;
+    cp->blackJiangExists = 1;
     
     //设置玩家
     cp->player = player;
     //象棋规则：红方先手
     cp->activePlayer = PLY_RED;
     //光标初始化
-    cp->cursorRed = CreatePos(2, 4);
-    cp->cursorBlack = CreatePos(7, 4);
+    cp->cursorRed = CreatePos(7, 4);
+    cp->cursorBlack = CreatePos(2, 4);
     //棋子未锁定
     cp->chessLocked = 0;
     //游戏进行中
@@ -724,13 +724,13 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
         /*******************红方帅******************/
         case CHESS_R_SHUAI:
             //在九宫外
-            if (sourPos.line > 2 || sourPos.row < 3 || sourPos.row > 5)
+            if (sourPos.line < 7 || sourPos.line > 9 || sourPos.row < 3 || sourPos.row > 5)
             {
                 printErr("MoveChess(): 棋子位置异常，红方帅在九宫外\n");
                 moveSuccess = 0;
             }
             //试图走出九宫
-            else if (destPos.line > 2 || destPos.row < 3 || destPos.row > 5)
+            else if (destPos.line < 7 || destPos.line > 9 || destPos.row < 3 || destPos.row > 5)
             {
                 //试图吃掉对方将
                 if (GetChessType(cp, destPos) == CHESS_K_JIANG && ChessCount(cp, sourPos, destPos) == 0)
@@ -762,13 +762,13 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
         /*******************黑方将*******************/
         case CHESS_K_JIANG:
             //在九宫外
-            if (sourPos.line < 7 || sourPos.line > 9 || sourPos.row < 3 || sourPos.row > 5)
+            if (sourPos.line > 2 || sourPos.row < 3 || sourPos.row > 5)
             {
                 printErr("MoveChess(): 棋子位置异常，黑方将在九宫外\n");
                 moveSuccess = 0;
             }
             //试图走出九宫
-            else if (destPos.line < 7 || destPos.line > 9 || destPos.row < 3 || destPos.row > 5)
+            else if (destPos.line > 2 || destPos.row < 3 || destPos.row > 5)
             {
                 //试图吃掉对方帅
                 if (GetChessType(cp, destPos) == CHESS_R_SHUAI && ChessCount(cp, sourPos, destPos) == 0)
@@ -845,7 +845,7 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
 	    /*******************红方兵*******************/
 		case CHESS_R_BING:
 			//试图后退
-			if (destPos.line < sourPos.line)
+			if (destPos.line > sourPos.line)
 			{
 			    moveSuccess = 0;
 			}
@@ -855,7 +855,7 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
 			    moveSuccess = 0;
 			}
 			//过河前试图横走
-			else if (sourPos.line <= 4 && destPos.row != sourPos.row)
+			else if (sourPos.line >= 5 && destPos.row != sourPos.row)
 			{
 			    moveSuccess = 0;
 			}
@@ -874,7 +874,7 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
 		/*******************黑方卒*******************/
 		case CHESS_K_ZU:
 			//试图后退
-			if (destPos.line > sourPos.line)
+			if (destPos.line < sourPos.line)
 			{
 			    moveSuccess = 0;
 			}
@@ -884,7 +884,7 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
 			    moveSuccess = 0;
 			}
 			//过河前试图横走
-			else if (sourPos.line >= 5 && destPos.row != sourPos.row)
+			else if (sourPos.line <= 4 && destPos.row != sourPos.row)
 			{
 			    moveSuccess = 0;
 			}
@@ -903,14 +903,14 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
 	    /*******************红方仕*******************/
 		case CHESS_R_SHI:
 			//不在正常位置（正常位置：九宫边角和中间）
-			if (!MatchPos(sourPos, 0, 3) && !MatchPos(sourPos, 0, 5) && !MatchPos(sourPos, 1, 4) &&
-				!MatchPos(sourPos, 2, 3) && !MatchPos(sourPos, 2, 5))
+			if (!MatchPos(sourPos, 7, 3) && !MatchPos(sourPos, 7, 5) && !MatchPos(sourPos, 8, 4) &&
+				!MatchPos(sourPos, 9, 3) && !MatchPos(sourPos, 9, 5))
 			{
 			    printErr("MoveChess(): 棋子位置异常，红方仕不在预期位置\n");
 				moveSuccess = 0;
 			}
             //试图走出九宫
-            else if (destPos.line > 2 || destPos.row < 3 || destPos.row > 5)
+            else if (destPos.line < 7 || destPos.line > 9 || destPos.row < 3 || destPos.row > 5)
             {
                 moveSuccess = 0;
             }
@@ -934,14 +934,14 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
 		/*******************黑方士*******************/
 		case CHESS_K_SHI:
 			//不在正常位置（正常位置：九宫边角和中间）
-			if (!MatchPos(sourPos, 7, 3) && !MatchPos(sourPos, 7, 5) && !MatchPos(sourPos, 8, 4) &&
-				!MatchPos(sourPos, 9, 3) && !MatchPos(sourPos, 9, 5))
+			if (!MatchPos(sourPos, 0, 3) && !MatchPos(sourPos, 0, 5) && !MatchPos(sourPos, 1, 4) &&
+				!MatchPos(sourPos, 2, 3) && !MatchPos(sourPos, 2, 5))
 			{
 			    printErr("MoveChess(): 棋子位置异常，黑方士不在预期位置\n");
 				moveSuccess = 0;
 			}
             //试图走出九宫
-            else if (destPos.line < 7 || destPos.line > 9 || destPos.row < 3 || destPos.row > 5)
+            else if (destPos.line > 2 || destPos.row < 3 || destPos.row > 5)
             {
                 moveSuccess = 0;
             }
@@ -1011,15 +1011,15 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
         case CHESS_R_XIANG:
         case CHESS_K_XIANG:
             //不在正常位置（已过河界）
-            if ((sourType == CHESS_R_XIANG && sourPos.line > 4) ||
-                (sourType == CHESS_K_XIANG && sourPos.line < 5))
+            if ((sourType == CHESS_K_XIANG && sourPos.line > 4) ||
+                (sourType == CHESS_R_XIANG && sourPos.line < 5))
             {
                 printErr("MoveChess(): 棋子位置异常，相/象已过河界\n");
                 moveSuccess = 0;
             }
             //试图走过河界
-            else if ((sourType == CHESS_R_XIANG && destPos.line > 4) ||
-                (sourType == CHESS_K_XIANG && destPos.line < 5))
+            else if ((sourType == CHESS_K_XIANG && destPos.line > 4) ||
+                (sourType == CHESS_R_XIANG && destPos.line < 5))
             {
                 moveSuccess = 0;
             }
