@@ -99,6 +99,10 @@ SOURCE=.\debug.cpp
 
 SOURCE=.\graphics.cpp
 # End Source File
+# Begin Source File
+
+SOURCE=.\text.cpp
+# End Source File
 # End Group
 # Begin Group "Header Files"
 
@@ -122,6 +126,10 @@ SOURCE=.\graphics.h
 # Begin Source File
 
 SOURCE=.\style.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\text.h
 # End Source File
 # Begin Source File
 

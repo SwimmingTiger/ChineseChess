@@ -320,7 +320,7 @@ void DrawChess(char chessType, struct ChessPos pos)
         chessColor = CHESS_BLACK_COLOR;
     }
 
-    GetChessName(chessType, chessName);
+    GetChessDisplayName(chessType, chessName);
 
     DrawCircle(CHESS_RADIUS + CHESS_BORDER_WIDTH, centerX , centerY, CHESS_BORDER_STYLE, 0, CHESS_INSIDE_COLOR, CHESS_INSIDE_COLOR);
     DrawCircle(CHESS_RADIUS, centerX, centerY, CHESS_BORDER_STYLE, CHESS_BORDER_WIDTH, chessColor, CHESS_INSIDE_COLOR);

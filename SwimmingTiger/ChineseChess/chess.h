@@ -139,7 +139,7 @@ struct ChessBoard
 void InitChessBoard(ChessBoard *cp, enum Player player);
 
 /*取得棋子名*/
-void GetChessName(char chessType, char *ipName);
+void GetChessDisplayName(char chessType, char *ipName);
 
 /*游戏流程控制函数*/
 void StartGame(struct ChessBoard *cp);
@@ -190,6 +190,10 @@ void InactivePlayerWin(struct ChessBoard *cp);
 void PutChess(struct ChessBoard *cp, char line, char row, char chessType);
 
 /*统计起点到终点沿途的棋子个数（不包括起点和终点）*/
+int ChessCount(struct ChessBoard *cp, struct ChessPos destPos, struct ChessPos sourPos);
+
+/*统计一列上某棋子的个数*/
+int RowChessCount(struct ChessBoard *cp, char chessType, char row);
 
 /*移动棋子*/
 char MoveChess(struct ChessBoard *cp, struct ChessPos destPos, struct ChessPos sourPos, char player);

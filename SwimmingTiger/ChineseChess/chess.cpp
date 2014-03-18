@@ -254,7 +254,7 @@ void InitChessBoard(struct ChessBoard *cp, enum Player player)
 /**
 * @brief 取得棋子名
 */
-void GetChessName(char chessType, char *ipName)
+void GetChessDisplayName(char chessType, char *ipName)
 {
     switch (chessType)
     {
@@ -644,6 +644,30 @@ int ChessCount(struct ChessBoard *cp, struct ChessPos destPos, struct ChessPos s
     }
 
     return num;
+}
+
+/**
+* @brief 统计一列上某棋子的个数
+*/
+int RowChessCount(struct ChessBoard *cp, char chessType, char row)
+{
+    int sum = 0;
+    int i;
+    struct ChessPos pos;
+
+    pos.row = row;
+
+    for (i = 0; i < CHESSBOARD_ROW; i++)
+    {
+        pos.line = i;
+
+        if (GetChessType(cp, pos) == chessType)
+        {
+            sum++;
+        }
+    }
+
+    return sum;
 }
 
 /**
