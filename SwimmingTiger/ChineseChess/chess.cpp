@@ -16,6 +16,7 @@
 #include "style.h"
 #include "control.h"
 #include "debug.h"
+#include "text.h"
 
 /**
 * @brief Ö÷º¯Êý
@@ -1054,6 +1055,10 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
 
         if (moveSuccess)
         {
+            char a[100] = {0};
+            ChessMoveToManual(cp, sourPos, destPos, a);
+            printErr(a);
+
             SetChessType(cp, sourPos, CHESS_NULL);
             SetChessType(cp, destPos, sourType);
 

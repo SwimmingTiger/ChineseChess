@@ -1,4 +1,4 @@
-#ifndef _CHESS_H_
+#ifndef _TEXT_H_
 /**
 * @brief 中国象棋文本处理函数声明
 * 
@@ -8,12 +8,18 @@
 *     - 学院：计算机科学与工程学院
 *     - 学校：大连民族学院
 */
-#define _CHESS_H_
+#define _TEXT_H_
 
 /**********************************函数声明**********************************/
 
 /*取得棋子的记谱名称*/
 void GetChessManualName(char chessType, char *ipName);
+
+/*获取棋盘列名*/
+void GetRowName(char row, char player, char *result);
+
+/*将棋子走法转换成棋谱*/
+char ChessMoveToManual(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos destPos, char *result);
 
 /*********************************预处理结束*********************************/
 #endif
