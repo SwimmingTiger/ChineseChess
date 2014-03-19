@@ -258,12 +258,16 @@ char ChessMoveToManual(struct ChessBoard *cp, struct ChessPos sourPos, struct Ch
     char actionName[8]; //走子方式名称：进、退、平
     char player; //走子玩家
     char success = 0;
-    char rowChessSum = 0;
+    int rowChessSum = 0;
+    int aboveChessSum = 0;
+    int belowChessSum = 0;
     
     type = GetChessType(cp, sourPos);
     GetChessManualName(type, name); //例：车
-    rowChessSum = RowChessCount(cp, type, sourPos.row);
     player = GetChessPlayer(type);
+    rowChessSum = RowChessCount(cp, type, sourPos.row);
+    aboveChessSum = AboveChessCount(cp, type, sourPos, player);
+    belowChessSum = BelowChessCount(cp, type, sourPos, player);
 
     //欲走棋子不存在
     if (type == CHESS_NULL)
@@ -282,50 +286,87 @@ char ChessMoveToManual(struct ChessBoard *cp, struct ChessPos sourPos, struct Ch
         printErr("ChessMoveToManual(): 棋盘异常，欲走动的棋子丢失（请先调用该函数再移动棋子位置）\n");
         success = 0;
     }
-    //该列无重子，用普通记法
-    else if (rowChessSum == 1)
+    //统计数据正常
+    else
     {
         success = 1;
-
+        
+        /***********棋子移动方式***********/
         //平移
         if (sourPos.line == destPos.line)
         {
-            GetRowName(sourPos.row, player, sourName); //例：车三
             strcpy(actionName, "平"); //例：车三平
-            GetRowName(destPos.row, player, destName); //例：车三平一
         }
-        //进退
+        //前进
+        else if ((player==PLY_RED && destPos.line-sourPos.line<0) || (player==PLY_BLACK && destPos.line-sourPos.line>0))
+        {
+            strcpy(actionName, "进"); //例：车三进
+        }
+        //后退
         else
         {
+            strcpy(actionName, "退"); //例：车三退
+        }
+        
+        /***********移动到的位置***********/
+        //走斜线棋子，destName为进退到的列名
+        if (destPos.row != sourPos.row)
+        {
+            GetRowName(destPos.row, player, destName); //例：车三进二
+        }
+        //走直线棋子，destName为进退行数
+        else
+        {
+            GetStepName(abs(destPos.line-sourPos.line), player, destName); //例：车三退二（第三列车退两行）
+        }
+        
+        /***********棋子初始位置表述**********/
+        //无重子，普通记法
+        if (rowChessSum == 1)
+        {
             GetRowName(sourPos.row, player, sourName); //例：车三
-
-            if ((player==PLY_RED && destPos.line-sourPos.line<0) || (player==PLY_BLACK && destPos.line-sourPos.line>0))
+        }
+        //重子但非兵卒，例：前车进一
+        else if (type != CHESS_R_BING && type != CHESS_K_ZU)
+        {
+            //棋子名在第二位而非第一位
+            strcpy(actionName, name);
+            
+            if (aboveChessSum == 0)
             {
-                strcpy(actionName, "进"); //例：车三进
+                strcpy(name, "前");
             }
             else
             {
-                strcpy(actionName, "退"); //例：车三退
-            }
-
-            //走斜线棋子，destName为进退到的列名
-            if (type == CHESS_R_SHI || type == CHESS_K_SHI ||
-                type == CHESS_R_MA || type == CHESS_K_MA ||
-                type == CHESS_R_XIANG || type == CHESS_K_XIANG)
-            {
-                
-            }
-            //走直线棋子，destName为进退行数
-            else
-            {
-                GetStepName(abs(destPos.line-sourPos.line), player, destName); //例：车三退二（第三列车退两行）
+                strcpy(name, "后");
             }
         }
-    }
-    //该列有重子且非兵/卒，记例：前马进五，后马进五
-    else if (rowChessSum == 2 && type != CHESS_R_BING && type != CHESS_K_ZU)
-    {
-        
+        //兵卒重子，例：前五进一
+        else
+        {
+            if (aboveChessSum == 0)
+            {
+                strcpy(name, "前");
+            }
+            else if (belowChessSum == 0)
+            {
+                strcpy(name, "后");
+            }
+            else if(aboveChessSum == belowChessSum)
+            {
+                strcpy(name, "中");
+            }
+            else if(aboveChessSum < belowChessSum)
+            {
+                strcpy(name, "中前");
+            }
+            else if(aboveChessSum > belowChessSum)
+            {
+                strcpy(name, "中后");
+            }
+
+            GetRowName(sourPos.row, player, sourName);
+        }
     }
 
     if (success)

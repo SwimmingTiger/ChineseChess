@@ -158,7 +158,7 @@ void StartGame(struct ChessBoard *cp)
                 else if (MoveChess(cp, cp->lockedCursor, *ActiveCursor(cp), cp->activePlayer))
                 {
                     cp->chessLocked = 0;
-                    SwitchActivePlayer(cp);
+                    //SwitchActivePlayer(cp);
                 }
                 //棋子未移动，不动作
                 else
@@ -658,7 +658,79 @@ int RowChessCount(struct ChessBoard *cp, char chessType, char row)
 
     pos.row = row;
 
-    for (i = 0; i < CHESSBOARD_ROW; i++)
+    for (i=0; i<CHESSBOARD_LINE; i++)
+    {
+        pos.line = i;
+
+        if (GetChessType(cp, pos) == chessType)
+        {
+            sum++;
+        }
+    }
+
+    return sum;
+}
+
+/**
+* @brief 统计当前棋子往上（相对于特定玩家）还有几个同样的棋子
+*/
+int AboveChessCount(struct ChessBoard *cp, char chessType, struct ChessPos sourPos, char player)
+{
+    int sum = 0;
+    int i;
+    struct ChessPos pos;
+    int step;
+
+    pos.row = sourPos.row;
+
+    //红方在下，前进为减
+    if (player == PLY_RED)
+    {
+        step = -1;
+    }
+    //黑方在上，前进为加
+    else
+    {
+        step = 1;
+    }
+
+    for (i=sourPos.line+step; i>=0&&i<CHESSBOARD_LINE; i+=step)
+    {
+        pos.line = i;
+
+        if (GetChessType(cp, pos) == chessType)
+        {
+            sum++;
+        }
+    }
+
+    return sum;
+}
+
+/**
+* @brief 统计当前棋子往下（相对于特定玩家）还有几个同样的棋子
+*/
+int BelowChessCount(struct ChessBoard *cp, char chessType, struct ChessPos sourPos, char player)
+{
+    int sum = 0;
+    int i;
+    struct ChessPos pos;
+    int step;
+
+    pos.row = sourPos.row;
+
+    //红方在下，后退为加
+    if (player == PLY_RED)
+    {
+        step = 1;
+    }
+    //黑方在上，后退为减
+    else
+    {
+        step = -1;
+    }
+
+    for (i=sourPos.line+step; i>=0&&i<CHESSBOARD_LINE; i+=step)
     {
         pos.line = i;
 

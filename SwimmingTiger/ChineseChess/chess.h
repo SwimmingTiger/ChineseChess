@@ -195,6 +195,12 @@ int ChessCount(struct ChessBoard *cp, struct ChessPos destPos, struct ChessPos s
 /*统计一列上某棋子的个数*/
 int RowChessCount(struct ChessBoard *cp, char chessType, char row);
 
+/*统计当前棋子往上（相对于特定玩家）还有几个同样的棋子*/
+int AboveChessCount(struct ChessBoard *cp, char chessType, struct ChessPos sourPos, char player);
+
+/*统计当前棋子往下（相对于特定玩家）还有几个同样的棋子*/
+int BelowChessCount(struct ChessBoard *cp, char chessType, struct ChessPos sourPos, char player);
+
 /*移动棋子*/
 char MoveChess(struct ChessBoard *cp, struct ChessPos destPos, struct ChessPos sourPos, char player);
 
