@@ -11,8 +11,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <windows.h>
 #include "chess.h"
 #include "debug.h"
+#include "text.h"
 
 /**
 * @brief 取得棋子的记谱名称
@@ -372,6 +374,166 @@ char ChessMoveToManual(struct ChessBoard *cp, struct ChessPos sourPos, struct Ch
     if (success)
     {
         sprintf(result, "%s%s%s%s", name, sourName, actionName, destName);
+    }
+
+    return success;
+}
+
+/**
+* @brief 初始化游戏存档目录
+* 
+* 目录路径由 GAME_SAVE_DIR 常量指定
+*/
+int InitGameSaveDir()
+{
+    int success = 0;
+    FILE *fp;
+
+    CreateDirectory(GAME_SAVE_DIR, NULL);
+    CreateDirectory(GAME_SAVE_DIR"/log", NULL);
+    CreateDirectory(GAME_SAVE_DIR"/save", NULL);
+    CreateDirectory(GAME_SAVE_DIR"/maunal", NULL);
+
+    fp = fopen(GAME_SAVE_DIR"/canSave.test", "w");
+
+    if (fp == NULL)
+    {
+        success = 0;
+    }
+    else
+    {
+        success = 1;
+        fclose(fp);
+    }
+
+    return success;
+}
+
+/**
+* @brief 取得默认存档名
+* 
+* 结果存入形参name中，不包含扩展名。
+*/
+void GetDefaultSaveName(char *name)
+{
+    SYSTEMTIME time;
+
+    GetLocalTime(&time);
+    sprintf(name, "%04d-%02d-%02d_%02d_%02d_%02d", time.wYear, time.wMonth, time.wDay, time.wHour, time.wMinute, time.wSecond);
+}
+
+/**
+* @brief 写游戏日志
+* 
+* 形参fileName不包含路径。
+* 
+* 成功返回1，失败返回0。
+* 文件名为空时跳过日志记录，并返回1。
+*/
+int WriteGameLog(char *fileName, char *content)
+{
+    int success = 0;
+    char path[255];
+    FILE *fp;
+    
+    //文件名为空，成功跳过日志记录
+    if (strlen(fileName) == 0)
+    {
+        success = 1;
+    }
+    else
+    {
+        sprintf(path, "%s/%s", GAME_SAVE_DIR"/log", fileName);
+
+        fp = fopen(path, "a");
+        
+        if (fp == NULL)
+        {
+            fp = fopen(path, "w");
+        }
+        
+        if (fp == NULL)
+        {
+            success = 0;
+        }
+        else
+        {
+            success = 1;
+            
+            fprintf(fp, "%s", content);
+            fclose(fp);
+        }
+    }
+
+    return success;
+}
+
+/**
+* @brief 保存游戏
+* 
+* 形参fileName不包含路径。
+* 
+* 成功返回1，失败返回0。
+*/
+int SaveGame(struct ChessBoard *cp, char *fileName)
+{
+    int success = 0;
+    char path[255];
+    FILE *fp;
+    
+    sprintf(path, "%s/%s", GAME_SAVE_DIR"/save", fileName);
+
+    fp = fopen(path, "wb");
+    
+    if (fp == NULL)
+    {
+        success = 0;
+    }
+    else
+    {
+        success = 1;
+        
+        fwrite(cp, sizeof(struct ChessBoard), 1, fp);
+        fclose(fp);
+    }
+
+    return success;
+}
+
+/**
+* @brief 加载游戏
+* 
+* 形参fileName不包含路径。
+* 
+* 成功返回1，失败返回0。
+*/
+int LoadGame(struct ChessBoard *cp, char *fileName)
+{
+    int success = 0;
+    char path[255];
+    char tmpPath[255];
+    FILE *fp;
+    
+    sprintf(path, "%s/%s", GAME_SAVE_DIR"/save", fileName);
+
+    fp = fopen(path, "rb");
+    
+    if (fp == NULL)
+    {
+        success = 0;
+    }
+    else
+    {
+        success = 1;
+        
+        fread(cp, sizeof(struct ChessBoard), 1, fp);
+        fclose(fp);
+
+        //产生新的游戏日志文件
+        sprintf(path, "%s/%s", GAME_SAVE_DIR"/log", cp->logFileName);
+        GetDefaultSaveName(cp->logFileName);
+        sprintf(tmpPath, "%s/%s", GAME_SAVE_DIR"/log", cp->logFileName);
+        CopyFile(path, tmpPath, TRUE);
     }
 
     return success;

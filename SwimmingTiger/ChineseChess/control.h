@@ -51,6 +51,15 @@
 */
 #define KEYCODE_STOP_GAME {/*Esc键*/{(char)27,(char)-1}, /*F12键*/{(char)134,(char)224}}
 /**
+* 保存游戏的键值，写法同 KEYCODE_UP
+*/
+#define KEYCODE_SAVE_GAME {/*F6键*/{(char)64,(char)0}, /*F9键*/{(char)67,(char)0}}
+/**
+* 加载游戏的键值，写法同 KEYCODE_UP
+*/
+#define KEYCODE_LOAD_GAME {/*F7键*/{(char)65,(char)0}, /*F10键*/{(char)68,(char)0}}
+
+/**
 * 刷新屏幕显示，写法同 KEYCODE_UP
 */
 #define KEYCODE_REFRESH_SCREEN {/*F5键*/{(char)63,(char)0}, /*退格键*/{(char)8,(char)-1}}
@@ -59,7 +68,7 @@
 * 
 * 上面定义了几种按键类型，这里就是几
 */
-#define GAME_CONTROL_KEY_NUM 7
+#define GAME_CONTROL_KEY_NUM 9
 
 /********************************数据类型声明********************************/
 
@@ -97,6 +106,8 @@ enum ActionType
     ACT_STOP_GAME, ///< 结束游戏
     ACT_PAUSE_GAME, ///< 暂停游戏
     ACT_RESTART_GAME, ///< 重新开始游戏
+    ACT_SAVE_GAME, ///<保存游戏
+    ACT_LOAD_GAME, ///< 加载游戏
     ACT_REFRESH_SCREEN, ///< 刷新屏幕显示
 };
 

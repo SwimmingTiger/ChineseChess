@@ -9,6 +9,7 @@
 */
 #include <stdio.h>
 #include <conio.h>
+#include <string.h>
 #include <windows.h>
 #include <math.h>
 #include "chess.h"
@@ -47,6 +48,9 @@ int main()
             break;
         }
     }*/
+
+    //初始化游戏存档目录
+    InitGameSaveDir();
     
     //初始化棋盘数据
     InitChessBoard(cp, PLY_BOTH);
@@ -81,6 +85,8 @@ void StartGame(struct ChessBoard *cp)
         ACT_KEY_RIGHT,
         ACT_KEY_LOCK,
         ACT_STOP_GAME,
+        ACT_SAVE_GAME,
+        ACT_LOAD_GAME,
         ACT_REFRESH_SCREEN
     };
     struct KeyCode keyMap[GAME_CONTROL_KEY_NUM][KEYCODE_MAX_NUM] =
@@ -91,6 +97,8 @@ void StartGame(struct ChessBoard *cp)
         KEYCODE_RIGHT,
         KEYCODE_LOCK,
         KEYCODE_STOP_GAME,
+        KEYCODE_SAVE_GAME,
+        KEYCODE_LOAD_GAME,
         KEYCODE_REFRESH_SCREEN
     };
 
@@ -155,10 +163,10 @@ void StartGame(struct ChessBoard *cp)
                     cp->lockedCursor = *ActiveCursor(cp);
                 }
                 //棋子移动成功则解锁光标，切换活动用户
-                else if (MoveChess(cp, cp->lockedCursor, *ActiveCursor(cp), cp->activePlayer))
+                else if (MoveChess(cp, cp->lockedCursor, *ActiveCursor(cp)))
                 {
                     cp->chessLocked = 0;
-                    //SwitchActivePlayer(cp);
+                    SwitchActivePlayer(cp);
                 }
                 //棋子未移动，不动作
                 else
@@ -166,6 +174,16 @@ void StartGame(struct ChessBoard *cp)
                     
                 }
             }
+            break;
+
+        case ACT_SAVE_GAME:
+            SaveGame(cp, "default.sav");
+            WriteGameLog(cp->logFileName, "\r\n玩家存档\r\n");
+            break;
+
+        case ACT_LOAD_GAME:
+            LoadGame(cp, "default.sav");
+            WriteGameLog(cp->logFileName, "\r\n载入存档\r\n");
             break;
 
         case ACT_REFRESH_SCREEN:
@@ -248,6 +266,9 @@ void InitChessBoard(struct ChessBoard *cp, enum Player player)
     cp->cursorBlack = CreatePos(2, 4);
     //棋子未锁定
     cp->chessLocked = 0;
+    //取得默认日志文件名称
+    GetDefaultSaveName(cp->logFileName);
+    strcat(cp->logFileName, ".log");
     //游戏进行中
     cp->gameState = GSTAT_ACTIVE;
 }
@@ -748,16 +769,19 @@ int BelowChessCount(struct ChessBoard *cp, char chessType, struct ChessPos sourP
 * 
 * 成功移动返回1，移动失败或不允许移动返回0
 */
-char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos destPos, char player)
+char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos destPos)
 {
     char moveSuccess = 0;
     char destType;
     char sourType;
     char oppChiefLost = 0; //对方将军要被吃掉
     struct ChessPos tmpPos;
+    char gameLog[40];
+    char player;
     
     destType = GetChessType(cp, destPos);
     sourType = GetChessType(cp, sourPos);
+    player = cp->activePlayer;
 
     //游戏不在进行状态，不可移子
     if (cp->gameState != GSTAT_ACTIVE)
@@ -1127,9 +1151,18 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
 
         if (moveSuccess)
         {
-            char a[100] = {0};
-            ChessMoveToManual(cp, sourPos, destPos, a);
-            printErr(a);
+            ChessMoveToManual(cp, sourPos, destPos, gameLog);
+
+            if (player == PLY_RED)
+            {
+                strcat(gameLog, " ");
+            }
+            else
+            {
+                strcat(gameLog, "\r\n");
+            }
+
+            WriteGameLog(cp->logFileName, gameLog);
 
             SetChessType(cp, sourPos, CHESS_NULL);
             SetChessType(cp, destPos, sourType);
@@ -1140,16 +1173,31 @@ char MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos d
                 (*InactiveChessNum(cp))--;
             }
 
+            /*
+            //在将军没有被吃掉之前不可能没有棋子
+            
             //对方没有棋子，己方获胜
             if (*InactiveChessNum(cp) == 0)
             {
                 ActivePlayerWin(cp);
             }
+            */
 
             //对方将军被吃掉，己方获胜
             if (oppChiefLost)
             {
                 ActivePlayerWin(cp);
+
+                if (player == PLY_RED)
+                {
+                    strcpy(gameLog, "红方胜");
+                }
+                else
+                {
+                    strcpy(gameLog, "黑方胜");
+                }
+
+                WriteGameLog(cp->logFileName, gameLog);
             }
         }
 

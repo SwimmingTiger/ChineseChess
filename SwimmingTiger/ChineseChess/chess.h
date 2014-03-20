@@ -131,6 +131,7 @@ struct ChessBoard
     char blackJiangExists; ///< 黑方将是否存在，是1否0
 
 	char gameState; ///< 游戏状态
+    char logFileName[100]; ///< 游戏日志文件名称（不包括路径）
 };
 
 /**********************************函数声明**********************************/
@@ -202,7 +203,7 @@ int AboveChessCount(struct ChessBoard *cp, char chessType, struct ChessPos sourP
 int BelowChessCount(struct ChessBoard *cp, char chessType, struct ChessPos sourPos, char player);
 
 /*移动棋子*/
-char MoveChess(struct ChessBoard *cp, struct ChessPos destPos, struct ChessPos sourPos, char player);
+char MoveChess(struct ChessBoard *cp, struct ChessPos destPos, struct ChessPos sourPos);
 
 /*********************************宏函数声明*********************************/
 

@@ -10,6 +10,11 @@
 */
 #define _TEXT_H_
 
+/**********************************常量声明**********************************/
+
+/** @brief 游戏存档目录 */
+#define GAME_SAVE_DIR "./ChineseChess"
+
 /**********************************函数声明**********************************/
 
 /*取得棋子的记谱名称*/
@@ -20,6 +25,21 @@ void GetRowName(char row, char player, char *result);
 
 /*将棋子走法转换成棋谱*/
 char ChessMoveToManual(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos destPos, char *result);
+
+/*初始化游戏存档目录*/
+int InitGameSaveDir();
+
+/*取得默认存档名*/
+void GetDefaultSaveName(char *name);
+
+/*写游戏日志*/
+int WriteGameLog(char *fileName, char *content);
+
+/*保存游戏*/
+int SaveGame(struct ChessBoard *cp, char *fileName);
+
+/*加载游戏*/
+int LoadGame(struct ChessBoard *cp, char *fileName);
 
 /*********************************预处理结束*********************************/
 #endif
