@@ -67,9 +67,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
     <ul class="tablist">
       <li><a href="globals.html"><span>全部</span></a></li>
       <li><a href="globals_func.html"><span>函数</span></a></li>
+      <li><a href="globals_type.html"><span>类型定义</span></a></li>
       <li><a href="globals_enum.html"><span>枚举</span></a></li>
       <li class="current"><a href="globals_eval.html"><span>枚举值</span></a></li>
       <li><a href="globals_defs.html"><span>宏定义</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow4" class="tabs3">
+    <ul class="tablist">
+      <li><a href="#index_a"><span>a</span></a></li>
+      <li><a href="#index_c"><span>c</span></a></li>
+      <li><a href="#index_g"><span>g</span></a></li>
+      <li><a href="#index_p"><span>p</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -78,7 +87,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>结构体</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>文件</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>枚举</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>枚举值</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>宏定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>页</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>结构体</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>文件</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>类型定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>枚举</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>枚举值</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>宏定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>页</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -88,57 +97,143 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 </div>
 
 <div class="contents">
-&#160;<ul>
-<li>CT_K_JIANG
-: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85a3ed35aabb8a7aaecf9ac146059981b44">chess.h</a>
+&#160;
+
+<h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
+<li>ACT_BACK_GAME
+: <a class="el" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba4a7b31d67e82315fc84575ae27de9041">control.h</a>
 </li>
-<li>CT_K_JU
-: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85a714f70cf2270a1e1d02fbab152f0991b">chess.h</a>
+<li>ACT_KEY_DOWN
+: <a class="el" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba02098b631630f056ed3bf223e7dba548">control.h</a>
 </li>
-<li>CT_K_MA
-: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85ab6d5fc669984d06cd6fad28c9142cac7">chess.h</a>
+<li>ACT_KEY_LEFT
+: <a class="el" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950baf134953fca07800fb39e74c64a4e9fdc">control.h</a>
 </li>
-<li>CT_K_PAO
-: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85aad558efa0023a7dd48ddb1eef3fe8693">chess.h</a>
+<li>ACT_KEY_LOCK
+: <a class="el" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba014071cc9f34fcb851b86a3af1794781">control.h</a>
 </li>
-<li>CT_K_SHI
-: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85aef5f279a447ceab8bdae0d7855819443">chess.h</a>
+<li>ACT_KEY_RIGHT
+: <a class="el" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba74fd1f0f75eec079e11b509654ac198c">control.h</a>
 </li>
-<li>CT_K_XIANG
-: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85a20333b519f9368963ba2e398a1892dbb">chess.h</a>
+<li>ACT_KEY_UP
+: <a class="el" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba611972275a80c05041c205e7ea0ee2e7">control.h</a>
 </li>
-<li>CT_K_ZU
-: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85a18f732126db959f5acd3a2a013e33ba9">chess.h</a>
+<li>ACT_LOAD_GAME
+: <a class="el" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950baba7dd83a8d43f2446de6e839a29d8a7c">control.h</a>
 </li>
-<li>CT_NULL
-: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85ad2d309b7edc58785e7d1e189d12b8a6c">chess.h</a>
+<li>ACT_REFRESH_SCREEN
+: <a class="el" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950bafcd14e76c2560be881c14fc68754861a">control.h</a>
 </li>
-<li>CT_R_BING
-: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85a0fc9834f8f7b64b5c5e083c1a06da1fa">chess.h</a>
+<li>ACT_SAVE_GAME
+: <a class="el" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba9e54f3f303810a007a0e398f2b07dc79">control.h</a>
 </li>
-<li>CT_R_JU
-: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85acb72846bac93aafaa45ea6af35224ba9">chess.h</a>
+<li>ACT_SHOW_ABOUT
+: <a class="el" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba288d65afcebd11409e2ccb228e04de2f">control.h</a>
 </li>
-<li>CT_R_MA
-: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85aa790bf615414c256ba88d14233afad77">chess.h</a>
+<li>ACT_SHOW_MENU
+: <a class="el" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950baf5f2308306ff0a30b0579049f83f1af5">control.h</a>
 </li>
-<li>CT_R_PAO
-: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85ac8d3a8ae6794073fb5e917c613bb6ec5">chess.h</a>
+<li>ACT_SHOW_STEP
+: <a class="el" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba2044b75130733c73fe521fae9ee1751c">control.h</a>
 </li>
-<li>CT_R_SHI
-: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85a06c91c1838d1eaf872a1be2d74ac76e8">chess.h</a>
+<li>ACT_START_GAME
+: <a class="el" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba8700cbcd8dffa377f2ad31b46c5e805d">control.h</a>
 </li>
-<li>CT_R_SHUAI
-: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85ade7f01242d34cd94dab6a3a96942a7c1">chess.h</a>
+<li>ACT_STOP_GAME
+: <a class="el" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba909ea89d418118308f521e0d781b6060">control.h</a>
 </li>
-<li>CT_R_XIANG
-: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85ad6e0cc2b55e9e8846a243efb0036ef3d">chess.h</a>
+<li>ACT_UNKNOWN
+: <a class="el" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba5899901be0c468eb5d25831e0e446b3c">control.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
+<li>CHESS_K_JIANG
+: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85aff37482d1d5cef2caa203a73fa14d1fb">chess.h</a>
+</li>
+<li>CHESS_K_JU
+: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85afde94bc7e1adccf833131012078e3ffa">chess.h</a>
+</li>
+<li>CHESS_K_MA
+: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85a6296c44386ccd98d666f640fe1b6865b">chess.h</a>
+</li>
+<li>CHESS_K_PAO
+: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85a1222071e50bce7eaf6542e7e960c2c0a">chess.h</a>
+</li>
+<li>CHESS_K_SHI
+: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85a4cfb3e09c816a89efc86731cd5590c27">chess.h</a>
+</li>
+<li>CHESS_K_XIANG
+: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85a8f075db8b522dba2dcea0ee8d5743ab4">chess.h</a>
+</li>
+<li>CHESS_K_ZU
+: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85af0d70369e127faa8455985ccad5152e5">chess.h</a>
+</li>
+<li>CHESS_NULL
+: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85a3541436a81b16301b868d967ac1f1315">chess.h</a>
+</li>
+<li>CHESS_R_BING
+: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85ae771a084beb807015f1adb72933ffd1d">chess.h</a>
+</li>
+<li>CHESS_R_JU
+: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85a1ba42abcec50bedce6ca41aafd8f4ebe">chess.h</a>
+</li>
+<li>CHESS_R_MA
+: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85af1acc8cced4757068474281f31e74154">chess.h</a>
+</li>
+<li>CHESS_R_PAO
+: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85a624fcb39db1b0aa2a05f801c5e337c08">chess.h</a>
+</li>
+<li>CHESS_R_SHI
+: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85ae0709ec77999d5c1f93fc17dcbdad661">chess.h</a>
+</li>
+<li>CHESS_R_SHUAI
+: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85a53dbde51ab0f9e5d8ec7e385f58ce610">chess.h</a>
+</li>
+<li>CHESS_R_XIANG
+: <a class="el" href="chess_8h.html#a1ebce31641a6ec27cf35e3810e130b85ab0dd8083554f84988a766baf9abbc1a2">chess.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
+<li>GSTAT_ACTIVE
+: <a class="el" href="chess_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a9ee002242f1c13a75cd7a7d8c4702da9">chess.h</a>
+</li>
+<li>GSTAT_BLACK_WIN
+: <a class="el" href="chess_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a5ee21f8ca8ee248099f88a2473e3414d">chess.h</a>
+</li>
+<li>GSTAT_DRAW
+: <a class="el" href="chess_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285abfc0577cec86cc2cb0acebbe6cbca6b1">chess.h</a>
+</li>
+<li>GSTAT_PAUSE
+: <a class="el" href="chess_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a25b6d24472f110452d40ea261f0c0ad9">chess.h</a>
+</li>
+<li>GSTAT_RED_WIN
+: <a class="el" href="chess_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a64efcd16da85bc42906139cc2fda4f29">chess.h</a>
+</li>
+<li>GSTAT_STOP
+: <a class="el" href="chess_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285aea1b473979081f71e7b11a7300f4dd17">chess.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
+<li>PLY_BLACK
+: <a class="el" href="chess_8h.html#a9c8780378078e51e7c9041cbac392db9a739f6bceec1557d18c7dcdd37e132251">chess.h</a>
+</li>
+<li>PLY_BOTH
+: <a class="el" href="chess_8h.html#a9c8780378078e51e7c9041cbac392db9a15153f0a7e9ca6c8c4d393d6e3442aaa">chess.h</a>
+</li>
+<li>PLY_RED
+: <a class="el" href="chess_8h.html#a9c8780378078e51e7c9041cbac392db9a639d783db436e9352f189e6cd188db66">chess.h</a>
 </li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-生成于 2014年 三月 7日 星期五 15:23:03 , 为 双人象棋使用  &#160;<a href="http://www.doxygen.org/index.html">
+生成于 2014年 三月 21日 星期五 21:42:27 , 为 双人象棋使用  &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

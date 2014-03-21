@@ -1,0 +1,419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>双人象棋: E:/ClassDesign/SwimmingTiger/ChineseChess/text.cpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">双人象棋
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.5 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>结构体</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>文件</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>类型定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>枚举</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>枚举值</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>宏定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>页</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_1fd461fde2298e9ff7e0755f2df8abec.html">SwimmingTiger</a></li><li class="navelem"><a class="el" href="dir_31a323eb3a87869805dc7a92c1012982.html">ChineseChess</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">text.cpp 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
+<code>#include &lt;string.h&gt;</code><br/>
+<code>#include &lt;math.h&gt;</code><br/>
+<code>#include &lt;windows.h&gt;</code><br/>
+<code>#include &quot;<a class="el" href="chess_8h_source.html">chess.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="debug_8h_source.html">debug.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="text_8h_source.html">text.h</a>&quot;</code><br/>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:addcc729b093c6205e0f71cf41f1bf84f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8cpp.html#addcc729b093c6205e0f71cf41f1bf84f">GetChessManualName</a> (char chessType, char *ipName)</td></tr>
+<tr class="memdesc:addcc729b093c6205e0f71cf41f1bf84f"><td class="mdescLeft">&#160;</td><td class="mdescRight">中国象棋文本处理函数实现  <a href="#addcc729b093c6205e0f71cf41f1bf84f">更多...</a><br/></td></tr>
+<tr class="separator:addcc729b093c6205e0f71cf41f1bf84f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2400a2336ae2e36cc276c8cb5e99be02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8cpp.html#a2400a2336ae2e36cc276c8cb5e99be02">GetRowName</a> (char row, char player, char *result)</td></tr>
+<tr class="memdesc:a2400a2336ae2e36cc276c8cb5e99be02"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取棋盘列名  <a href="#a2400a2336ae2e36cc276c8cb5e99be02">更多...</a><br/></td></tr>
+<tr class="separator:a2400a2336ae2e36cc276c8cb5e99be02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a923bc8e75c48e4062e8618dff9151189"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8cpp.html#a923bc8e75c48e4062e8618dff9151189">GetStepName</a> (char step, char player, char *result)</td></tr>
+<tr class="memdesc:a923bc8e75c48e4062e8618dff9151189"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取步数记法  <a href="#a923bc8e75c48e4062e8618dff9151189">更多...</a><br/></td></tr>
+<tr class="separator:a923bc8e75c48e4062e8618dff9151189"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae839470fc58c401d79d63319af606ca9"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8cpp.html#ae839470fc58c401d79d63319af606ca9">ChessMoveToManual</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp, struct <a class="el" href="struct_chess_pos.html">ChessPos</a> sourPos, struct <a class="el" href="struct_chess_pos.html">ChessPos</a> destPos, char *result)</td></tr>
+<tr class="memdesc:ae839470fc58c401d79d63319af606ca9"><td class="mdescLeft">&#160;</td><td class="mdescRight">将棋子走法转换成棋谱  <a href="#ae839470fc58c401d79d63319af606ca9">更多...</a><br/></td></tr>
+<tr class="separator:ae839470fc58c401d79d63319af606ca9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73850eff488ab5c6cd79e11d032f9cba"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8cpp.html#a73850eff488ab5c6cd79e11d032f9cba">InitGameSaveDir</a> ()</td></tr>
+<tr class="memdesc:a73850eff488ab5c6cd79e11d032f9cba"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化游戏存档目录  <a href="#a73850eff488ab5c6cd79e11d032f9cba">更多...</a><br/></td></tr>
+<tr class="separator:a73850eff488ab5c6cd79e11d032f9cba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8710522d99f13ca06d6d1c75f70d6ab3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8cpp.html#a8710522d99f13ca06d6d1c75f70d6ab3">GetDefaultSaveName</a> (char *name)</td></tr>
+<tr class="memdesc:a8710522d99f13ca06d6d1c75f70d6ab3"><td class="mdescLeft">&#160;</td><td class="mdescRight">取得默认存档名  <a href="#a8710522d99f13ca06d6d1c75f70d6ab3">更多...</a><br/></td></tr>
+<tr class="separator:a8710522d99f13ca06d6d1c75f70d6ab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8a52b30a61db0f57b4c078c7ee8c18f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8cpp.html#aa8a52b30a61db0f57b4c078c7ee8c18f">WriteGameLog</a> (char *fileName, char *content)</td></tr>
+<tr class="memdesc:aa8a52b30a61db0f57b4c078c7ee8c18f"><td class="mdescLeft">&#160;</td><td class="mdescRight">写游戏日志  <a href="#aa8a52b30a61db0f57b4c078c7ee8c18f">更多...</a><br/></td></tr>
+<tr class="separator:aa8a52b30a61db0f57b4c078c7ee8c18f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85b3275ed21730997870a60e627cb336"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8cpp.html#a85b3275ed21730997870a60e627cb336">SaveGame</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp, char *fileName)</td></tr>
+<tr class="memdesc:a85b3275ed21730997870a60e627cb336"><td class="mdescLeft">&#160;</td><td class="mdescRight">保存游戏  <a href="#a85b3275ed21730997870a60e627cb336">更多...</a><br/></td></tr>
+<tr class="separator:a85b3275ed21730997870a60e627cb336"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb960680378fa7da7e1fed53ab5dc105"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8cpp.html#abb960680378fa7da7e1fed53ab5dc105">LoadGame</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp, char *fileName)</td></tr>
+<tr class="memdesc:abb960680378fa7da7e1fed53ab5dc105"><td class="mdescLeft">&#160;</td><td class="mdescRight">加载游戏  <a href="#abb960680378fa7da7e1fed53ab5dc105">更多...</a><br/></td></tr>
+<tr class="separator:abb960680378fa7da7e1fed53ab5dc105"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">函数说明</h2>
+<a class="anchor" id="ae839470fc58c401d79d63319af606ca9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char ChessMoveToManual </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_pos.html">ChessPos</a>&#160;</td>
+          <td class="paramname"><em>sourPos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_pos.html">ChessPos</a>&#160;</td>
+          <td class="paramname"><em>destPos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将棋子走法转换成棋谱 </p>
+<p>结果存入指针 char *result 中。</p>
+<p>返回值：转换成功返回1，失败返回0。 </p>
+
+</div>
+</div>
+<a class="anchor" id="addcc729b093c6205e0f71cf41f1bf84f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GetChessManualName </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>chessType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>ipName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>中国象棋文本处理函数实现 </p>
+<ul>
+<li>作者信息<ul>
+<li>作者：彭逸豪</li>
+<li>班级：软件131班</li>
+<li>学院：计算机科学与工程学院</li>
+<li>学校：大连民族学院 取得棋子的记谱名称 </li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+<a class="anchor" id="a8710522d99f13ca06d6d1c75f70d6ab3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GetDefaultSaveName </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>取得默认存档名 </p>
+<p>结果存入形参name中，不包含扩展名。 </p>
+
+</div>
+</div>
+<a class="anchor" id="a2400a2336ae2e36cc276c8cb5e99be02"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GetRowName </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取棋盘列名 </p>
+<p>红黑方列名不同，红方从右往左数为一到九（用汉字），黑方从左往右数为1到9（用阿拉伯数字）</p>
+<p>结果存入指针 char *result 中，失败得到空字符串。 </p>
+
+</div>
+</div>
+<a class="anchor" id="a923bc8e75c48e4062e8618dff9151189"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GetStepName </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>step</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取步数记法 </p>
+<p>红黑方记法不同，红方为一到九（用汉字），黑方为1到9（用阿拉伯数字）</p>
+<p>例：走了5步，红方得到“五”，黑方得到5。</p>
+<p>结果存入指针 char *result 中，失败得到空字符串。 </p>
+
+</div>
+</div>
+<a class="anchor" id="a73850eff488ab5c6cd79e11d032f9cba"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int InitGameSaveDir </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化游戏存档目录 </p>
+<p>目录路径由 GAME_SAVE_DIR 常量指定 </p>
+
+</div>
+</div>
+<a class="anchor" id="abb960680378fa7da7e1fed53ab5dc105"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int LoadGame </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>fileName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>加载游戏 </p>
+<p>形参fileName不包含路径。</p>
+<p>成功返回1，失败返回0。 </p>
+
+</div>
+</div>
+<a class="anchor" id="a85b3275ed21730997870a60e627cb336"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SaveGame </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>fileName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>保存游戏 </p>
+<p>形参fileName不包含路径。</p>
+<p>成功返回1，失败返回0。 </p>
+
+</div>
+</div>
+<a class="anchor" id="aa8a52b30a61db0f57b4c078c7ee8c18f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WriteGameLog </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>fileName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>content</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>写游戏日志 </p>
+<p>形参fileName不包含路径。</p>
+<p>成功返回1，失败返回0。 文件名为空时跳过日志记录，并返回1。 </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2014年 三月 21日 星期五 21:42:27 , 为 双人象棋使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.5
+</small></address>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>双人象棋: E:/ClassDesign/SwimmingTiger/ChineseChess/control.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">双人象棋
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.5 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>结构体</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>文件</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>类型定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>枚举</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>枚举值</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>宏定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>页</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_1fd461fde2298e9ff7e0755f2df8abec.html">SwimmingTiger</a></li><li class="navelem"><a class="el" href="dir_31a323eb3a87869805dc7a92c1012982.html">ChineseChess</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">control.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="control_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _CONTROL_H_</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="control_8h.html#af5bb004d955f9c3b1b96d84f02d41dea">   11</a></span>&#160;<span class="preprocessor">#define _CONTROL_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/**********************************常量声明**********************************/</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="control_8h.html#a83f30a1ff8fce55e2519f8ba1d8694b8">   20</a></span>&#160;<span class="preprocessor">#define KEYCODE_MAX_NUM 2</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="control_8h.html#ac530711f1bc0575f2baef1118f6f4219">   32</a></span>&#160;<span class="preprocessor">#define KEYCODE_UP {</span><span class="comment">/*光标上键*/</span><span class="preprocessor">{(char)72,(char)224}, </span><span class="comment">/*w键*/</span><span class="preprocessor">{(char)119,(char)-1}}</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="control_8h.html#a169fe4378e521fd0296967738666bed5">   36</a></span>&#160;<span class="preprocessor">#define KEYCODE_DOWN {</span><span class="comment">/*光标下键*/</span><span class="preprocessor">{(char)80,(char)224}, </span><span class="comment">/*s键*/</span><span class="preprocessor">{(char)115,(char)-1}}</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="control_8h.html#aa3acf65701ff877e76cc83ebec62f917">   40</a></span>&#160;<span class="preprocessor">#define KEYCODE_LEFT {</span><span class="comment">/*光标左键*/</span><span class="preprocessor">{(char)75,(char)224}, </span><span class="comment">/*a键*/</span><span class="preprocessor">{(char)97,(char)-1}}</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="control_8h.html#a67fbb51c362bf8f817f69c7cd2ed670f">   44</a></span>&#160;<span class="preprocessor">#define KEYCODE_RIGHT {</span><span class="comment">/*光标右键*/</span><span class="preprocessor">{(char)77,(char)224}, </span><span class="comment">/*d键*/</span><span class="preprocessor">{(char)100,(char)-1}}</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="control_8h.html#a2ddd586fd8e3f4d7c4682d561671be0d">   48</a></span>&#160;<span class="preprocessor">#define KEYCODE_LOCK {</span><span class="comment">/*空格键*/</span><span class="preprocessor">{(char)32,(char)-1}, </span><span class="comment">/*回车键*/</span><span class="preprocessor">{(char)13,(char)-1}}</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="control_8h.html#a52cb83a184ed036b29fd7d5e5fc97d8e">   52</a></span>&#160;<span class="preprocessor">#define KEYCODE_SHOW_MENU {</span><span class="comment">/*Esc键*/</span><span class="preprocessor">{(char)27,(char)-1}, </span><span class="comment">/*F8键*/</span><span class="preprocessor">{(char)66,(char)0}}</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="control_8h.html#aa99c2c08f7341728050d7506e16e112e">   56</a></span>&#160;<span class="preprocessor">#define KEYCODE_SAVE_GAME {</span><span class="comment">/*F6键*/</span><span class="preprocessor">{(char)64,(char)0}, </span><span class="comment">/*F9键*/</span><span class="preprocessor">{(char)67,(char)0}}</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="control_8h.html#a658e2142a634b330ed7e75106191e543">   60</a></span>&#160;<span class="preprocessor">#define KEYCODE_LOAD_GAME {</span><span class="comment">/*F7键*/</span><span class="preprocessor">{(char)65,(char)0}, </span><span class="comment">/*F10键*/</span><span class="preprocessor">{(char)68,(char)0}}</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="control_8h.html#a1909a3f380a8b40918d06926ceb332a5">   65</a></span>&#160;<span class="preprocessor">#define KEYCODE_REFRESH_SCREEN {</span><span class="comment">/*F5键*/</span><span class="preprocessor">{(char)63,(char)0}, </span><span class="comment">/*退格键*/</span><span class="preprocessor">{(char)8,(char)-1}}</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="control_8h.html#a866d5e69721232f77da201bad1af7090">   71</a></span>&#160;<span class="preprocessor">#define GAME_CONTROL_KEY_NUM 9</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">/********************************数据类型声明********************************/</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="struct_key_state.html">   78</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_key_state.html">KeyState</a></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="struct_key_state.html#ac997615b599932473cd59cb7c8c1bf39">   80</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="struct_key_state.html#ac997615b599932473cd59cb7c8c1bf39">ctrlState</a>; </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="struct_key_state.html#aac7cbc1c7e4f6faf0f6d636b2f2c758b">   81</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="struct_key_state.html#aac7cbc1c7e4f6faf0f6d636b2f2c758b">altState</a>; </div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="struct_key_state.html#a5a460f63cb8e806828ba900c74d7ce64">   82</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="struct_key_state.html#a5a460f63cb8e806828ba900c74d7ce64">shiftState</a>; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="struct_key_state.html#ac448ffef27e715e4a82733449511cc01">   83</a></span>&#160;    <span class="keywordtype">signed</span> <span class="keywordtype">char</span> <a class="code" href="struct_key_state.html#ac448ffef27e715e4a82733449511cc01">lastKey</a>; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;};</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="struct_key_code.html">   89</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_key_code.html">KeyCode</a></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;{</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="struct_key_code.html#adc06336d17ec85dd6e6bfdfc7834ad32">   91</a></span>&#160;    <span class="keywordtype">signed</span> <span class="keywordtype">char</span> <a class="code" href="struct_key_code.html#adc06336d17ec85dd6e6bfdfc7834ad32">first</a>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="struct_key_code.html#a203ab55e009194357aa13a529ff47e58">   92</a></span>&#160;    <span class="keywordtype">signed</span> <span class="keywordtype">char</span> <a class="code" href="struct_key_code.html#a203ab55e009194357aa13a529ff47e58">second</a>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;};</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950b">   98</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950b">ActionType</a></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;{</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba5899901be0c468eb5d25831e0e446b3c">  100</a></span>&#160;    <a class="code" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba5899901be0c468eb5d25831e0e446b3c">ACT_UNKNOWN</a>, </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba611972275a80c05041c205e7ea0ee2e7">  101</a></span>&#160;    <a class="code" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba611972275a80c05041c205e7ea0ee2e7">ACT_KEY_UP</a>, </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba02098b631630f056ed3bf223e7dba548">  102</a></span>&#160;    <a class="code" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba02098b631630f056ed3bf223e7dba548">ACT_KEY_DOWN</a>, </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950baf134953fca07800fb39e74c64a4e9fdc">  103</a></span>&#160;    <a class="code" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950baf134953fca07800fb39e74c64a4e9fdc">ACT_KEY_LEFT</a>, </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba74fd1f0f75eec079e11b509654ac198c">  104</a></span>&#160;    <a class="code" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba74fd1f0f75eec079e11b509654ac198c">ACT_KEY_RIGHT</a>, </div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba014071cc9f34fcb851b86a3af1794781">  105</a></span>&#160;    <a class="code" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba014071cc9f34fcb851b86a3af1794781">ACT_KEY_LOCK</a>, </div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba909ea89d418118308f521e0d781b6060">  106</a></span>&#160;    <a class="code" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba909ea89d418118308f521e0d781b6060">ACT_STOP_GAME</a>, </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba4a7b31d67e82315fc84575ae27de9041">  107</a></span>&#160;    <a class="code" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba4a7b31d67e82315fc84575ae27de9041">ACT_BACK_GAME</a>, </div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba8700cbcd8dffa377f2ad31b46c5e805d">  108</a></span>&#160;    <a class="code" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba8700cbcd8dffa377f2ad31b46c5e805d">ACT_START_GAME</a>, </div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba9e54f3f303810a007a0e398f2b07dc79">  109</a></span>&#160;    <a class="code" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba9e54f3f303810a007a0e398f2b07dc79">ACT_SAVE_GAME</a>, </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950baba7dd83a8d43f2446de6e839a29d8a7c">  110</a></span>&#160;    <a class="code" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950baba7dd83a8d43f2446de6e839a29d8a7c">ACT_LOAD_GAME</a>, </div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950baf5f2308306ff0a30b0579049f83f1af5">  111</a></span>&#160;    <a class="code" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950baf5f2308306ff0a30b0579049f83f1af5">ACT_SHOW_MENU</a>, </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba2044b75130733c73fe521fae9ee1751c">  112</a></span>&#160;    <a class="code" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba2044b75130733c73fe521fae9ee1751c">ACT_SHOW_STEP</a>, </div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950bafcd14e76c2560be881c14fc68754861a">  113</a></span>&#160;    <a class="code" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950bafcd14e76c2560be881c14fc68754861a">ACT_REFRESH_SCREEN</a>, </div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba288d65afcebd11409e2ccb228e04de2f">  114</a></span>&#160;    <a class="code" href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba288d65afcebd11409e2ccb228e04de2f">ACT_SHOW_ABOUT</a>, </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;};</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">/**********************************函数声明**********************************/</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">/*判断按键键值是否在当前键值数组内*/</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keywordtype">char</span> <a class="code" href="control_8cpp.html#aa7b1f965e0299099a38516cd857279c5">MatchKey</a>(<span class="keywordtype">signed</span> <span class="keywordtype">char</span> key, <span class="keyword">struct</span> <a class="code" href="struct_key_code.html">KeyCode</a> *keycode, <span class="keywordtype">int</span> keycodeSize, <span class="keyword">struct</span> <a class="code" href="struct_key_state.html">KeyState</a> *keyStat);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">/*解析按键键值为动作类型*/</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="keywordtype">char</span> <a class="code" href="control_8cpp.html#aa405a0148aa72c0dff1fc8327cec9a7c">ParseKey</a>(<span class="keywordtype">signed</span> <span class="keywordtype">char</span> key, <span class="keyword">struct</span> <a class="code" href="struct_key_state.html">KeyState</a> *keyStat, <span class="keywordtype">char</span> *actionMap, <span class="keyword">struct</span> <a class="code" href="struct_key_code.html">KeyCode</a> *keyMap, <span class="keywordtype">int</span> actionSize, <span class="keywordtype">int</span> keycodeSize);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">/*********************************预处理结束*********************************/</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="control_8h_html_a21d5e8f8cdaa838586b31007df0a950ba014071cc9f34fcb851b86a3af1794781"><div class="ttname"><a href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba014071cc9f34fcb851b86a3af1794781">ACT_KEY_LOCK</a></div><div class="ttdoc">锁定/解锁棋子（锁定棋子再移动光标时棋子也相应移动，再解锁棋子将其放到新位置） </div><div class="ttdef"><b>Definition:</b> control.h:105</div></div>
+<div class="ttc" id="control_8h_html_a21d5e8f8cdaa838586b31007df0a950ba909ea89d418118308f521e0d781b6060"><div class="ttname"><a href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba909ea89d418118308f521e0d781b6060">ACT_STOP_GAME</a></div><div class="ttdoc">结束游戏 </div><div class="ttdef"><b>Definition:</b> control.h:106</div></div>
+<div class="ttc" id="struct_key_state_html_a5a460f63cb8e806828ba900c74d7ce64"><div class="ttname"><a href="struct_key_state.html#a5a460f63cb8e806828ba900c74d7ce64">KeyState::shiftState</a></div><div class="ttdeci">char shiftState</div><div class="ttdoc">shift键状态，0未按下，1按下 </div><div class="ttdef"><b>Definition:</b> control.h:82</div></div>
+<div class="ttc" id="control_8h_html_a21d5e8f8cdaa838586b31007df0a950ba02098b631630f056ed3bf223e7dba548"><div class="ttname"><a href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba02098b631630f056ed3bf223e7dba548">ACT_KEY_DOWN</a></div><div class="ttdoc">向下移动光标 </div><div class="ttdef"><b>Definition:</b> control.h:102</div></div>
+<div class="ttc" id="control_8h_html_a21d5e8f8cdaa838586b31007df0a950b"><div class="ttname"><a href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950b">ActionType</a></div><div class="ttdeci">ActionType</div><div class="ttdoc">动作类型枚举 </div><div class="ttdef"><b>Definition:</b> control.h:98</div></div>
+<div class="ttc" id="control_8h_html_a21d5e8f8cdaa838586b31007df0a950ba288d65afcebd11409e2ccb228e04de2f"><div class="ttname"><a href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba288d65afcebd11409e2ccb228e04de2f">ACT_SHOW_ABOUT</a></div><div class="ttdoc">显示关于菜单 </div><div class="ttdef"><b>Definition:</b> control.h:114</div></div>
+<div class="ttc" id="control_8h_html_a21d5e8f8cdaa838586b31007df0a950baf5f2308306ff0a30b0579049f83f1af5"><div class="ttname"><a href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950baf5f2308306ff0a30b0579049f83f1af5">ACT_SHOW_MENU</a></div><div class="ttdoc">显示菜单 </div><div class="ttdef"><b>Definition:</b> control.h:111</div></div>
+<div class="ttc" id="control_8cpp_html_aa405a0148aa72c0dff1fc8327cec9a7c"><div class="ttname"><a href="control_8cpp.html#aa405a0148aa72c0dff1fc8327cec9a7c">ParseKey</a></div><div class="ttdeci">char ParseKey(signed char key, struct KeyState *keyStat, char *actionMap, struct KeyCode *keyMap, int actionSize, int keycodeSize)</div><div class="ttdoc">解析按键键值为动作类型 </div><div class="ttdef"><b>Definition:</b> control.cpp:52</div></div>
+<div class="ttc" id="control_8h_html_a21d5e8f8cdaa838586b31007df0a950ba9e54f3f303810a007a0e398f2b07dc79"><div class="ttname"><a href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba9e54f3f303810a007a0e398f2b07dc79">ACT_SAVE_GAME</a></div><div class="ttdoc">保存游戏 </div><div class="ttdef"><b>Definition:</b> control.h:109</div></div>
+<div class="ttc" id="struct_key_state_html_ac997615b599932473cd59cb7c8c1bf39"><div class="ttname"><a href="struct_key_state.html#ac997615b599932473cd59cb7c8c1bf39">KeyState::ctrlState</a></div><div class="ttdeci">char ctrlState</div><div class="ttdoc">ctrl键状态，0未按下，1按下 </div><div class="ttdef"><b>Definition:</b> control.h:80</div></div>
+<div class="ttc" id="control_8h_html_a21d5e8f8cdaa838586b31007df0a950ba611972275a80c05041c205e7ea0ee2e7"><div class="ttname"><a href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba611972275a80c05041c205e7ea0ee2e7">ACT_KEY_UP</a></div><div class="ttdoc">向上移动光标 </div><div class="ttdef"><b>Definition:</b> control.h:101</div></div>
+<div class="ttc" id="control_8h_html_a21d5e8f8cdaa838586b31007df0a950baba7dd83a8d43f2446de6e839a29d8a7c"><div class="ttname"><a href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950baba7dd83a8d43f2446de6e839a29d8a7c">ACT_LOAD_GAME</a></div><div class="ttdoc">加载游戏 </div><div class="ttdef"><b>Definition:</b> control.h:110</div></div>
+<div class="ttc" id="control_8cpp_html_aa7b1f965e0299099a38516cd857279c5"><div class="ttname"><a href="control_8cpp.html#aa7b1f965e0299099a38516cd857279c5">MatchKey</a></div><div class="ttdeci">char MatchKey(signed char key, struct KeyCode *keycode, int keycodeSize, struct KeyState *keyStat)</div><div class="ttdoc">判断按键键值是否在当前键值数组内 </div><div class="ttdef"><b>Definition:</b> control.cpp:25</div></div>
+<div class="ttc" id="struct_key_state_html_ac448ffef27e715e4a82733449511cc01"><div class="ttname"><a href="struct_key_state.html#ac448ffef27e715e4a82733449511cc01">KeyState::lastKey</a></div><div class="ttdeci">signed char lastKey</div><div class="ttdoc">存储上一个键。如果按键的键值是双字节则存储按键的首字节。 </div><div class="ttdef"><b>Definition:</b> control.h:83</div></div>
+<div class="ttc" id="control_8h_html_a21d5e8f8cdaa838586b31007df0a950bafcd14e76c2560be881c14fc68754861a"><div class="ttname"><a href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950bafcd14e76c2560be881c14fc68754861a">ACT_REFRESH_SCREEN</a></div><div class="ttdoc">刷新屏幕显示 </div><div class="ttdef"><b>Definition:</b> control.h:113</div></div>
+<div class="ttc" id="struct_key_code_html"><div class="ttname"><a href="struct_key_code.html">KeyCode</a></div><div class="ttdoc">按键键值结构 </div><div class="ttdef"><b>Definition:</b> control.h:89</div></div>
+<div class="ttc" id="control_8h_html_a21d5e8f8cdaa838586b31007df0a950ba74fd1f0f75eec079e11b509654ac198c"><div class="ttname"><a href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba74fd1f0f75eec079e11b509654ac198c">ACT_KEY_RIGHT</a></div><div class="ttdoc">向右移动光标 </div><div class="ttdef"><b>Definition:</b> control.h:104</div></div>
+<div class="ttc" id="control_8h_html_a21d5e8f8cdaa838586b31007df0a950ba5899901be0c468eb5d25831e0e446b3c"><div class="ttname"><a href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba5899901be0c468eb5d25831e0e446b3c">ACT_UNKNOWN</a></div><div class="ttdoc">未知动作 </div><div class="ttdef"><b>Definition:</b> control.h:100</div></div>
+<div class="ttc" id="struct_key_code_html_a203ab55e009194357aa13a529ff47e58"><div class="ttname"><a href="struct_key_code.html#a203ab55e009194357aa13a529ff47e58">KeyCode::second</a></div><div class="ttdeci">signed char second</div><div class="ttdef"><b>Definition:</b> control.h:92</div></div>
+<div class="ttc" id="control_8h_html_a21d5e8f8cdaa838586b31007df0a950baf134953fca07800fb39e74c64a4e9fdc"><div class="ttname"><a href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950baf134953fca07800fb39e74c64a4e9fdc">ACT_KEY_LEFT</a></div><div class="ttdoc">向左移动光标 </div><div class="ttdef"><b>Definition:</b> control.h:103</div></div>
+<div class="ttc" id="struct_key_state_html_aac7cbc1c7e4f6faf0f6d636b2f2c758b"><div class="ttname"><a href="struct_key_state.html#aac7cbc1c7e4f6faf0f6d636b2f2c758b">KeyState::altState</a></div><div class="ttdeci">char altState</div><div class="ttdoc">alt键状态，0未按下，1按下 </div><div class="ttdef"><b>Definition:</b> control.h:81</div></div>
+<div class="ttc" id="control_8h_html_a21d5e8f8cdaa838586b31007df0a950ba8700cbcd8dffa377f2ad31b46c5e805d"><div class="ttname"><a href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba8700cbcd8dffa377f2ad31b46c5e805d">ACT_START_GAME</a></div><div class="ttdoc">开始游戏 </div><div class="ttdef"><b>Definition:</b> control.h:108</div></div>
+<div class="ttc" id="struct_key_state_html"><div class="ttname"><a href="struct_key_state.html">KeyState</a></div><div class="ttdoc">按键状态结构 </div><div class="ttdef"><b>Definition:</b> control.h:78</div></div>
+<div class="ttc" id="control_8h_html_a21d5e8f8cdaa838586b31007df0a950ba4a7b31d67e82315fc84575ae27de9041"><div class="ttname"><a href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba4a7b31d67e82315fc84575ae27de9041">ACT_BACK_GAME</a></div><div class="ttdoc">返回游戏 </div><div class="ttdef"><b>Definition:</b> control.h:107</div></div>
+<div class="ttc" id="struct_key_code_html_adc06336d17ec85dd6e6bfdfc7834ad32"><div class="ttname"><a href="struct_key_code.html#adc06336d17ec85dd6e6bfdfc7834ad32">KeyCode::first</a></div><div class="ttdeci">signed char first</div><div class="ttdef"><b>Definition:</b> control.h:91</div></div>
+<div class="ttc" id="control_8h_html_a21d5e8f8cdaa838586b31007df0a950ba2044b75130733c73fe521fae9ee1751c"><div class="ttname"><a href="control_8h.html#a21d5e8f8cdaa838586b31007df0a950ba2044b75130733c73fe521fae9ee1751c">ACT_SHOW_STEP</a></div><div class="ttdoc">查看下棋过程 </div><div class="ttdef"><b>Definition:</b> control.h:112</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2014年 三月 21日 星期五 21:42:27 , 为 双人象棋使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.5
+</small></address>
+</body>
+</html>

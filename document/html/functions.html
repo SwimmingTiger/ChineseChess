@@ -76,7 +76,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>结构体</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>文件</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>枚举</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>枚举值</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>宏定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>页</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>结构体</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>文件</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>类型定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>枚举</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>枚举值</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>宏定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>页</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -87,14 +87,80 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 
 <div class="contents">
 <div class="textblock">这里列出了所有结构体和联合体的成员变量，并附带结构体或联合的详细说明:</div><ul>
+<li>activePlayer
+: <a class="el" href="struct_chess_board.html#aad88c657785850936177c6801077de18">ChessBoard</a>
+</li>
+<li>altState
+: <a class="el" href="struct_key_state.html#aac7cbc1c7e4f6faf0f6d636b2f2c758b">KeyState</a>
+</li>
+<li>blackChessNum
+: <a class="el" href="struct_chess_board.html#a33f60431e628232199f32a7da4e23567">ChessBoard</a>
+</li>
+<li>blackJiangExists
+: <a class="el" href="struct_chess_board.html#a9da51d103276e8bcc41965b6d82e299c">ChessBoard</a>
+</li>
+<li>chessLocked
+: <a class="el" href="struct_chess_board.html#a238f78a901db2b30cbbb5e14e4efa97f">ChessBoard</a>
+</li>
+<li>ctrlState
+: <a class="el" href="struct_key_state.html#ac997615b599932473cd59cb7c8c1bf39">KeyState</a>
+</li>
+<li>cursorBlack
+: <a class="el" href="struct_chess_board.html#a6d0de349762f45bed78c44c7425110dd">ChessBoard</a>
+</li>
+<li>cursorRed
+: <a class="el" href="struct_chess_board.html#a4b44b02d668104bd356989e0f159fdf4">ChessBoard</a>
+</li>
+<li>dim
+: <a class="el" href="struct___c_o_n_s_o_l_e___f_o_n_t.html#a55662cf521d8b20d3058c7a48a3118b0">_CONSOLE_FONT</a>
+</li>
+<li>first
+: <a class="el" href="struct_key_code.html#adc06336d17ec85dd6e6bfdfc7834ad32">KeyCode</a>
+</li>
+<li>gameState
+: <a class="el" href="struct_chess_board.html#adbd3396d9eb3159af2f00c3bb089a989">ChessBoard</a>
+</li>
+<li>index
+: <a class="el" href="struct___c_o_n_s_o_l_e___f_o_n_t.html#ab3459aaebb594a5af6917e5a36d934a0">_CONSOLE_FONT</a>
+</li>
+<li>lastKey
+: <a class="el" href="struct_key_state.html#ac448ffef27e715e4a82733449511cc01">KeyState</a>
+</li>
+<li>line
+: <a class="el" href="struct_chess_pos.html#aba94c448c37bcddbc4eb67ca3f95ba74">ChessPos</a>
+</li>
+<li>lockedCursor
+: <a class="el" href="struct_chess_board.html#a3a2f21ccb85301e624a1029a57ab7690">ChessBoard</a>
+</li>
+<li>logFileName
+: <a class="el" href="struct_chess_board.html#a6195294dffffff6b11f3b629568b055e">ChessBoard</a>
+</li>
 <li>map
-: <a class="el" href="struct_chess_board.html#a18d17e23f1260491a6438c38043d508c">ChessBoard</a>
+: <a class="el" href="struct_chess_board.html#a9cd5f5a35b76a0cdd8a9eebb18b65ea8">ChessBoard</a>
+</li>
+<li>player
+: <a class="el" href="struct_chess_board.html#ac99759da7d87a6cade34b7e3287c7238">ChessBoard</a>
+</li>
+<li>redChessNum
+: <a class="el" href="struct_chess_board.html#ab14f64ebff26bfcddedee5209d4b0fda">ChessBoard</a>
+</li>
+<li>redShuaiExists
+: <a class="el" href="struct_chess_board.html#a3a3d7ce361f8c51451efd47873ae5f26">ChessBoard</a>
+</li>
+<li>row
+: <a class="el" href="struct_chess_pos.html#a256824979879051f8373cb4282ec785e">ChessPos</a>
+</li>
+<li>second
+: <a class="el" href="struct_key_code.html#a203ab55e009194357aa13a529ff47e58">KeyCode</a>
+</li>
+<li>shiftState
+: <a class="el" href="struct_key_state.html#a5a460f63cb8e806828ba900c74d7ce64">KeyState</a>
 </li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-生成于 2014年 三月 7日 星期五 15:23:03 , 为 双人象棋使用  &#160;<a href="http://www.doxygen.org/index.html">
+生成于 2014年 三月 21日 星期五 21:42:27 , 为 双人象棋使用  &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
