@@ -532,14 +532,12 @@ int LoadGame(struct ChessBoard *cp, char *fileName)
         //游戏状态暂停
         cp->gameState == GSTAT_PAUSE;
 
-        /*
         //产生新的游戏日志文件
         sprintf(path, "%s/%s", GAME_SAVE_DIR"/log", cp->logFileName);
         GetDefaultSaveName(cp->logFileName);
         strcat(cp->logFileName, ".log");
         sprintf(tmpPath, "%s/%s", GAME_SAVE_DIR"/log", cp->logFileName);
         CopyFile(path, tmpPath, TRUE);
-        */
     }
 
     return success;

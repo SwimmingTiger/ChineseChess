@@ -85,7 +85,7 @@ char MainMenuSelect()
              MENU_BORDER_COLOR, MENU_BACKGROUND_COLOR);
     DrawMenuText("中国象棋", MENU_TITLE_FONT_HEIGHT, MENU_TITLE_FONT_WIDTH, rc, 65, 10);
     DrawMenuText("1. 新游戏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 60);
-    DrawMenuText("2. 读取存档", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 100);
+    DrawMenuText("2. 载入存档", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 100);
     DrawMenuText("3. 按键说明", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 140);
     DrawMenuText("4. 退出游戏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 180);
 
@@ -307,7 +307,7 @@ char LoadSaveSelect(char *title)
     DrawRect(rc.left, rc.top, rc.right, rc.bottom,
              MENU_BORDER_WIDTH, MENU_BORDER_STYLE,
              MENU_BORDER_COLOR, MENU_BACKGROUND_COLOR);
-    DrawMenuText(title, MENU_TITLE_FONT_HEIGHT, MENU_TITLE_FONT_WIDTH, rc, 70, 10);
+    DrawMenuText(title, MENU_TITLE_FONT_HEIGHT, MENU_TITLE_FONT_WIDTH, rc, 110, 10);
     DrawMenuText("请输入存档序号（0到9）", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 60);
     DrawMenuText("按Esc或小数点键退出...", MENU_TIP_FONT_HEIGHT, MENU_TIP_FONT_WIDTH, rc, 30, 110);
 
