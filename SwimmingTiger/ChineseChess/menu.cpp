@@ -16,6 +16,7 @@
 #include "style.h"
 #include "control.h"
 #include "menu.h"
+#include "text.h"
 
 /**
 * @brief 返回菜单矩形范围，使菜单自适应高宽居中
@@ -57,14 +58,16 @@ char MainMenuSelect()
     {
         ACT_START_GAME,
         ACT_LOAD_GAME,
+        ACT_SHOW_ABOUT,
         ACT_STOP_GAME,
         ACT_STOP_GAME
     };
     //按键数量
-    int keyNum = 4;
+    int keyNum = 5;
     //键值
     struct KeyCode keyMap[] =
     {
+        /***********增加按键勿忘修改按键数量***********/
         {'1', -1},
         {'2', -1},
         {'3', -1},
@@ -101,7 +104,7 @@ char MainMenuSelect()
 char GameMenuSelect()
 {
     char action = ACT_UNKNOWN;
-    RECT rc = {300, 190};
+    RECT rc = {300, 230};
     signed char key = -1;
     struct KeyState keyStat={-1, -1, -1, -1};
     //事件
@@ -109,17 +112,20 @@ char GameMenuSelect()
     {
         ACT_BACK_GAME,
         ACT_SAVE_GAME,
+        ACT_SHOW_STEP,
         ACT_STOP_GAME,
         ACT_STOP_GAME
     };
     //按键数量
-    int keyNum = 4;
+    int keyNum = 5;
     //键值
     struct KeyCode keyMap[] =
     {
+        /***********增加按键勿忘修改按键数量***********/
         {'1', -1},
         {'2', -1},
         {'3', -1},
+        {'4', -1},
         {27, -1} //Esc键
     };
 
@@ -134,7 +140,8 @@ char GameMenuSelect()
     DrawMenuText("请选择操作", MENU_TITLE_FONT_HEIGHT, MENU_TITLE_FONT_WIDTH, rc, 50, 10);
     DrawMenuText("1. 返回游戏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 60);
     DrawMenuText("2. 存档并退出", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 100);
-    DrawMenuText("3. 结束游戏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 140);
+    DrawMenuText("3. 查看下棋过程", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 140);
+    DrawMenuText("4. 退出游戏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 180);
 
     while (action == ACT_UNKNOWN)
     {
@@ -167,6 +174,7 @@ char PlayerWinSelect(char player)
     //键值
     struct KeyCode keyMap[] =
     {
+        /***********增加按键勿忘修改按键数量***********/
         {'1', -1},
         {'2', -1},
         {'3', -1},
@@ -184,7 +192,7 @@ char PlayerWinSelect(char player)
     DrawMenuText(player==PLY_RED ? "红方胜" : "黑方胜", MENU_TITLE_FONT_HEIGHT, MENU_TITLE_FONT_WIDTH, rc, 80, 10);
     DrawMenuText("1. 重新开始", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 60);
     DrawMenuText("2. 查看下棋过程", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 100);
-    DrawMenuText("3. 结束游戏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 140);
+    DrawMenuText("3. 返回主菜单", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 140);
 
     while (action == ACT_UNKNOWN)
     {
@@ -193,4 +201,119 @@ char PlayerWinSelect(char player)
     }
 
     return action;
+}
+
+/**
+* @brief 绘制无法存档提示框
+*/
+void ShowCannotSaveNotice()
+{
+    RECT rc = {360, 230};
+
+    DecideMenuRect(rc.left, rc.top, &rc);
+
+    DrawRect(rc.left-5, rc.top-5, rc.right+5, rc.bottom+5,
+             0, 0,
+             MENU_BACKGROUND_COLOR, MENU_BACKGROUND_COLOR);
+    DrawRect(rc.left, rc.top, rc.right, rc.bottom,
+             MENU_BORDER_WIDTH, MENU_BORDER_STYLE,
+             MENU_BORDER_COLOR, MENU_BACKGROUND_COLOR);
+    DrawMenuText("游戏无法存档", MENU_TITLE_FONT_HEIGHT, MENU_TITLE_FONT_WIDTH, rc, 55, 10);
+    DrawMenuText("游戏数据目录不可写，", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 60);
+    DrawMenuText("您可能无法存档或查", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 100);
+    DrawMenuText("看下棋过程。", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 140);
+    DrawMenuText("按任意键继续...", MENU_TIP_FONT_HEIGHT, MENU_TIP_FONT_WIDTH, rc, 30, 190);
+
+    getch();
+}
+
+/**
+* @brief 绘制无法载入存档提示框
+*/
+void ShowCannotLoadNotice()
+{
+    RECT rc = {400, 150};
+
+    DecideMenuRect(rc.left, rc.top, &rc);
+
+    DrawRect(rc.left-5, rc.top-5, rc.right+5, rc.bottom+5,
+             0, 0,
+             MENU_BACKGROUND_COLOR, MENU_BACKGROUND_COLOR);
+    DrawRect(rc.left, rc.top, rc.right, rc.bottom,
+             MENU_BORDER_WIDTH, MENU_BORDER_STYLE,
+             MENU_BORDER_COLOR, MENU_BACKGROUND_COLOR);
+    DrawMenuText("无法载入存档", MENU_TITLE_FONT_HEIGHT, MENU_TITLE_FONT_WIDTH, rc, 70, 10);
+    DrawMenuText("存档文件不存在或已损坏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 60);
+    DrawMenuText("按任意键继续...", MENU_TIP_FONT_HEIGHT, MENU_TIP_FONT_WIDTH, rc, 30, 110);
+
+    getch();
+}
+
+/**
+* @brief 绘制关于提示框
+*/
+void ShowAbout()
+{
+    RECT rc = {460, 375};
+
+    DecideMenuRect(rc.left, rc.top, &rc);
+
+    DrawRect(rc.left-5, rc.top-5, rc.right+5, rc.bottom+5,
+             0, 0,
+             MENU_BACKGROUND_COLOR, MENU_BACKGROUND_COLOR);
+    DrawRect(rc.left, rc.top, rc.right, rc.bottom,
+             MENU_BORDER_WIDTH, MENU_BORDER_STYLE,
+             MENU_BORDER_COLOR, MENU_BACKGROUND_COLOR);
+    DrawMenuText("按键说明", MENU_TITLE_FONT_HEIGHT, MENU_TITLE_FONT_WIDTH, rc, 130, 10);
+    DrawMenuText("移动光标：W、A、S、D键或", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 25, 60);
+    DrawMenuText("上下左右方向键。", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 25, 100);
+    DrawMenuText("选择棋子：回车键或空格键。", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 25, 145);
+    DrawMenuText("选择棋子后再次按回车键或", MENU_TIP_FONT_HEIGHT, MENU_TIP_FONT_WIDTH, rc, 65, 185);
+    DrawMenuText("空格键将棋子移动到新位置。", MENU_TIP_FONT_HEIGHT, MENU_TIP_FONT_WIDTH, rc, 65, 205);
+    DrawMenuText("弹出游戏菜单：Esc键或F8键。", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 25, 240);
+    DrawMenuText("画面残缺或消失，按F5刷新。", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 25, 285);
+    DrawMenuText("按任意键继续...", MENU_TIP_FONT_HEIGHT, MENU_TIP_FONT_WIDTH, rc, 25, 330);
+
+    getch();
+}
+
+/**
+* @brief 查看下棋过程
+*/
+void ShowStep(struct ChessBoard *cp)
+{
+    char path[255];
+    char buff[1024];
+    FILE *fp;
+
+    sprintf(path, "%s/%s", GAME_SAVE_DIR"/log", cp->logFileName);
+
+    //清空屏幕
+    system("cls");
+    DrawRect(0, 0, CONSOLE_WINDOW_WIDTH, CONSOLE_WINDOW_HEIGHT, 0, 0, CHESSBOARD_BACKGROUND_COLOR, CHESSBOARD_BACKGROUND_COLOR);
+
+    fp = fopen(path, "r");
+
+    if (fp == NULL)
+    {
+        printf("\n\t\t*****************************************\n");
+        printf("\n\t\t    下棋过程记录文件无法读取，\n\t\t    可能文件已损坏或您尚未开始走棋。\n\t\t    请先走至少一步再来查看下棋过程。\n");
+    }
+    else
+    {
+        printf("\n\t\t****************下棋过程*****************\n\n");
+        
+        while (!feof(fp))
+        {
+            if (NULL != fgets(buff, 1024, fp))
+            {
+                printf("\t\t\t    %s", buff);
+            }
+        }
+    }
+
+    printf("\n\t\t*****************************************\n\t\t按任意键继续...");
+
+    getch();
+    system("cls");
 }

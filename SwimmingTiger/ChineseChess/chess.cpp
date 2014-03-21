@@ -33,23 +33,27 @@ int main()
 
     cp = &mainChessBoard;
 
-    //初始化游戏存档目录
-    InitGameSaveDir();
-    
-    //初始化棋盘数据
-    InitChessBoard(cp, PLY_BOTH);
-    
+    //调整控制台背景颜色
+    system(CONSOLE_COLOR);
     //改变控制台窗口的大小和位置，并使窗口总是置顶（防止窗口被其他窗口挡住使绘制的图形消失）
     SetWindowSize(CONSOLE_CONTENT_WIDTH, CONSOLE_CONTENT_HEIGHT, CONSOLE_WINDOW_WIDTH, CONSOLE_WINDOW_HEIGHT, CONSOLE_WINDOW_LEFT, CONSOLE_WINDOW_TOP, HWND_TOPMOST);
     //设置窗口标题
     SetConsoleTitle(CONSOLE_WINDOW_TITLE);
-    //绘制棋盘
-    DrawChessBoard(cp);
-    //绘制所有棋子
-    DrawAllChess(cp);
+
+    //初始化游戏存档目录
+    if (!InitGameSaveDir())
+    {
+        ShowCannotSaveNotice();
+    }
+    
+    //初始化棋盘数据
+    InitChessBoard(cp, PLY_BOTH);
 
     while (action != ACT_STOP_GAME)
     {
+        DrawChessBoard(cp);
+        DrawAllChess(cp);
+
         action = MainMenuSelect();
 
         switch (action)
@@ -60,15 +64,27 @@ int main()
             break;
 
         case ACT_LOAD_GAME:
-            LoadGame(cp, "default.sav");
-            WriteGameLog(cp->logFileName, "载入存档\n");
-            StartGame(cp);
+            if (LoadGame(cp, "default.sav"))
+            {
+                WriteGameLog(cp->logFileName, "载入存档\n");
+                StartGame(cp);
+            }
+            else
+            {
+                DrawChessBoard(cp);
+                DrawAllChess(cp);
+                ShowCannotLoadNotice();
+            }
             break;
 
         case ACT_STOP_GAME:
             cp->gameState = GSTAT_STOP;
             //绘制空棋盘以示游戏退出
             DrawChessBoard(cp);
+            break;
+
+        case ACT_SHOW_ABOUT:
+            ShowAbout();
             break;
 
         default:
@@ -111,7 +127,7 @@ void StartGame(struct ChessBoard *cp)
     };
 
     cp->gameState = GSTAT_ACTIVE;
-    //重绘游戏界面
+    //绘制游戏界面
     DrawChessBoard(cp);
     DrawAllChess(cp);
 
@@ -220,6 +236,7 @@ void StartGame(struct ChessBoard *cp)
 
                         case ACT_SHOW_STEP:
                             action = ACT_STOP_GAME;
+                            ShowStep(cp);
                             break;
 
                         case ACT_STOP_GAME:
@@ -265,6 +282,13 @@ void StartGame(struct ChessBoard *cp)
                     
                 case ACT_STOP_GAME:
                     //由主循环处理，此处无需处理
+                    break;
+
+                case ACT_SHOW_STEP:
+                    ShowStep(cp);
+                    //重绘棋盘
+                    DrawChessBoard(cp);
+                    DrawAllChess(cp);
                     break;
                     
                 default:

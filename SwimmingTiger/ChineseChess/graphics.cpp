@@ -220,9 +220,6 @@ void DrawChessBoard(struct ChessBoard *cp)
     int rNineGridTop;
     int rNineGridRight;
     int rNineGridBottom;
-
-	//调整控制台背景颜色
-    system(CONSOLE_COLOR);
     
     //绘制棋盘背景
     DrawRect(0, 0, CONSOLE_WINDOW_WIDTH, CONSOLE_WINDOW_HEIGHT, 0, 0, CHESSBOARD_BACKGROUND_COLOR, CHESSBOARD_BACKGROUND_COLOR);

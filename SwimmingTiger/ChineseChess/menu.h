@@ -36,10 +36,10 @@
 #define MENU_TITLE_FONT_WIDTH 20
 
 /** @brief 菜单注解字体高度 */
-#define MENU_TIP_FONT_HEIGHT 40
+#define MENU_TIP_FONT_HEIGHT 20
 
 /** @brief 菜单注解字体宽度 */
-#define MENU_TIP_FONT_WIDTH 20
+#define MENU_TIP_FONT_WIDTH 10
 
 /** @brief 菜单字体粗细 */
 #define MENU_FONT_WEIGHT 700
@@ -82,6 +82,18 @@ char GameMenuSelect();
 
 /*绘制玩家获胜游戏菜单*/
 char PlayerWinSelect(char player);
+
+/*绘制无法存档提示框*/
+void ShowCannotSaveNotice();
+
+/*绘制无法载入存档提示框*/
+void ShowCannotLoadNotice();
+
+/*绘制关于提示框*/
+void ShowAbout();
+
+/*查看下棋过程*/
+void ShowStep(struct ChessBoard *cp);
 
 /*********************************预处理结束*********************************/
 #endif

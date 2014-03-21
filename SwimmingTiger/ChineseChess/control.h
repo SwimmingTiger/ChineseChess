@@ -49,7 +49,7 @@
 /**
 * 结束游戏的键值，写法同 KEYCODE_UP
 */
-#define KEYCODE_SHOW_MENU {/*Esc键*/{(char)27,(char)-1}, /*F12键*/{(char)134,(char)224}}
+#define KEYCODE_SHOW_MENU {/*Esc键*/{(char)27,(char)-1}, /*F8键*/{(char)66,(char)0}}
 /**
 * 保存游戏的键值，写法同 KEYCODE_UP
 */
@@ -111,6 +111,7 @@ enum ActionType
     ACT_SHOW_MENU, ///< 显示菜单
     ACT_SHOW_STEP, ///< 查看下棋过程
     ACT_REFRESH_SCREEN, ///< 刷新屏幕显示
+    ACT_SHOW_ABOUT, ///< 显示关于菜单
 };
 
 /**********************************函数声明**********************************/

@@ -332,7 +332,7 @@ char ChessMoveToManual(struct ChessBoard *cp, struct ChessPos sourPos, struct Ch
         else if (type != CHESS_R_BING && type != CHESS_K_ZU)
         {
             //棋子名在第二位而非第一位
-            strcpy(actionName, name);
+            strcpy(sourName, name);
             
             if (aboveChessSum == 0)
             {
