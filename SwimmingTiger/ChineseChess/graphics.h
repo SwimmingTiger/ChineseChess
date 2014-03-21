@@ -25,7 +25,7 @@ void DrawString(char *str, COLORREF textColor, COLORREF backgroundColor,
 				int offsetX, int offsetY);
 
 /*绘制矩形*/
-void DrawRect(int left, int top, int right, int bottom, int borderStyle, int borderWidth, COLORREF borderColor, COLORREF insideColor);
+void DrawRect(int left, int top, int right, int bottom, int borderWidth, int borderStyle, COLORREF borderColor, COLORREF insideColor);
 
 /*绘制圆形*/
 void DrawCircle(int radius, int centerX, int centerY, int borderStyle, int borderWidth, COLORREF borderColor, COLORREF insideColor);

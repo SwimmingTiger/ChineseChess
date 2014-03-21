@@ -31,7 +31,7 @@ extern "C" BOOL WINAPI GetConsoleFontInfo(HANDLE hOutput, BOOL bMaximize, DWORD 
 extern "C" DWORD WINAPI GetNumberOfConsoleFonts();
 /** @brief 设置控制台窗口图标 */
 extern "C" BOOL WINAPI SetConsoleIcon(HICON hIcon);
-/** @brief 设置控制台显示模式 */
+/** @brief 设置控制台显示模式（全屏模式win8无效） */
 extern "C" BOOL WINAPI SetConsoleDisplayMode(HANDLE hOut, DWORD dwNewMode, LPDWORD lpdwOldMode);
 /** @brief 设置绘图时的画刷颜色 */
 extern "C" COLORREF WINAPI SetDCBrushColor(HDC hdc, COLORREF crColor);

@@ -101,6 +101,10 @@ SOURCE=.\graphics.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\menu.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\text.cpp
 # End Source File
 # End Group
@@ -122,6 +126,10 @@ SOURCE=.\debug.h
 # Begin Source File
 
 SOURCE=.\graphics.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\menu.h
 # End Source File
 # Begin Source File
 

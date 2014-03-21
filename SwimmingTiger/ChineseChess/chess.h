@@ -48,6 +48,7 @@ enum GameState
 {
     GSTAT_ACTIVE, ///< 游戏正在进行
     GSTAT_PAUSE, ///< 游戏暂停
+    GSTAT_STOP, ///< 游戏结束
     GSTAT_DRAW, ///< 和棋
     GSTAT_RED_WIN, ///< 红方玩家获胜
     GSTAT_BLACK_WIN, ///< 黑方玩家获胜

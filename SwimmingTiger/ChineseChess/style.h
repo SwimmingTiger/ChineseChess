@@ -79,7 +79,7 @@
 /**********************棋子样式*********************/
 
 /** @brief 棋子边框类型 */
-#define CHESS_BORDER_STYLE PS_DASH
+#define CHESS_BORDER_STYLE 0
 
 /** @brief 棋子边框宽度 */
 #define CHESS_BORDER_WIDTH 2
@@ -130,7 +130,7 @@
 /**********************光标样式*********************/
 
 /** @brief 光标边框类型 */
-#define CURSOR_BORDER_STYLE PS_DASH
+#define CURSOR_BORDER_STYLE 1
 
 /** @brief 光标边框宽度 */
 #define CURSOR_BORDER_WIDTH 1

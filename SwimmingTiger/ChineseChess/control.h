@@ -49,7 +49,7 @@
 /**
 * 结束游戏的键值，写法同 KEYCODE_UP
 */
-#define KEYCODE_STOP_GAME {/*Esc键*/{(char)27,(char)-1}, /*F12键*/{(char)134,(char)224}}
+#define KEYCODE_SHOW_MENU {/*Esc键*/{(char)27,(char)-1}, /*F12键*/{(char)134,(char)224}}
 /**
 * 保存游戏的键值，写法同 KEYCODE_UP
 */
@@ -104,10 +104,12 @@ enum ActionType
     ACT_KEY_RIGHT, ///< 向右移动光标
     ACT_KEY_LOCK, ///< 锁定/解锁棋子（锁定棋子再移动光标时棋子也相应移动，再解锁棋子将其放到新位置）
     ACT_STOP_GAME, ///< 结束游戏
-    ACT_PAUSE_GAME, ///< 暂停游戏
-    ACT_RESTART_GAME, ///< 重新开始游戏
+    ACT_BACK_GAME, ///< 返回游戏
+    ACT_START_GAME, ///< 开始游戏
     ACT_SAVE_GAME, ///<保存游戏
     ACT_LOAD_GAME, ///< 加载游戏
+    ACT_SHOW_MENU, ///< 显示菜单
+    ACT_SHOW_STEP, ///< 查看下棋过程
     ACT_REFRESH_SCREEN, ///< 刷新屏幕显示
 };
 

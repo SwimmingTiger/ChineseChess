@@ -57,7 +57,7 @@ void DrawChessBoardLine(int x1, int y1, int x2, int y2)
 /**
 * @brief 绘制矩形
 */
-void DrawRect(int left, int top, int right, int bottom, int borderStyle, int borderWidth, COLORREF borderColor, COLORREF insideColor)
+void DrawRect(int left, int top, int right, int bottom, int borderWidth, int borderStyle, COLORREF borderColor, COLORREF insideColor)
 {
     HWND hwnd;
     HDC hdc;
@@ -228,11 +228,15 @@ void DrawChessBoard(struct ChessBoard *cp)
     DrawRect(0, 0, CONSOLE_WINDOW_WIDTH, CONSOLE_WINDOW_HEIGHT, 0, 0, CHESSBOARD_BACKGROUND_COLOR, CHESSBOARD_BACKGROUND_COLOR);
 
     //绘制光标
-    DrawCursor(*ActiveCursor(cp), cp->activePlayer);
-    if (cp->chessLocked)
+    //仅在游戏正常进行时绘制
+    if (cp->gameState == GSTAT_ACTIVE)
     {
-        //棋子锁定光标是两玩家共用的
-        DrawCursor(cp->lockedCursor, PLY_BOTH);
+        DrawCursor(*ActiveCursor(cp), cp->activePlayer);
+        if (cp->chessLocked)
+        {
+            //棋子锁定光标是两玩家共用的
+            DrawCursor(cp->lockedCursor, PLY_BOTH);
+        }
     }
 
     //计算河界坐标
@@ -295,7 +299,7 @@ void DrawCursor(struct ChessPos cursor, char player)
     RECT rect= CURSOR_RECT;
 
     DrawRect(centerX + rect.left, centerY + rect.top, centerX + rect.right, centerY + rect.bottom,
-             CURSOR_BORDER_STYLE, CURSOR_BORDER_WIDTH, borderColor, CURSOR_INSIDE_COLOR);
+             CURSOR_BORDER_WIDTH, CURSOR_BORDER_STYLE, borderColor, CURSOR_INSIDE_COLOR);
 }
 
 /**

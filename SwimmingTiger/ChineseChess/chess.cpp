@@ -18,6 +18,7 @@
 #include "control.h"
 #include "debug.h"
 #include "text.h"
+#include "menu.h"
 
 /**
 * @brief 主函数
@@ -29,25 +30,8 @@ int main()
     struct ChessBoard mainChessBoard;
     struct ChessBoard *cp; //指向主棋盘的指针
     char action = ACT_UNKNOWN;
-    signed char key = -1;
-    struct KeyState keyStat={-1, -1, -1, -1};
 
     cp = &mainChessBoard;
-
-    /*while (action != ACT_STOP_GAME)
-    {
-        key = getch();
-        action = ParseKey(key, &keyStat);
-
-        switch (action)
-        {
-        case 0:
-            break;
-
-        default:
-            break;
-        }
-    }*/
 
     //初始化游戏存档目录
     InitGameSaveDir();
@@ -63,8 +47,34 @@ int main()
     DrawChessBoard(cp);
     //绘制所有棋子
     DrawAllChess(cp);
-    
-    StartGame(cp);
+
+    while (action != ACT_STOP_GAME)
+    {
+        action = MainMenuSelect();
+
+        switch (action)
+        {
+        case ACT_START_GAME:
+            InitChessBoard(cp, PLY_BOTH);
+            StartGame(cp);
+            break;
+
+        case ACT_LOAD_GAME:
+            LoadGame(cp, "default.sav");
+            WriteGameLog(cp->logFileName, "载入存档\n");
+            StartGame(cp);
+            break;
+
+        case ACT_STOP_GAME:
+            cp->gameState = GSTAT_STOP;
+            //绘制空棋盘以示游戏退出
+            DrawChessBoard(cp);
+            break;
+
+        default:
+            break;
+        }
+    }
 
     return 0;
 }
@@ -77,30 +87,33 @@ void StartGame(struct ChessBoard *cp)
 	char action = ACT_UNKNOWN;
     signed char key = -1;
     struct KeyState keyStat={-1, -1, -1, -1};
-    char actionMap[GAME_CONTROL_KEY_NUM] =
+    char actionMap[] =
     {
         ACT_KEY_UP,
         ACT_KEY_DOWN,
         ACT_KEY_LEFT,
         ACT_KEY_RIGHT,
         ACT_KEY_LOCK,
-        ACT_STOP_GAME,
+        ACT_SHOW_MENU,
         ACT_SAVE_GAME,
-        ACT_LOAD_GAME,
         ACT_REFRESH_SCREEN
     };
-    struct KeyCode keyMap[GAME_CONTROL_KEY_NUM][KEYCODE_MAX_NUM] =
+    struct KeyCode keyMap[][KEYCODE_MAX_NUM] =
     {
         KEYCODE_UP,
         KEYCODE_DOWN,
         KEYCODE_LEFT,
         KEYCODE_RIGHT,
         KEYCODE_LOCK,
-        KEYCODE_STOP_GAME,
+        KEYCODE_SHOW_MENU,
         KEYCODE_SAVE_GAME,
-        KEYCODE_LOAD_GAME,
         KEYCODE_REFRESH_SCREEN
     };
+
+    cp->gameState = GSTAT_ACTIVE;
+    //重绘游戏界面
+    DrawChessBoard(cp);
+    DrawAllChess(cp);
 
     while (action != ACT_STOP_GAME)
     {
@@ -113,6 +126,9 @@ void StartGame(struct ChessBoard *cp)
             if (ActiveCursor(cp)->line > 0)
             {
                 ActiveCursor(cp)->line--;
+                
+                DrawChessBoard(cp);
+                DrawAllChess(cp);
             }
             break;
 
@@ -120,6 +136,9 @@ void StartGame(struct ChessBoard *cp)
             if (ActiveCursor(cp)->line < CHESSBOARD_LINE-1)
             {
                 ActiveCursor(cp)->line++;
+
+                DrawChessBoard(cp);
+                DrawAllChess(cp);
             }
             break;
 
@@ -127,6 +146,9 @@ void StartGame(struct ChessBoard *cp)
             if (ActiveCursor(cp)->row > 0)
             {
                 ActiveCursor(cp)->row--;
+
+                DrawChessBoard(cp);
+                DrawAllChess(cp);
             }
             break;
 
@@ -134,6 +156,9 @@ void StartGame(struct ChessBoard *cp)
             if (ActiveCursor(cp)->row < CHESSBOARD_ROW-1)
             {
                 ActiveCursor(cp)->row++;
+
+                DrawChessBoard(cp);
+                DrawAllChess(cp);
             }
             break;
 
@@ -146,12 +171,18 @@ void StartGame(struct ChessBoard *cp)
                 {
                     cp->chessLocked = 1;
                     cp->lockedCursor = *ActiveCursor(cp);
+
+                    DrawChessBoard(cp);
+                    DrawAllChess(cp);
                 }
             }
             //已锁定且位置未变，则解除锁定
             else if (MatchPos(cp->lockedCursor, ActiveCursor(cp)->line, ActiveCursor(cp)->row))
             {
                 cp->chessLocked = 0;
+
+                DrawChessBoard(cp);
+                DrawAllChess(cp);
             }
             //已锁定且位置改变，尝试移动棋子
             else
@@ -161,12 +192,44 @@ void StartGame(struct ChessBoard *cp)
                 {
                     cp->chessLocked = 1;
                     cp->lockedCursor = *ActiveCursor(cp);
+
+                    DrawChessBoard(cp);
+                    DrawAllChess(cp);
                 }
                 //棋子移动成功则解锁光标，切换活动用户
                 else if (MoveChess(cp, cp->lockedCursor, *ActiveCursor(cp)))
                 {
                     cp->chessLocked = 0;
                     SwitchActivePlayer(cp);
+
+                    DrawChessBoard(cp);
+                    DrawAllChess(cp);
+
+                    if (cp->gameState == GSTAT_RED_WIN || cp->gameState == GSTAT_BLACK_WIN)
+                    {
+                        action = PlayerWinSelect(cp->gameState==GSTAT_RED_WIN ? PLY_RED : PLY_BLACK);
+
+                        switch (action)
+                        {
+                        case ACT_START_GAME:
+                            InitChessBoard(cp, PLY_BOTH);
+                            cp->gameState = GSTAT_ACTIVE;
+                            DrawChessBoard(cp);
+                            DrawAllChess(cp);
+                            break;
+
+                        case ACT_SHOW_STEP:
+                            action = ACT_STOP_GAME;
+                            break;
+
+                        case ACT_STOP_GAME:
+                            //由主循环处理，此处无需处理
+                            break;
+
+                        default:
+                            break;
+                        }
+                    }
                 }
                 //棋子未移动，不动作
                 else
@@ -176,16 +239,6 @@ void StartGame(struct ChessBoard *cp)
             }
             break;
 
-        case ACT_SAVE_GAME:
-            SaveGame(cp, "default.sav");
-            WriteGameLog(cp->logFileName, "\r\n玩家存档\r\n");
-            break;
-
-        case ACT_LOAD_GAME:
-            LoadGame(cp, "default.sav");
-            WriteGameLog(cp->logFileName, "\r\n载入存档\r\n");
-            break;
-
         case ACT_REFRESH_SCREEN:
             //绘制棋盘
             DrawChessBoard(cp);
@@ -193,12 +246,37 @@ void StartGame(struct ChessBoard *cp)
             DrawAllChess(cp);
             break;
 
+        case ACT_SHOW_MENU:
+            {
+                action = GameMenuSelect();
+                
+                switch (action)
+                {
+                case ACT_SAVE_GAME:
+                    SaveGame(cp, "default.sav");
+                    WriteGameLog(cp->logFileName, "存档退出\n");
+                    action = ACT_STOP_GAME;
+                    break;
+                    
+                case ACT_BACK_GAME:
+                    DrawChessBoard(cp);
+                    DrawAllChess(cp);
+                    break;
+                    
+                case ACT_STOP_GAME:
+                    //由主循环处理，此处无需处理
+                    break;
+                    
+                default:
+                    break;
+                }
+                //跳出ACT_SHOW_MENU分支
+                break;
+            }
+
         default:
             break;
         }
-
-        DrawChessBoard(cp);
-        DrawAllChess(cp);
     }
 }
 
@@ -269,8 +347,8 @@ void InitChessBoard(struct ChessBoard *cp, enum Player player)
     //取得默认日志文件名称
     GetDefaultSaveName(cp->logFileName);
     strcat(cp->logFileName, ".log");
-    //游戏进行中
-    cp->gameState = GSTAT_ACTIVE;
+    //游戏暂停中（光标不出现）
+    cp->gameState = GSTAT_PAUSE;
 }
 
 /**
