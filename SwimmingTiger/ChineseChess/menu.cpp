@@ -104,7 +104,7 @@ char MainMenuSelect()
 char GameMenuSelect()
 {
     char action = ACT_UNKNOWN;
-    RECT rc = {300, 230};
+    RECT rc = {300, 270};
     signed char key = -1;
     struct KeyState keyStat={-1, -1, -1, -1};
     //事件
@@ -113,11 +113,12 @@ char GameMenuSelect()
         ACT_BACK_GAME,
         ACT_SAVE_GAME,
         ACT_SHOW_STEP,
+        ACT_SHOW_ABOUT,
         ACT_STOP_GAME,
         ACT_BACK_GAME //Esc键打开、关闭游戏菜单
     };
     //按键数量
-    int keyNum = 5;
+    int keyNum = 6;
     //键值
     struct KeyCode keyMap[] =
     {
@@ -126,6 +127,7 @@ char GameMenuSelect()
         {'2', -1},
         {'3', -1},
         {'4', -1},
+        {'5', -1},
         {27, -1} //Esc键
     };
 
@@ -141,7 +143,8 @@ char GameMenuSelect()
     DrawMenuText("1. 返回游戏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 60);
     DrawMenuText("2. 存档并退出", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 100);
     DrawMenuText("3. 查看下棋过程", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 140);
-    DrawMenuText("4. 退出游戏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 180);
+    DrawMenuText("4. 按键说明", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 180);
+    DrawMenuText("5. 退出游戏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 220);
 
     while (action == ACT_UNKNOWN)
     {

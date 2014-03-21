@@ -76,7 +76,7 @@ int main()
                 
                 if (LoadGame(cp, saveName))
                 {
-                    WriteGameLog(cp->logFileName, "‘ÿ»Î¥Êµµ\n");
+                    //WriteGameLog(cp->logFileName, "‘ÿ»Î¥Êµµ\n");
                     StartGame(cp);
                 }
                 else
@@ -236,6 +236,7 @@ void StartGame(struct ChessBoard *cp)
                     DrawChessBoardArea(cp, InactiveCursor(cp)->line, InactiveCursor(cp)->row);
                     DrawChessBoardArea(cp, ActiveCursor(cp)->line, ActiveCursor(cp)->row);
 
+                    //œ‘ æÕÊº“»° §≤Àµ•
                     if (cp->gameState == GSTAT_RED_WIN || cp->gameState == GSTAT_BLACK_WIN)
                     {
                         action = PlayerWinSelect(cp->gameState==GSTAT_RED_WIN ? PLY_RED : PLY_BLACK);
@@ -278,6 +279,7 @@ void StartGame(struct ChessBoard *cp)
             DrawAllChess(cp);
             break;
 
+        //œ‘ æ”Œœ∑ƒ⁄≤Àµ•
         case ACT_SHOW_MENU:
             {
                 action = GameMenuSelect();
@@ -295,7 +297,7 @@ void StartGame(struct ChessBoard *cp)
                         
                         if (SaveGame(cp, saveName))
                         {
-                            WriteGameLog(cp->logFileName, "¥ÊµµÕÀ≥ˆ\n");
+                            //WriteGameLog(cp->logFileName, "¥ÊµµÕÀ≥ˆ\n");
                             action = ACT_STOP_GAME;
                         }
                         else
@@ -306,6 +308,11 @@ void StartGame(struct ChessBoard *cp)
                             DrawChessBoard(cp);
                             DrawAllChess(cp);
                         }
+                    }
+                    else
+                    {
+                        DrawChessBoard(cp);
+                        DrawAllChess(cp);
                     }
                     break;
                     
@@ -321,6 +328,14 @@ void StartGame(struct ChessBoard *cp)
                 case ACT_SHOW_STEP:
                     ShowStep(cp);
                     //÷ÿªÊ∆Â≈Ã
+                    DrawChessBoard(cp);
+                    DrawAllChess(cp);
+                    break;
+
+                case ACT_SHOW_ABOUT:
+                    DrawChessBoard(cp);
+                    DrawAllChess(cp);
+                    ShowAbout();
                     DrawChessBoard(cp);
                     DrawAllChess(cp);
                     break;
