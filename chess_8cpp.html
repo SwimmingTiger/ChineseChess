@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.5"/>
-<title>双人象棋: E:/课程设计/SwimmingTiger/ChineseChess/chess.cpp 文件参考</title>
+<title>双人象棋: E:/ClassDesign/SwimmingTiger/ChineseChess/chess.cpp 文件参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -68,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>结构体</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>文件</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>枚举</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>枚举值</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>宏定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>页</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>结构体</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>文件</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>类型定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>枚举</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>枚举值</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>宏定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>页</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,14 +89,485 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 <div class="title">chess.cpp 文件参考</div>  </div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;conio.h&gt;</code><br/>
+<code>#include &lt;string.h&gt;</code><br/>
+<code>#include &lt;windows.h&gt;</code><br/>
+<code>#include &lt;math.h&gt;</code><br/>
+<code>#include &quot;<a class="el" href="chess_8h_source.html">chess.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="graphics_8h_source.html">graphics.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="style_8h_source.html">style.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="control_8h_source.html">control.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="debug_8h_source.html">debug.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="text_8h_source.html">text.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="menu_8h_source.html">menu.h</a>&quot;</code><br/>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 函数</h2></td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
-<tr class="memdesc:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">主函数  <a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">更多...</a><br/></td></tr>
+<tr class="memdesc:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">中国象棋主函数及走棋函数实现  <a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">更多...</a><br/></td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c7a0b2cefbc1b1ec1c5df159d925199"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#a6c7a0b2cefbc1b1ec1c5df159d925199">StartGame</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp)</td></tr>
+<tr class="memdesc:a6c7a0b2cefbc1b1ec1c5df159d925199"><td class="mdescLeft">&#160;</td><td class="mdescRight">游戏流程控制函数  <a href="#a6c7a0b2cefbc1b1ec1c5df159d925199">更多...</a><br/></td></tr>
+<tr class="separator:a6c7a0b2cefbc1b1ec1c5df159d925199"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4a34947ebcaf3cdada833919e8f9676"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#ae4a34947ebcaf3cdada833919e8f9676">InitChessBoard</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp, enum <a class="el" href="chess_8h.html#a9c8780378078e51e7c9041cbac392db9">Player</a> player)</td></tr>
+<tr class="memdesc:ae4a34947ebcaf3cdada833919e8f9676"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化棋盘  <a href="#ae4a34947ebcaf3cdada833919e8f9676">更多...</a><br/></td></tr>
+<tr class="separator:ae4a34947ebcaf3cdada833919e8f9676"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af09632805b49ee11faeac875da32bf63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#af09632805b49ee11faeac875da32bf63">GetChessDisplayName</a> (char chessType, char *ipName)</td></tr>
+<tr class="memdesc:af09632805b49ee11faeac875da32bf63"><td class="mdescLeft">&#160;</td><td class="mdescRight">取得棋子名  <a href="#af09632805b49ee11faeac875da32bf63">更多...</a><br/></td></tr>
+<tr class="separator:af09632805b49ee11faeac875da32bf63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a651f3b9f41c85bef1ae303d16eeab062"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct_chess_pos.html">ChessPos</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#a651f3b9f41c85bef1ae303d16eeab062">CreatePos</a> (char line, char row)</td></tr>
+<tr class="memdesc:a651f3b9f41c85bef1ae303d16eeab062"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建棋子坐标结构  <a href="#a651f3b9f41c85bef1ae303d16eeab062">更多...</a><br/></td></tr>
+<tr class="separator:a651f3b9f41c85bef1ae303d16eeab062"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa734d6f5e1d31bace3b4db6fee17ea19"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#aa734d6f5e1d31bace3b4db6fee17ea19">MatchPos</a> (struct <a class="el" href="struct_chess_pos.html">ChessPos</a> pos, char line, char row)</td></tr>
+<tr class="memdesc:aa734d6f5e1d31bace3b4db6fee17ea19"><td class="mdescLeft">&#160;</td><td class="mdescRight">比较棋子坐标与给定坐标是否相等  <a href="#aa734d6f5e1d31bace3b4db6fee17ea19">更多...</a><br/></td></tr>
+<tr class="separator:aa734d6f5e1d31bace3b4db6fee17ea19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ffa96ebc3b19b627c5116cfe3e4c752"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#a0ffa96ebc3b19b627c5116cfe3e4c752">GetChessType</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp, struct <a class="el" href="struct_chess_pos.html">ChessPos</a> pos)</td></tr>
+<tr class="memdesc:a0ffa96ebc3b19b627c5116cfe3e4c752"><td class="mdescLeft">&#160;</td><td class="mdescRight">取得棋子类型  <a href="#a0ffa96ebc3b19b627c5116cfe3e4c752">更多...</a><br/></td></tr>
+<tr class="separator:a0ffa96ebc3b19b627c5116cfe3e4c752"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e0b08f2790aa72906220e9f469054db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#a3e0b08f2790aa72906220e9f469054db">SetChessType</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp, struct <a class="el" href="struct_chess_pos.html">ChessPos</a> pos, char chessType)</td></tr>
+<tr class="memdesc:a3e0b08f2790aa72906220e9f469054db"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置棋子类型  <a href="#a3e0b08f2790aa72906220e9f469054db">更多...</a><br/></td></tr>
+<tr class="separator:a3e0b08f2790aa72906220e9f469054db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed2d7383905c85808d8a98008721999b"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#aed2d7383905c85808d8a98008721999b">GetChessPlayer</a> (char chessType)</td></tr>
+<tr class="memdesc:aed2d7383905c85808d8a98008721999b"><td class="mdescLeft">&#160;</td><td class="mdescRight">取得棋子所属的玩家  <a href="#aed2d7383905c85808d8a98008721999b">更多...</a><br/></td></tr>
+<tr class="separator:aed2d7383905c85808d8a98008721999b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef3ac8d1581b876920581b5e22e071a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#aef3ac8d1581b876920581b5e22e071a7">SwitchActivePlayer</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp)</td></tr>
+<tr class="memdesc:aef3ac8d1581b876920581b5e22e071a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">切换当前活动玩家  <a href="#aef3ac8d1581b876920581b5e22e071a7">更多...</a><br/></td></tr>
+<tr class="separator:aef3ac8d1581b876920581b5e22e071a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a739e39d965b7bb1e62f842302f538d90"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#a739e39d965b7bb1e62f842302f538d90">ActivePlayer</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp)</td></tr>
+<tr class="memdesc:a739e39d965b7bb1e62f842302f538d90"><td class="mdescLeft">&#160;</td><td class="mdescRight">返回当前活动玩家  <a href="#a739e39d965b7bb1e62f842302f538d90">更多...</a><br/></td></tr>
+<tr class="separator:a739e39d965b7bb1e62f842302f538d90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31618fc55487d997d8f29701e6992e7a"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#a31618fc55487d997d8f29701e6992e7a">InactivePlayer</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp)</td></tr>
+<tr class="memdesc:a31618fc55487d997d8f29701e6992e7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">返回当前非活动玩家  <a href="#a31618fc55487d997d8f29701e6992e7a">更多...</a><br/></td></tr>
+<tr class="separator:a31618fc55487d997d8f29701e6992e7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8018f64a22cf95d91145f87963e5a1db"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct_chess_pos.html">ChessPos</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#a8018f64a22cf95d91145f87963e5a1db">ActiveCursor</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp)</td></tr>
+<tr class="memdesc:a8018f64a22cf95d91145f87963e5a1db"><td class="mdescLeft">&#160;</td><td class="mdescRight">取当前活动玩家光标  <a href="#a8018f64a22cf95d91145f87963e5a1db">更多...</a><br/></td></tr>
+<tr class="separator:a8018f64a22cf95d91145f87963e5a1db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac2e1a09635946a27181f193c215584b"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct_chess_pos.html">ChessPos</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#aac2e1a09635946a27181f193c215584b">InactiveCursor</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp)</td></tr>
+<tr class="memdesc:aac2e1a09635946a27181f193c215584b"><td class="mdescLeft">&#160;</td><td class="mdescRight">取当前非活动玩家光标  <a href="#aac2e1a09635946a27181f193c215584b">更多...</a><br/></td></tr>
+<tr class="separator:aac2e1a09635946a27181f193c215584b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2579bee95a424e41e8d187dd80b5ab7"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#af2579bee95a424e41e8d187dd80b5ab7">ActiveChessNum</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp)</td></tr>
+<tr class="memdesc:af2579bee95a424e41e8d187dd80b5ab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">取当前活动玩家棋子数指针  <a href="#af2579bee95a424e41e8d187dd80b5ab7">更多...</a><br/></td></tr>
+<tr class="separator:af2579bee95a424e41e8d187dd80b5ab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e335783c9586c9f76a2868021a8d698"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#a6e335783c9586c9f76a2868021a8d698">InactiveChessNum</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp)</td></tr>
+<tr class="memdesc:a6e335783c9586c9f76a2868021a8d698"><td class="mdescLeft">&#160;</td><td class="mdescRight">取当前非活动玩家棋子数指针  <a href="#a6e335783c9586c9f76a2868021a8d698">更多...</a><br/></td></tr>
+<tr class="separator:a6e335783c9586c9f76a2868021a8d698"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a987ad596070d661ea858dfc90473e166"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#a987ad596070d661ea858dfc90473e166">ActivePlayerWin</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp)</td></tr>
+<tr class="memdesc:a987ad596070d661ea858dfc90473e166"><td class="mdescLeft">&#160;</td><td class="mdescRight">当前活动玩家获胜  <a href="#a987ad596070d661ea858dfc90473e166">更多...</a><br/></td></tr>
+<tr class="separator:a987ad596070d661ea858dfc90473e166"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a102c95bd8aa385bfdae87d8a09496c15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#a102c95bd8aa385bfdae87d8a09496c15">InactivePlayerWin</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp)</td></tr>
+<tr class="memdesc:a102c95bd8aa385bfdae87d8a09496c15"><td class="mdescLeft">&#160;</td><td class="mdescRight">当前非活动玩家获胜  <a href="#a102c95bd8aa385bfdae87d8a09496c15">更多...</a><br/></td></tr>
+<tr class="separator:a102c95bd8aa385bfdae87d8a09496c15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e9d5cd3cb26439ea3b94262253acd3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#a2e9d5cd3cb26439ea3b94262253acd3f">PutChess</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp, char line, char row, char chessType)</td></tr>
+<tr class="memdesc:a2e9d5cd3cb26439ea3b94262253acd3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">摆放棋子到指定位置  <a href="#a2e9d5cd3cb26439ea3b94262253acd3f">更多...</a><br/></td></tr>
+<tr class="separator:a2e9d5cd3cb26439ea3b94262253acd3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae16c71d56b5b847720ea7cc96890bfde"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#ae16c71d56b5b847720ea7cc96890bfde">ChessCount</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp, struct <a class="el" href="struct_chess_pos.html">ChessPos</a> destPos, struct <a class="el" href="struct_chess_pos.html">ChessPos</a> sourPos)</td></tr>
+<tr class="memdesc:ae16c71d56b5b847720ea7cc96890bfde"><td class="mdescLeft">&#160;</td><td class="mdescRight">统计起点到终点沿途的棋子个数（不包括起点和终点）  <a href="#ae16c71d56b5b847720ea7cc96890bfde">更多...</a><br/></td></tr>
+<tr class="separator:ae16c71d56b5b847720ea7cc96890bfde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad48576fc17a9a435c08babb8d93100ad"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#ad48576fc17a9a435c08babb8d93100ad">RowChessCount</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp, char chessType, char row)</td></tr>
+<tr class="memdesc:ad48576fc17a9a435c08babb8d93100ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">统计一列上某棋子的个数  <a href="#ad48576fc17a9a435c08babb8d93100ad">更多...</a><br/></td></tr>
+<tr class="separator:ad48576fc17a9a435c08babb8d93100ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75f3c42cd0606976c92f714cbfd29b24"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#a75f3c42cd0606976c92f714cbfd29b24">AboveChessCount</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp, char chessType, struct <a class="el" href="struct_chess_pos.html">ChessPos</a> sourPos, char player)</td></tr>
+<tr class="memdesc:a75f3c42cd0606976c92f714cbfd29b24"><td class="mdescLeft">&#160;</td><td class="mdescRight">统计当前棋子往上（相对于特定玩家）还有几个同样的棋子  <a href="#a75f3c42cd0606976c92f714cbfd29b24">更多...</a><br/></td></tr>
+<tr class="separator:a75f3c42cd0606976c92f714cbfd29b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac36bfed6c244f90754e2919d776c7813"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#ac36bfed6c244f90754e2919d776c7813">BelowChessCount</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp, char chessType, struct <a class="el" href="struct_chess_pos.html">ChessPos</a> sourPos, char player)</td></tr>
+<tr class="memdesc:ac36bfed6c244f90754e2919d776c7813"><td class="mdescLeft">&#160;</td><td class="mdescRight">统计当前棋子往下（相对于特定玩家）还有几个同样的棋子  <a href="#ac36bfed6c244f90754e2919d776c7813">更多...</a><br/></td></tr>
+<tr class="separator:ac36bfed6c244f90754e2919d776c7813"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7fd1e258e83d7810d104e0a475f249f"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chess_8cpp.html#af7fd1e258e83d7810d104e0a475f249f">MoveChess</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp, struct <a class="el" href="struct_chess_pos.html">ChessPos</a> sourPos, struct <a class="el" href="struct_chess_pos.html">ChessPos</a> destPos)</td></tr>
+<tr class="memdesc:af7fd1e258e83d7810d104e0a475f249f"><td class="mdescLeft">&#160;</td><td class="mdescRight">移动棋子  <a href="#af7fd1e258e83d7810d104e0a475f249f">更多...</a><br/></td></tr>
+<tr class="separator:af7fd1e258e83d7810d104e0a475f249f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">函数说明</h2>
+<a class="anchor" id="a75f3c42cd0606976c92f714cbfd29b24"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AboveChessCount </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>chessType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_pos.html">ChessPos</a>&#160;</td>
+          <td class="paramname"><em>sourPos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>统计当前棋子往上（相对于特定玩家）还有几个同样的棋子 </p>
+
+</div>
+</div>
+<a class="anchor" id="af2579bee95a424e41e8d187dd80b5ab7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* ActiveChessNum </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>取当前活动玩家棋子数指针 </p>
+
+</div>
+</div>
+<a class="anchor" id="a8018f64a22cf95d91145f87963e5a1db"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="struct_chess_pos.html">ChessPos</a>* ActiveCursor </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>取当前活动玩家光标 </p>
+
+</div>
+</div>
+<a class="anchor" id="a739e39d965b7bb1e62f842302f538d90"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char ActivePlayer </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>返回当前活动玩家 </p>
+
+</div>
+</div>
+<a class="anchor" id="a987ad596070d661ea858dfc90473e166"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ActivePlayerWin </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>当前活动玩家获胜 </p>
+
+</div>
+</div>
+<a class="anchor" id="ac36bfed6c244f90754e2919d776c7813"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int BelowChessCount </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>chessType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_pos.html">ChessPos</a>&#160;</td>
+          <td class="paramname"><em>sourPos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>统计当前棋子往下（相对于特定玩家）还有几个同样的棋子 </p>
+
+</div>
+</div>
+<a class="anchor" id="ae16c71d56b5b847720ea7cc96890bfde"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ChessCount </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_pos.html">ChessPos</a>&#160;</td>
+          <td class="paramname"><em>destPos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_pos.html">ChessPos</a>&#160;</td>
+          <td class="paramname"><em>sourPos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>统计起点到终点沿途的棋子个数（不包括起点和终点） </p>
+<p>本函数仅能作用于水平或竖直直线，不能统计斜线上的棋子 </p>
+
+</div>
+</div>
+<a class="anchor" id="a651f3b9f41c85bef1ae303d16eeab062"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="struct_chess_pos.html">ChessPos</a> CreatePos </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>row</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>创建棋子坐标结构 </p>
+
+</div>
+</div>
+<a class="anchor" id="af09632805b49ee11faeac875da32bf63"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GetChessDisplayName </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>chessType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>ipName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>取得棋子名 </p>
+
+</div>
+</div>
+<a class="anchor" id="aed2d7383905c85808d8a98008721999b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char GetChessPlayer </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>chessType</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>取得棋子所属的玩家 </p>
+<p>返回值为 enum Player 类型，棋子为 CHESS_NULL 时返回 PLY_BOTH。 </p>
+
+</div>
+</div>
+<a class="anchor" id="a0ffa96ebc3b19b627c5116cfe3e4c752"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char GetChessType </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_pos.html">ChessPos</a>&#160;</td>
+          <td class="paramname"><em>pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>取得棋子类型 </p>
+
+</div>
+</div>
+<a class="anchor" id="a6e335783c9586c9f76a2868021a8d698"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* InactiveChessNum </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>取当前非活动玩家棋子数指针 </p>
+
+</div>
+</div>
+<a class="anchor" id="aac2e1a09635946a27181f193c215584b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="struct_chess_pos.html">ChessPos</a>* InactiveCursor </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>取当前非活动玩家光标 </p>
+
+</div>
+</div>
+<a class="anchor" id="a31618fc55487d997d8f29701e6992e7a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char InactivePlayer </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>返回当前非活动玩家 </p>
+
+</div>
+</div>
+<a class="anchor" id="a102c95bd8aa385bfdae87d8a09496c15"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void InactivePlayerWin </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>当前非活动玩家获胜 </p>
+
+</div>
+</div>
+<a class="anchor" id="ae4a34947ebcaf3cdada833919e8f9676"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void InitChessBoard </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">enum <a class="el" href="chess_8h.html#a9c8780378078e51e7c9041cbac392db9">Player</a>&#160;</td>
+          <td class="paramname"><em>player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化棋盘 </p>
+
+</div>
+</div>
 <a class="anchor" id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -110,15 +581,238 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
       </table>
 </div><div class="memdoc">
 
-<p>主函数 </p>
+<p>中国象棋主函数及走棋函数实现 </p>
+<ul>
+<li>作者信息<ul>
+<li>作者：彭逸豪</li>
+<li>班级：软件131班</li>
+<li>学院：计算机科学与工程学院</li>
+<li>学校：大连民族学院 主函数</li>
+</ul>
+</li>
+</ul>
 <p>程序启动时执行，控制程序执行流程 </p>
+
+</div>
+</div>
+<a class="anchor" id="aa734d6f5e1d31bace3b4db6fee17ea19"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char MatchPos </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_pos.html">ChessPos</a>&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>row</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>比较棋子坐标与给定坐标是否相等 </p>
+
+</div>
+</div>
+<a class="anchor" id="af7fd1e258e83d7810d104e0a475f249f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char MoveChess </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_pos.html">ChessPos</a>&#160;</td>
+          <td class="paramname"><em>sourPos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_pos.html">ChessPos</a>&#160;</td>
+          <td class="paramname"><em>destPos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>移动棋子 </p>
+<p>成功移动返回1，移动失败或不允许移动返回0 </p>
+
+</div>
+</div>
+<a class="anchor" id="a2e9d5cd3cb26439ea3b94262253acd3f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PutChess </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>chessType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>摆放棋子到指定位置 </p>
+<p>该函数与SetChessType()功能相同，但该函数直接给出棋子坐标， 不使用坐标结构体。 </p>
+
+</div>
+</div>
+<a class="anchor" id="ad48576fc17a9a435c08babb8d93100ad"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int RowChessCount </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>chessType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>row</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>统计一列上某棋子的个数 </p>
+
+</div>
+</div>
+<a class="anchor" id="a3e0b08f2790aa72906220e9f469054db"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SetChessType </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_pos.html">ChessPos</a>&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>chessType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置棋子类型 </p>
+
+</div>
+</div>
+<a class="anchor" id="a6c7a0b2cefbc1b1ec1c5df159d925199"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StartGame </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>游戏流程控制函数 </p>
+
+</div>
+</div>
+<a class="anchor" id="aef3ac8d1581b876920581b5e22e071a7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SwitchActivePlayer </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>切换当前活动玩家 </p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-生成于 2014年 三月 7日 星期五 15:23:03 , 为 双人象棋使用  &#160;<a href="http://www.doxygen.org/index.html">
+生成于 2014年 三月 21日 星期五 21:42:27 , 为 双人象棋使用  &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

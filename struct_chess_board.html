@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>结构体</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>文件</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>枚举</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>枚举值</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>宏定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>页</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>结构体</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>文件</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>类型定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>枚举</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>枚举值</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>宏定义</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>页</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -87,43 +87,244 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 </div><!--header-->
 <div class="contents">
 
-<p>棋盘Map  
+<p>棋盘结构  
  <a href="struct_chess_board.html#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="chess_8h_source.html">chess.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 成员变量</h2></td></tr>
-<tr class="memitem:a18d17e23f1260491a6438c38043d508c"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_chess_board.html#a18d17e23f1260491a6438c38043d508c">map</a> [9][10]</td></tr>
-<tr class="memdesc:a18d17e23f1260491a6438c38043d508c"><td class="mdescLeft">&#160;</td><td class="mdescRight">棋盘Map 一个九列十行的二维数组，前五行为黑方棋盘，后五行为红方棋盘。  <a href="#a18d17e23f1260491a6438c38043d508c">更多...</a><br/></td></tr>
-<tr class="separator:a18d17e23f1260491a6438c38043d508c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cd5f5a35b76a0cdd8a9eebb18b65ea8"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_chess_board.html#a9cd5f5a35b76a0cdd8a9eebb18b65ea8">map</a> [10][9]</td></tr>
+<tr class="separator:a9cd5f5a35b76a0cdd8a9eebb18b65ea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac99759da7d87a6cade34b7e3287c7238"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_chess_board.html#ac99759da7d87a6cade34b7e3287c7238">player</a></td></tr>
+<tr class="memdesc:ac99759da7d87a6cade34b7e3287c7238"><td class="mdescLeft">&#160;</td><td class="mdescRight">本机玩家，其值为玩家枚举类型，用于联网对战标识玩家，目前无意义。  <a href="#ac99759da7d87a6cade34b7e3287c7238">更多...</a><br/></td></tr>
+<tr class="separator:ac99759da7d87a6cade34b7e3287c7238"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad88c657785850936177c6801077de18"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_chess_board.html#aad88c657785850936177c6801077de18">activePlayer</a></td></tr>
+<tr class="memdesc:aad88c657785850936177c6801077de18"><td class="mdescLeft">&#160;</td><td class="mdescRight">当前活动玩家，其值为玩家枚举类型。该玩家可移动棋子。  <a href="#aad88c657785850936177c6801077de18">更多...</a><br/></td></tr>
+<tr class="separator:aad88c657785850936177c6801077de18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a238f78a901db2b30cbbb5e14e4efa97f"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_chess_board.html#a238f78a901db2b30cbbb5e14e4efa97f">chessLocked</a></td></tr>
+<tr class="memdesc:a238f78a901db2b30cbbb5e14e4efa97f"><td class="mdescLeft">&#160;</td><td class="mdescRight">棋子是否锁定，锁定为1，未锁定为0  <a href="#a238f78a901db2b30cbbb5e14e4efa97f">更多...</a><br/></td></tr>
+<tr class="separator:a238f78a901db2b30cbbb5e14e4efa97f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a2f21ccb85301e624a1029a57ab7690"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct_chess_pos.html">ChessPos</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_chess_board.html#a3a2f21ccb85301e624a1029a57ab7690">lockedCursor</a></td></tr>
+<tr class="memdesc:a3a2f21ccb85301e624a1029a57ab7690"><td class="mdescLeft">&#160;</td><td class="mdescRight">锁定棋子的光标位置  <a href="#a3a2f21ccb85301e624a1029a57ab7690">更多...</a><br/></td></tr>
+<tr class="separator:a3a2f21ccb85301e624a1029a57ab7690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b44b02d668104bd356989e0f159fdf4"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct_chess_pos.html">ChessPos</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_chess_board.html#a4b44b02d668104bd356989e0f159fdf4">cursorRed</a></td></tr>
+<tr class="memdesc:a4b44b02d668104bd356989e0f159fdf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">红方玩家光标  <a href="#a4b44b02d668104bd356989e0f159fdf4">更多...</a><br/></td></tr>
+<tr class="separator:a4b44b02d668104bd356989e0f159fdf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d0de349762f45bed78c44c7425110dd"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct_chess_pos.html">ChessPos</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_chess_board.html#a6d0de349762f45bed78c44c7425110dd">cursorBlack</a></td></tr>
+<tr class="memdesc:a6d0de349762f45bed78c44c7425110dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">黑方玩家光标  <a href="#a6d0de349762f45bed78c44c7425110dd">更多...</a><br/></td></tr>
+<tr class="separator:a6d0de349762f45bed78c44c7425110dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab14f64ebff26bfcddedee5209d4b0fda"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_chess_board.html#ab14f64ebff26bfcddedee5209d4b0fda">redChessNum</a></td></tr>
+<tr class="memdesc:ab14f64ebff26bfcddedee5209d4b0fda"><td class="mdescLeft">&#160;</td><td class="mdescRight">红方棋子数  <a href="#ab14f64ebff26bfcddedee5209d4b0fda">更多...</a><br/></td></tr>
+<tr class="separator:ab14f64ebff26bfcddedee5209d4b0fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33f60431e628232199f32a7da4e23567"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_chess_board.html#a33f60431e628232199f32a7da4e23567">blackChessNum</a></td></tr>
+<tr class="memdesc:a33f60431e628232199f32a7da4e23567"><td class="mdescLeft">&#160;</td><td class="mdescRight">黑方棋子数  <a href="#a33f60431e628232199f32a7da4e23567">更多...</a><br/></td></tr>
+<tr class="separator:a33f60431e628232199f32a7da4e23567"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a3d7ce361f8c51451efd47873ae5f26"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_chess_board.html#a3a3d7ce361f8c51451efd47873ae5f26">redShuaiExists</a></td></tr>
+<tr class="memdesc:a3a3d7ce361f8c51451efd47873ae5f26"><td class="mdescLeft">&#160;</td><td class="mdescRight">红方帅是否存在，是1否0  <a href="#a3a3d7ce361f8c51451efd47873ae5f26">更多...</a><br/></td></tr>
+<tr class="separator:a3a3d7ce361f8c51451efd47873ae5f26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9da51d103276e8bcc41965b6d82e299c"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_chess_board.html#a9da51d103276e8bcc41965b6d82e299c">blackJiangExists</a></td></tr>
+<tr class="memdesc:a9da51d103276e8bcc41965b6d82e299c"><td class="mdescLeft">&#160;</td><td class="mdescRight">黑方将是否存在，是1否0  <a href="#a9da51d103276e8bcc41965b6d82e299c">更多...</a><br/></td></tr>
+<tr class="separator:a9da51d103276e8bcc41965b6d82e299c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbd3396d9eb3159af2f00c3bb089a989"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_chess_board.html#adbd3396d9eb3159af2f00c3bb089a989">gameState</a></td></tr>
+<tr class="memdesc:adbd3396d9eb3159af2f00c3bb089a989"><td class="mdescLeft">&#160;</td><td class="mdescRight">游戏状态  <a href="#adbd3396d9eb3159af2f00c3bb089a989">更多...</a><br/></td></tr>
+<tr class="separator:adbd3396d9eb3159af2f00c3bb089a989"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6195294dffffff6b11f3b629568b055e"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_chess_board.html#a6195294dffffff6b11f3b629568b055e">logFileName</a> [100]</td></tr>
+<tr class="memdesc:a6195294dffffff6b11f3b629568b055e"><td class="mdescLeft">&#160;</td><td class="mdescRight">游戏日志文件名称（不包括路径）  <a href="#a6195294dffffff6b11f3b629568b055e">更多...</a><br/></td></tr>
+<tr class="separator:a6195294dffffff6b11f3b629568b055e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock"><p>棋盘Map </p>
-<p>一个九列十行的二维数组，前五行为黑方棋盘，后五行为红方棋盘。 （如果实现了联机对战，红黑方可能会交换。）</p>
-<p>每个数组元素代表棋盘上的一个交叉点，其值为棋子类型枚举值。 </p>
+<div class="textblock"><p>棋盘结构 </p>
+<p>包括棋盘格子数据、红黑方的位置 </p>
 </div><h2 class="groupheader">结构体成员变量说明</h2>
-<a class="anchor" id="a18d17e23f1260491a6438c38043d508c"></a>
+<a class="anchor" id="aad88c657785850936177c6801077de18"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char map[9][10]</td>
+          <td class="memname">char activePlayer</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>棋盘Map 一个九列十行的二维数组，前五行为黑方棋盘，后五行为红方棋盘。 </p>
+<p>当前活动玩家，其值为玩家枚举类型。该玩家可移动棋子。 </p>
+
+</div>
+</div>
+<a class="anchor" id="a33f60431e628232199f32a7da4e23567"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char blackChessNum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>黑方棋子数 </p>
+
+</div>
+</div>
+<a class="anchor" id="a9da51d103276e8bcc41965b6d82e299c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char blackJiangExists</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>黑方将是否存在，是1否0 </p>
+
+</div>
+</div>
+<a class="anchor" id="a238f78a901db2b30cbbb5e14e4efa97f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char chessLocked</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>棋子是否锁定，锁定为1，未锁定为0 </p>
+
+</div>
+</div>
+<a class="anchor" id="a6d0de349762f45bed78c44c7425110dd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="struct_chess_pos.html">ChessPos</a> cursorBlack</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>黑方玩家光标 </p>
+
+</div>
+</div>
+<a class="anchor" id="a4b44b02d668104bd356989e0f159fdf4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="struct_chess_pos.html">ChessPos</a> cursorRed</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>红方玩家光标 </p>
+
+</div>
+</div>
+<a class="anchor" id="adbd3396d9eb3159af2f00c3bb089a989"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char gameState</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>游戏状态 </p>
+
+</div>
+</div>
+<a class="anchor" id="a3a2f21ccb85301e624a1029a57ab7690"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="struct_chess_pos.html">ChessPos</a> lockedCursor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>锁定棋子的光标位置 </p>
+
+</div>
+</div>
+<a class="anchor" id="a6195294dffffff6b11f3b629568b055e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char logFileName[100]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>游戏日志文件名称（不包括路径） </p>
+
+</div>
+</div>
+<a class="anchor" id="a9cd5f5a35b76a0cdd8a9eebb18b65ea8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char map[10][9]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>棋盘格子数据， 一个十行九列的二维数组，前五行为黑方棋盘，后五行为红方棋盘。 （当前玩家是黑方时，虽将黑方绘制在下，但黑方棋盘数据仍在前五行。） 每个数组元素代表棋盘上的一个交叉点，其值为棋子类型枚举值。 </p>
+
+</div>
+</div>
+<a class="anchor" id="ac99759da7d87a6cade34b7e3287c7238"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char player</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>本机玩家，其值为玩家枚举类型，用于联网对战标识玩家，目前无意义。 </p>
+
+</div>
+</div>
+<a class="anchor" id="ab14f64ebff26bfcddedee5209d4b0fda"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char redChessNum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>红方棋子数 </p>
+
+</div>
+</div>
+<a class="anchor" id="a3a3d7ce361f8c51451efd47873ae5f26"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char redShuaiExists</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>红方帅是否存在，是1否0 </p>
 
 </div>
 </div>
 <hr/>该结构体的文档由以下文件生成:<ul>
-<li>E:/课程设计/SwimmingTiger/ChineseChess/<a class="el" href="chess_8h_source.html">chess.h</a></li>
+<li>E:/ClassDesign/SwimmingTiger/ChineseChess/<a class="el" href="chess_8h_source.html">chess.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-生成于 2014年 三月 7日 星期五 15:23:03 , 为 双人象棋使用  &#160;<a href="http://www.doxygen.org/index.html">
+生成于 2014年 三月 21日 星期五 21:42:27 , 为 双人象棋使用  &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
