@@ -86,6 +86,12 @@ char PlayerWinSelect(char player);
 /*绘制无法存档提示框*/
 void ShowCannotSaveNotice();
 
+/*绘制存档失败提示框*/
+void ShowSaveFailedNotice();
+
+/*绘制载入存档选择框*/
+char LoadSaveSelect(char *title);
+
 /*绘制无法载入存档提示框*/
 void ShowCannotLoadNotice();
 

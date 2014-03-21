@@ -30,6 +30,8 @@ int main()
     struct ChessBoard mainChessBoard;
     struct ChessBoard *cp; //Ö¸ÏòÖ÷ÆåÅÌµÄÖ¸Õë
     char action = ACT_UNKNOWN;
+    char saveId;
+    char saveName[20];
 
     cp = &mainChessBoard;
 
@@ -64,16 +66,25 @@ int main()
             break;
 
         case ACT_LOAD_GAME:
-            if (LoadGame(cp, "default.sav"))
+            DrawChessBoard(cp);
+            DrawAllChess(cp);
+            saveId = LoadSaveSelect("ÔØÈë´æµµ");
+            
+            if (saveId >= 0)
             {
-                WriteGameLog(cp->logFileName, "ÔØÈë´æµµ\n");
-                StartGame(cp);
-            }
-            else
-            {
-                DrawChessBoard(cp);
-                DrawAllChess(cp);
-                ShowCannotLoadNotice();
+                sprintf(saveName, "%d.sav", saveId);
+                
+                if (LoadGame(cp, saveName))
+                {
+                    WriteGameLog(cp->logFileName, "ÔØÈë´æµµ\n");
+                    StartGame(cp);
+                }
+                else
+                {
+                    DrawChessBoard(cp);
+                    DrawAllChess(cp);
+                    ShowCannotLoadNotice();
+                }
             }
             break;
 
@@ -104,6 +115,8 @@ void StartGame(struct ChessBoard *cp)
     signed char key = -1;
     struct KeyState keyStat={-1, -1, -1, -1};
     struct ChessPos tmpPos;
+    char saveId;
+    char saveName[20];
     char actionMap[] =
     {
         ACT_KEY_UP,
@@ -272,9 +285,28 @@ void StartGame(struct ChessBoard *cp)
                 switch (action)
                 {
                 case ACT_SAVE_GAME:
-                    SaveGame(cp, "default.sav");
-                    WriteGameLog(cp->logFileName, "´æµµÍË³ö\n");
-                    action = ACT_STOP_GAME;
+                    DrawChessBoard(cp);
+                    DrawAllChess(cp);
+                    saveId = LoadSaveSelect("´æµµÍË³ö");
+            
+                    if (saveId >= 0)
+                    {
+                        sprintf(saveName, "%d.sav", saveId);
+                        
+                        if (SaveGame(cp, saveName))
+                        {
+                            WriteGameLog(cp->logFileName, "´æµµÍË³ö\n");
+                            action = ACT_STOP_GAME;
+                        }
+                        else
+                        {
+                            DrawChessBoard(cp);
+                            DrawAllChess(cp);
+                            ShowSaveFailedNotice();
+                            DrawChessBoard(cp);
+                            DrawAllChess(cp);
+                        }
+                    }
                     break;
                     
                 case ACT_BACK_GAME:

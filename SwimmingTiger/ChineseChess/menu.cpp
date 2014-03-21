@@ -114,7 +114,7 @@ char GameMenuSelect()
         ACT_SAVE_GAME,
         ACT_SHOW_STEP,
         ACT_STOP_GAME,
-        ACT_STOP_GAME
+        ACT_BACK_GAME //Esc键打开、关闭游戏菜单
     };
     //按键数量
     int keyNum = 5;
@@ -225,6 +225,104 @@ void ShowCannotSaveNotice()
     DrawMenuText("按任意键继续...", MENU_TIP_FONT_HEIGHT, MENU_TIP_FONT_WIDTH, rc, 30, 190);
 
     getch();
+}
+
+/**
+* @brief 绘制存档失败提示框
+*/
+void ShowSaveFailedNotice()
+{
+    RECT rc = {400, 250};
+
+    DecideMenuRect(rc.left, rc.top, &rc);
+
+    DrawRect(rc.left-5, rc.top-5, rc.right+5, rc.bottom+5,
+             0, 0,
+             MENU_BACKGROUND_COLOR, MENU_BACKGROUND_COLOR);
+    DrawRect(rc.left, rc.top, rc.right, rc.bottom,
+             MENU_BORDER_WIDTH, MENU_BORDER_STYLE,
+             MENU_BORDER_COLOR, MENU_BACKGROUND_COLOR);
+    DrawMenuText("存档失败", MENU_TITLE_FONT_HEIGHT, MENU_TITLE_FONT_WIDTH, rc, 100, 10);
+    DrawMenuText("写入存档文件失败！", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 60);
+    DrawMenuText("可能是游戏目录不可写，", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 100);
+    DrawMenuText("请尝试用管理员身份运行", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 140);
+    DrawMenuText("游戏。", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 180);
+    DrawMenuText("按任意键返回游戏...", MENU_TIP_FONT_HEIGHT, MENU_TIP_FONT_WIDTH, rc, 30, 220);
+
+    getch();
+}
+
+/**
+* @brief 绘制载入存档选择框
+*/
+char LoadSaveSelect(char *title)
+{
+    RECT rc = {400, 150};
+    char action = ACT_UNKNOWN;
+    signed char key = -1;
+    struct KeyState keyStat={-1, -1, -1, -1};
+    //事件
+    char actionMap[] =
+    {
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        -1,
+        -1,
+        -1
+    };
+    //按键数量
+    int keyNum = 13;
+    //键值
+    struct KeyCode keyMap[] =
+    {
+        /***********增加按键勿忘修改按键数量***********/
+        {'0', -1},
+        {'1', -1},
+        {'2', -1},
+        {'3', -1},
+        {'4', -1},
+        {'5', -1},
+        {'6', -1},
+        {'7', -1},
+        {'8', -1},
+        {'9', -1},
+        {27, -1}, //Esc键
+        {46, -1}, //小键盘小数点键
+        {'.', -1} //主键盘小数点键
+    };
+
+    DecideMenuRect(rc.left, rc.top, &rc);
+
+    DrawRect(rc.left-5, rc.top-5, rc.right+5, rc.bottom+5,
+             0, 0,
+             MENU_BACKGROUND_COLOR, MENU_BACKGROUND_COLOR);
+    DrawRect(rc.left, rc.top, rc.right, rc.bottom,
+             MENU_BORDER_WIDTH, MENU_BORDER_STYLE,
+             MENU_BORDER_COLOR, MENU_BACKGROUND_COLOR);
+    DrawMenuText(title, MENU_TITLE_FONT_HEIGHT, MENU_TITLE_FONT_WIDTH, rc, 70, 10);
+    DrawMenuText("请输入存档序号（0到9）", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 60);
+    DrawMenuText("按Esc或小数点键退出...", MENU_TIP_FONT_HEIGHT, MENU_TIP_FONT_WIDTH, rc, 30, 110);
+
+    while (action == ACT_UNKNOWN)
+    {
+        key = getch();
+        action = ParseKey(key, &keyStat, actionMap, (struct KeyCode*)keyMap, keyNum, 1);
+    }
+
+    if (action > 0)
+    {
+        action -= 10;
+    }
+
+    return action;
 }
 
 /**
