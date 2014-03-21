@@ -41,5 +41,14 @@ int SaveGame(struct ChessBoard *cp, char *fileName);
 /*加载游戏*/
 int LoadGame(struct ChessBoard *cp, char *fileName);
 
+/*文本匹配棋子*/
+char TextMatchChess(char *text, char player);
+
+/*解析数字*/
+int ParseNumber(char *text, char player, int *len);
+
+/*解析棋谱*/
+char ParseMaunal(struct ChessBoard *cp, FILE *fp);
+
 /*********************************预处理结束*********************************/
 #endif

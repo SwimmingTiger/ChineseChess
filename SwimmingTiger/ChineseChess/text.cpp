@@ -15,6 +15,7 @@
 #include "chess.h"
 #include "debug.h"
 #include "text.h"
+#include "control.h"
 
 /**
 * @brief 取得棋子的记谱名称
@@ -311,12 +312,12 @@ char ChessMoveToManual(struct ChessBoard *cp, struct ChessPos sourPos, struct Ch
         }
         
         /***********移动到的位置***********/
-        //走斜线棋子，destName为进退到的列名
+        //列变化，destName为进退到的列名
         if (destPos.row != sourPos.row)
         {
             GetRowName(destPos.row, player, destName); //例：车三进二
         }
-        //走直线棋子，destName为进退行数
+        //列不变，destName为进退行数
         else
         {
             GetStepName(abs(destPos.line-sourPos.line), player, destName); //例：车三退二（第三列车退两行）
@@ -530,7 +531,7 @@ int LoadGame(struct ChessBoard *cp, char *fileName)
         fclose(fp);
 
         //游戏状态暂停
-        cp->gameState == GSTAT_PAUSE;
+        cp->gameState = GSTAT_PAUSE;
 
         //产生新的游戏日志文件
         sprintf(path, "%s/%s", GAME_SAVE_DIR"/log", cp->logFileName);
@@ -541,4 +542,462 @@ int LoadGame(struct ChessBoard *cp, char *fileName)
     }
 
     return success;
+}
+
+/**
+* @brief 文本匹配棋子
+*/
+char TextMatchChess(char *text, char player)
+{
+    char chess = CHESS_NULL;
+
+    //红方
+    if (player == PLY_RED)
+    {
+        if (memcmp(text, "帅", 2))
+        {
+            chess = CHESS_R_SHUAI;
+        }
+        else if (memcmp(text, "车", 2))
+        {
+            chess = CHESS_R_JU;
+        }
+        else if (memcmp(text, "马", 2))
+        {
+            chess = CHESS_R_MA;
+        }
+        else if (memcmp(text, "炮", 2))
+        {
+            chess = CHESS_R_PAO;
+        }
+        else if (memcmp(text, "相", 2))
+        {
+            chess = CHESS_R_XIANG;
+        }
+        else if (memcmp(text, "仕", 2))
+        {
+            chess = CHESS_R_SHI;
+        }
+        else if (memcmp(text, "士", 2))
+        {
+            chess = CHESS_R_SHI;
+        }
+        else if (memcmp(text, "兵", 2))
+        {
+            chess = CHESS_R_BING;
+        }
+    }
+    else
+    {
+        //黑方
+        if (memcmp(text, "将", 2))
+        {
+            chess = CHESS_K_JIANG;
+        }
+        else if (memcmp(text, "车", 2))
+        {
+            chess = CHESS_K_JU;
+        }
+        else if (memcmp(text, "马", 2))
+        {
+            chess = CHESS_K_MA;
+        }
+        else if (memcmp(text, "炮", 2))
+        {
+            chess = CHESS_K_PAO;
+        }
+        else if (memcmp(text, "象", 2))
+        {
+            chess = CHESS_K_XIANG;
+        }
+        else if (memcmp(text, "仕", 2))
+        {
+            chess = CHESS_K_SHI;
+        }
+        else if (memcmp(text, "士", 2))
+        {
+            chess = CHESS_K_SHI;
+        }
+        else if (memcmp(text, "卒", 2))
+        {
+            chess = CHESS_K_ZU;
+        }
+    }
+    
+    return chess;
+}
+
+/**
+* @brief 解析数字
+*/
+int ParseNumber(char *text, char player, int *len)
+{
+    int num = -1;
+
+    if (player == PLY_RED)
+    {
+        *len = 2;
+
+        if (memcmp(text, "一", 2))
+        {
+            num = 1;
+        }
+        else if (memcmp(text, "二", 2))
+        {
+            num = 2;
+        }
+        if (memcmp(text, "三", 2))
+        {
+            num = 3;
+        }
+        if (memcmp(text, "四", 2))
+        {
+            num = 4;
+        }
+        if (memcmp(text, "五", 2))
+        {
+            num = 5;
+        }
+        if (memcmp(text, "六", 2))
+        {
+            num = 6;
+        }
+        if (memcmp(text, "七", 2))
+        {
+            num = 7;
+        }
+        if (memcmp(text, "八", 2))
+        {
+            num = 8;
+        }
+        if (memcmp(text, "九", 2))
+        {
+            num = 9;
+        }
+    }
+    else
+    {
+        if (memcmp(text, "１", 2))
+        {
+            num = 1;
+            *len = 2;
+        }
+        else if (memcmp(text, "２", 2))
+        {
+            num = 2;
+            *len = 2;
+        }
+        if (memcmp(text, "３", 2))
+        {
+            num = 3;
+            *len = 2;
+        }
+        if (memcmp(text, "４", 2))
+        {
+            num = 4;
+            *len = 2;
+        }
+        if (memcmp(text, "５", 2))
+        {
+            num = 5;
+            *len = 2;
+        }
+        if (memcmp(text, "６", 2))
+        {
+            num = 6;
+            *len = 2;
+        }
+        if (memcmp(text, "７", 2))
+        {
+            num = 7;
+            *len = 2;
+        }
+        if (memcmp(text, "８", 2))
+        {
+            num = 8;
+            *len = 2;
+        }
+        if (memcmp(text, "９", 2))
+        {
+            num = 9;
+            *len = 2;
+        }
+        else if (memcmp(text, "1", 1))
+        {
+            num = 1;
+            *len = 1;
+        }
+        else if (memcmp(text, "2", 1))
+        {
+            num = 2;
+            *len = 1;
+        }
+        if (memcmp(text, "3", 1))
+        {
+            num = 3;
+            *len = 1;
+        }
+        if (memcmp(text, "4", 1))
+        {
+            num = 4;
+            *len = 1;
+        }
+        if (memcmp(text, "5", 1))
+        {
+            num = 5;
+            *len = 1;
+        }
+        if (memcmp(text, "6", 1))
+        {
+            num = 6;
+            *len = 1;
+        }
+        if (memcmp(text, "7", 1))
+        {
+            num = 7;
+            *len = 1;
+        }
+        if (memcmp(text, "8", 1))
+        {
+            num = 8;
+            *len = 1;
+        }
+        if (memcmp(text, "9", 1))
+        {
+            num = 9;
+            *len = 1;
+        }
+    }
+
+    return num;
+}
+
+/**
+* @brief 解析棋谱
+*/
+char ParseMaunal(struct ChessBoard *cp, FILE *fp)
+{
+    char action = ACT_UNKNOWN;
+    char step[11];
+    char chessType;
+    char sourRow;
+    char destRow;
+    int direction;
+    int len;
+    char *text;
+    int failed = 0;
+    struct ChessPos destPos;
+    struct ChessPos sourPos;
+    int stepLen;
+
+    if (0 == fscanf(fp, "%10s", step))
+    {
+        action = ACT_STOP_GAME;
+    }
+    else if (strcmp("红胜", step) || strcmp("红方胜", step))
+    {
+        PlayerWin(cp, PLY_RED);
+        action = ACT_STOP_GAME;
+    }
+    else if (strcmp("黑胜", step) || strcmp("黑方胜", step))
+    {
+        PlayerWin(cp, PLY_BLACK);
+        action = ACT_STOP_GAME;
+    }
+    //重子记法，如：前马进一 前5进1
+    else if (memcmp(step, "前", 2) || memcmp(step, "中", 2) || memcmp(step, "后", 2))
+    {
+    
+    }
+    //正常记法，如：马八进七
+    else
+    {
+        text = step;
+        chessType = TextMatchChess(text, cp->activePlayer);
+        text += 2;
+        sourRow = ParseNumber(text, cp->activePlayer, &len);
+        text += len;
+
+        if (memcmp(text, "进", 2))
+        {
+            direction = 1;
+        }
+        else if (memcmp(text, "退", 2))
+        {
+            direction = -1;
+        }
+        else if (memcmp(text, "平", 2))
+        {
+            direction = 0;
+        }
+        else
+        {
+            failed = 1;
+        }
+
+        text += 2;
+        destRow = ParseNumber(text, cp->activePlayer, &len);
+
+        if (1 == failed || CHESS_NULL == chessType || -1 == sourRow || -1 == destRow)
+        {
+            failed = 1;
+        }
+        else
+        {
+            sourPos.row = sourRow;
+            
+            for (sourPos.line=0,failed=1; sourPos.line<CHESSBOARD_LINE || failed==0; sourPos.line++)
+            {
+                if (GetChessType(cp, sourPos) == chessType)
+                {
+                    failed = 0;
+                }
+            }
+            //减去for循环结束前多加的line
+            sourPos.line--;
+
+            if (0 == failed)
+            {
+                //平移
+                if (0 == direction)
+                {
+                    destPos.line = sourPos.line;
+                    
+                    if (cp->activePlayer == PLY_RED)
+                    {
+                        destPos.row = CHESSBOARD_ROW - destRow;
+                    }
+                    else
+                    {
+                        destPos.row = destRow - 1;
+                    }
+                }
+                //进退
+                else
+                {
+                    switch (chessType)
+                    {
+                    
+                    case CHESS_R_SHI:
+                        destPos.row = destRow;
+                        //进
+                        if (direction > 0)
+                        {
+                            destPos.line = sourPos.line - 1;
+                        }
+                        //退
+                        else
+                        {
+                            destPos.line = sourPos.line + 1;
+                        }
+                        break;
+
+                    case CHESS_K_SHI:
+                        destPos.row = destRow;
+                        //进
+                        if (direction > 0)
+                        {
+                            destPos.line = sourPos.line + 1;
+                        }
+                        //退
+                        else
+                        {
+                            destPos.line = sourPos.line - 1;
+                        }
+                        break;
+
+                    case CHESS_R_XIANG:
+                        destPos.row = destRow;
+                        //进
+                        if (direction > 0)
+                        {
+                            destPos.line = sourPos.line - 2;
+                        }
+                        //退
+                        else
+                        {
+                            destPos.line = sourPos.line + 2;
+                        }
+                        break;
+
+                    case CHESS_K_XIANG:
+                        destPos.row = destRow;
+                        //进
+                        if (direction > 0)
+                        {
+                            destPos.line = sourPos.line + 2;
+                        }
+                        //退
+                        else
+                        {
+                            destPos.line = sourPos.line - 2;
+                        }
+                        break;
+
+                    case CHESS_R_MA:
+                        destPos.row = destRow;
+                        
+                        if (abs(destPos.row - sourPos.row) == 1)
+                        {
+                            stepLen = 2;
+                        }
+                        else
+                        {
+                            stepLen = 1;
+                        }
+
+                        //进
+                        if (direction > 0)
+                        {
+                            destPos.line = sourPos.line - stepLen;
+                        }
+                        //退
+                        else
+                        {
+                            destPos.line = sourPos.line + stepLen;
+                        }
+
+                    case CHESS_K_MA:
+                        destPos.row = destRow;
+                        
+                        if (abs(destPos.row - sourPos.row) == 1)
+                        {
+                            stepLen = 2;
+                        }
+                        else
+                        {
+                            stepLen = 1;
+                        }
+
+                        //进
+                        if (direction > 0)
+                        {
+                            destPos.line = sourPos.line + stepLen;
+                        }
+                        //退
+                        else
+                        {
+                            destPos.line = sourPos.line - stepLen;
+                        }
+                        break;
+
+                    default:
+                        destPos.row = sourPos.row;
+                        
+                        if (GetChessPlayer(chessType) == PLY_RED)
+                        {
+                            destPos.line = sourPos.line - direction * destRow;
+                        }
+                        else
+                        {
+                            destPos.line = sourPos.line + direction * destRow;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    return action;
 }

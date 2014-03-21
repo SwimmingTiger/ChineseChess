@@ -182,6 +182,9 @@ char * ActiveChessNum(struct ChessBoard *cp);
 /*取当前非活动玩家棋子数指针*/
 char * InactiveChessNum(struct ChessBoard *cp);
 
+/*指定玩家获胜*/
+void PlayerWin(struct ChessBoard *cp, char player);
+
 /*当前活动玩家获胜*/
 void ActivePlayerWin(struct ChessBoard *cp);
 

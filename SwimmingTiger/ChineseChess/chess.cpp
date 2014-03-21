@@ -697,6 +697,21 @@ char * InactiveChessNum(struct ChessBoard *cp)
 }
 
 /**
+* @brief 指定玩家获胜
+*/
+void PlayerWin(struct ChessBoard *cp, char player)
+{
+    if (player == PLY_RED)
+    {
+        cp->gameState = GSTAT_RED_WIN;
+    }
+    else
+    {
+        cp->gameState = GSTAT_BLACK_WIN;
+    }
+}
+
+/**
 * @brief 当前活动玩家获胜
 */
 void ActivePlayerWin(struct ChessBoard *cp)

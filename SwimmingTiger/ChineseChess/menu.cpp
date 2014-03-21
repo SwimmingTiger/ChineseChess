@@ -144,7 +144,7 @@ char GameMenuSelect()
     DrawMenuText("2. 存档并退出", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 100);
     DrawMenuText("3. 查看下棋过程", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 140);
     DrawMenuText("4. 按键说明", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 180);
-    DrawMenuText("5. 退出游戏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 220);
+    DrawMenuText("5. 结束游戏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 220);
 
     while (action == ACT_UNKNOWN)
     {
