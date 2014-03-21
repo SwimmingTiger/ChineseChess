@@ -310,6 +310,8 @@ void ShowStep(struct ChessBoard *cp)
                 printf("\t\t\t    %s", buff);
             }
         }
+
+        fclose(fp);
     }
 
     printf("\n\t\t*****************************************\n\t\t按任意键继续...");

@@ -103,6 +103,7 @@ void StartGame(struct ChessBoard *cp)
 	char action = ACT_UNKNOWN;
     signed char key = -1;
     struct KeyState keyStat={-1, -1, -1, -1};
+    struct ChessPos tmpPos;
     char actionMap[] =
     {
         ACT_KEY_UP,
@@ -143,8 +144,8 @@ void StartGame(struct ChessBoard *cp)
             {
                 ActiveCursor(cp)->line--;
                 
-                DrawChessBoard(cp);
-                DrawAllChess(cp);
+                DrawChessBoardArea(cp, ActiveCursor(cp)->line, ActiveCursor(cp)->row);
+                DrawChessBoardArea(cp, ActiveCursor(cp)->line+1, ActiveCursor(cp)->row);
             }
             break;
 
@@ -153,8 +154,8 @@ void StartGame(struct ChessBoard *cp)
             {
                 ActiveCursor(cp)->line++;
 
-                DrawChessBoard(cp);
-                DrawAllChess(cp);
+                DrawChessBoardArea(cp, ActiveCursor(cp)->line, ActiveCursor(cp)->row);
+                DrawChessBoardArea(cp, ActiveCursor(cp)->line-1, ActiveCursor(cp)->row);
             }
             break;
 
@@ -163,8 +164,8 @@ void StartGame(struct ChessBoard *cp)
             {
                 ActiveCursor(cp)->row--;
 
-                DrawChessBoard(cp);
-                DrawAllChess(cp);
+                DrawChessBoardArea(cp, ActiveCursor(cp)->line, ActiveCursor(cp)->row);
+                DrawChessBoardArea(cp, ActiveCursor(cp)->line, ActiveCursor(cp)->row+1);
             }
             break;
 
@@ -173,8 +174,8 @@ void StartGame(struct ChessBoard *cp)
             {
                 ActiveCursor(cp)->row++;
 
-                DrawChessBoard(cp);
-                DrawAllChess(cp);
+                DrawChessBoardArea(cp, ActiveCursor(cp)->line, ActiveCursor(cp)->row);
+                DrawChessBoardArea(cp, ActiveCursor(cp)->line, ActiveCursor(cp)->row-1);
             }
             break;
 
@@ -186,10 +187,10 @@ void StartGame(struct ChessBoard *cp)
                 if (cp->activePlayer == GetChessPlayer(GetChessType(cp, *ActiveCursor(cp))))
                 {
                     cp->chessLocked = 1;
+                    tmpPos = cp->lockedCursor;
                     cp->lockedCursor = *ActiveCursor(cp);
 
-                    DrawChessBoard(cp);
-                    DrawAllChess(cp);
+                    DrawChessBoardArea(cp, ActiveCursor(cp)->line, ActiveCursor(cp)->row);
                 }
             }
             //已锁定且位置未变，则解除锁定
@@ -197,8 +198,7 @@ void StartGame(struct ChessBoard *cp)
             {
                 cp->chessLocked = 0;
 
-                DrawChessBoard(cp);
-                DrawAllChess(cp);
+                DrawChessBoardArea(cp, ActiveCursor(cp)->line, ActiveCursor(cp)->row);
             }
             //已锁定且位置改变，尝试移动棋子
             else
@@ -207,10 +207,11 @@ void StartGame(struct ChessBoard *cp)
                 if (cp->activePlayer == GetChessPlayer(GetChessType(cp, *ActiveCursor(cp))))
                 {
                     cp->chessLocked = 1;
+                    tmpPos = cp->lockedCursor;
                     cp->lockedCursor = *ActiveCursor(cp);
 
-                    DrawChessBoard(cp);
-                    DrawAllChess(cp);
+                    DrawChessBoardArea(cp, tmpPos.line, tmpPos.row);
+                    DrawChessBoardArea(cp, ActiveCursor(cp)->line, ActiveCursor(cp)->row);
                 }
                 //棋子移动成功则解锁光标，切换活动用户
                 else if (MoveChess(cp, cp->lockedCursor, *ActiveCursor(cp)))
@@ -218,8 +219,9 @@ void StartGame(struct ChessBoard *cp)
                     cp->chessLocked = 0;
                     SwitchActivePlayer(cp);
 
-                    DrawChessBoard(cp);
-                    DrawAllChess(cp);
+                    DrawChessBoardArea(cp, cp->lockedCursor.line, cp->lockedCursor.row);
+                    DrawChessBoardArea(cp, InactiveCursor(cp)->line, InactiveCursor(cp)->row);
+                    DrawChessBoardArea(cp, ActiveCursor(cp)->line, ActiveCursor(cp)->row);
 
                     if (cp->gameState == GSTAT_RED_WIN || cp->gameState == GSTAT_BLACK_WIN)
                     {

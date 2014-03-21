@@ -30,6 +30,9 @@ void DrawRect(int left, int top, int right, int bottom, int borderWidth, int bor
 /*绘制圆形*/
 void DrawCircle(int radius, int centerX, int centerY, int borderStyle, int borderWidth, COLORREF borderColor, COLORREF insideColor);
 
+/*改变控制台窗口的大小和位置*/
+void SetWindowSize(int contentWidth, int contentHeight, int width, int height, int left, int top, HWND zIndex);
+
 /*绘制棋盘*/
 void DrawChessBoard(struct ChessBoard *cp);
 
@@ -42,8 +45,14 @@ void DrawChess(char chessType, struct ChessPos pos);
 /*绘制所有棋子*/
 void DrawAllChess(struct ChessBoard *cp);
 
-/*改变控制台窗口的大小和位置*/
-void SetWindowSize(int contentWidth, int contentHeight, int width, int height, int left, int top, HWND zIndex);
+/*绘制指定位置的光标*/
+void DrawCursorPos(struct ChessBoard *cp, struct ChessPos pos);
+
+/*绘制指定位置的棋子*/
+void DrawChessPos(struct ChessBoard *cp, struct ChessPos pos);
+
+/*绘制棋盘局部*/
+void DrawChessBoardArea(struct ChessBoard *cp, int line, int row);
 
 /*********************************预处理结束*********************************/
 #endif

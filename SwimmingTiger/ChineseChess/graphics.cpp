@@ -368,3 +368,139 @@ void DrawAllChess(struct ChessBoard *cp)
         }
     }
 }
+
+/**
+* @brief 绘制指定位置的光标
+* 
+* 如果光标不在指定位置，则不会绘制
+*/
+void DrawCursorPos(struct ChessBoard *cp, struct ChessPos pos)
+{
+    struct ChessPos *cursor;
+
+    //绘制光标
+    //仅在游戏正常进行时绘制
+    if (cp->gameState == GSTAT_ACTIVE)
+    {
+        cursor = ActiveCursor(cp);
+
+        if (MatchPos(*cursor, pos.line, pos.row))
+        {
+            DrawCursor(*cursor, cp->activePlayer);
+        }
+
+        if (cp->chessLocked)
+        {
+            cursor = &cp->lockedCursor;
+
+            if (MatchPos(*cursor, pos.line, pos.row))
+            {
+                //棋子锁定光标是两玩家共用的
+                DrawCursor(*cursor, PLY_BOTH);
+            }
+        }
+    }
+}
+
+/**
+* @brief 绘制指定位置的棋子
+* 
+* 如果指定位置不存在棋子，则不会绘制
+*/
+void DrawChessPos(struct ChessBoard *cp, struct ChessPos pos)
+{
+    char type;
+
+    type = GetChessType(cp, pos);
+
+    if (type != CHESS_NULL)
+    {
+        DrawChess(type, pos);
+    }
+}
+
+/**
+* @brief 绘制棋盘局部
+*/
+void DrawChessBoardArea(struct ChessBoard *cp, int line, int row)
+{
+    int centerX;
+    int centerY;
+    RECT rc= CURSOR_RECT;
+    struct ChessPos pos;
+    struct ChessPos tmpPos;
+
+    pos.line = line;
+    pos.row = row;
+    centerX = CHESSBOARD_RECT_LEFT + (CHESSBOARD_ROW_WIDTH * pos.row);
+    centerY = CHESSBOARD_RECT_TOP + (CHESSBOARD_LINE_HEIGHT * pos.line);
+
+    //抹去原来的内容
+    DrawRect(centerX + rc.left, centerY + rc.top, centerX + rc.right, centerY + rc.bottom,
+             0, 0, CHESSBOARD_BACKGROUND_COLOR, CHESSBOARD_BACKGROUND_COLOR);
+
+    //绘制光标
+    DrawCursorPos(cp, pos);
+
+    if ((pos.line >= 1 && pos.line <= 4) || (pos.line >= 6 && pos.line <= 9) || (pos.line == 5 && (pos.row == 0 || pos.row == 8)))
+    {
+        DrawChessBoardLine(centerX, centerY, centerX, centerY + rc.top);
+    }
+
+    if ((pos.line >= 0 && pos.line <= 3) || (pos.line >= 5 && pos.line <= 8) || (pos.line == 4 && (pos.row == 0 || pos.row == 8)))
+    {
+        DrawChessBoardLine(centerX, centerY, centerX, centerY + rc.bottom);
+    }
+
+    if (pos.row != 0)
+    {
+        DrawChessBoardLine(centerX, centerY, centerX + rc.left, centerY);
+    }
+
+    if (pos.row != 8)
+    {
+        DrawChessBoardLine(centerX, centerY, centerX + rc.right, centerY);
+    }
+
+    //左上斜线
+    if (MatchPos(pos, 1, 4) || MatchPos(pos, 2, 5) || MatchPos(pos, 8, 4) || MatchPos(pos, 9, 5))
+    {
+        tmpPos.line = pos.line - 1;
+        tmpPos.row = pos.row - 1;
+        DrawCursorPos(cp, tmpPos);
+        DrawChessBoardLine(centerX, centerY, centerX - CHESSBOARD_ROW_WIDTH, centerY - CHESSBOARD_LINE_HEIGHT);
+        DrawChessPos(cp, tmpPos);
+    }
+
+    //右上斜线
+    if (MatchPos(pos, 1, 4) || MatchPos(pos, 2, 3) || MatchPos(pos, 8, 4) || MatchPos(pos, 9, 3))
+    {
+        tmpPos.line = pos.line - 1;
+        tmpPos.row = pos.row + 1;
+        DrawCursorPos(cp, tmpPos);
+        DrawChessBoardLine(centerX, centerY, centerX + CHESSBOARD_ROW_WIDTH, centerY - CHESSBOARD_LINE_HEIGHT);
+        DrawChessPos(cp, tmpPos);
+    }
+
+    //左下斜线
+    if (MatchPos(pos, 1, 4) || MatchPos(pos, 0, 5) || MatchPos(pos, 8, 4) || MatchPos(pos, 7, 5))
+    {
+        tmpPos.line = pos.line + 1;
+        tmpPos.row = pos.row - 1;
+        DrawCursorPos(cp, tmpPos);
+        DrawChessBoardLine(centerX, centerY, centerX - CHESSBOARD_ROW_WIDTH, centerY + CHESSBOARD_LINE_HEIGHT);
+        DrawChessPos(cp, tmpPos);
+    }
+
+    //右下斜线
+    if (MatchPos(pos, 1, 4) || MatchPos(pos, 0, 3) || MatchPos(pos, 8, 4) || MatchPos(pos, 7, 3))
+    {
+        tmpPos.line = pos.line + 1;
+        tmpPos.row = pos.row + 1;
+        DrawCursorPos(cp, tmpPos);
+        DrawChessBoardLine(centerX, centerY, centerX + CHESSBOARD_ROW_WIDTH, centerY + CHESSBOARD_LINE_HEIGHT);
+        DrawChessPos(cp, tmpPos);
+    }
+
+    DrawChessPos(cp, pos);
+}
