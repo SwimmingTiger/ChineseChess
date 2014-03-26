@@ -10,12 +10,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <windows.h>
-#include "graphics.h"
-#include "chess.h"
 #include "control.h"
-#include <iostream>
-
-using namespace std;
 
 /**
 * @brief 判断按键键值是否在当前键值数组内
