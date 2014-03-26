@@ -1,7 +1,6 @@
 var searchData=
 [
   ['parsekey',['ParseKey',['../control_8cpp.html#aa405a0148aa72c0dff1fc8327cec9a7c',1,'ParseKey(signed char key, struct KeyState *keyStat, char *actionMap, struct KeyCode *keyMap, int actionSize, int keycodeSize):&#160;control.cpp'],['../control_8h.html#aa405a0148aa72c0dff1fc8327cec9a7c',1,'ParseKey(signed char key, struct KeyState *keyStat, char *actionMap, struct KeyCode *keyMap, int actionSize, int keycodeSize):&#160;control.cpp']]],
-  ['parsemaunal',['ParseMaunal',['../text_8cpp.html#aad4ec33685405d73e446b993269234d5',1,'ParseMaunal(struct ChessBoard *cp, FILE *fp):&#160;text.cpp'],['../text_8h.html#aad4ec33685405d73e446b993269234d5',1,'ParseMaunal(struct ChessBoard *cp, FILE *fp):&#160;text.cpp']]],
   ['parsenumber',['ParseNumber',['../text_8cpp.html#a9c926e9bbe079c4ff6b4a0b15f83fb16',1,'ParseNumber(char *text, char player, int *len):&#160;text.cpp'],['../text_8h.html#a9c926e9bbe079c4ff6b4a0b15f83fb16',1,'ParseNumber(char *text, char player, int *len):&#160;text.cpp']]],
   ['player',['player',['../struct_chess_board.html#ac99759da7d87a6cade34b7e3287c7238',1,'ChessBoard::player()'],['../chess_8h.html#a9c8780378078e51e7c9041cbac392db9',1,'Player():&#160;chess.h']]],
   ['playerwin',['PlayerWin',['../chess_8cpp.html#ada5f300eadb30b3f36f4e20ed15ca267',1,'PlayerWin(struct ChessBoard *cp, char player):&#160;chess.cpp'],['../chess_8h.html#ada5f300eadb30b3f36f4e20ed15ca267',1,'PlayerWin(struct ChessBoard *cp, char player):&#160;chess.cpp']]],

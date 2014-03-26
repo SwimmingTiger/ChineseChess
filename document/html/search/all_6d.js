@@ -24,5 +24,6 @@ var searchData=
   ['menu_5ftitle_5ffont_5fheight',['MENU_TITLE_FONT_HEIGHT',['../menu_8h.html#a6ce13a04e75276ae897f9fbf66b2b393',1,'menu.h']]],
   ['menu_5ftitle_5ffont_5fwidth',['MENU_TITLE_FONT_WIDTH',['../menu_8h.html#a3ee0d3021fef842420514a03ce115be4',1,'menu.h']]],
   ['min2',['MIN2',['../chess_8h.html#ab8d41f015e7fa2f04b4446cfc7acc647',1,'chess.h']]],
-  ['movechess',['MoveChess',['../chess_8cpp.html#af7fd1e258e83d7810d104e0a475f249f',1,'MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos destPos):&#160;chess.cpp'],['../chess_8h.html#ad504ce2294bae37f3e85614636729722',1,'MoveChess(struct ChessBoard *cp, struct ChessPos destPos, struct ChessPos sourPos):&#160;chess.cpp']]]
+  ['movechess',['MoveChess',['../chess_8cpp.html#af7fd1e258e83d7810d104e0a475f249f',1,'MoveChess(struct ChessBoard *cp, struct ChessPos sourPos, struct ChessPos destPos):&#160;chess.cpp'],['../chess_8h.html#ad504ce2294bae37f3e85614636729722',1,'MoveChess(struct ChessBoard *cp, struct ChessPos destPos, struct ChessPos sourPos):&#160;chess.cpp']]],
+  ['movechessbymaunal',['MoveChessByMaunal',['../text_8cpp.html#aeb3704fa2c65fba0c993704c3dffc34a',1,'MoveChessByMaunal(struct ChessBoard *cp, FILE *fp):&#160;text.cpp'],['../text_8h.html#aeb3704fa2c65fba0c993704c3dffc34a',1,'MoveChessByMaunal(struct ChessBoard *cp, FILE *fp):&#160;text.cpp']]]
 ];
