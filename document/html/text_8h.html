@@ -128,6 +128,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 <tr class="memitem:abb960680378fa7da7e1fed53ab5dc105"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8h.html#abb960680378fa7da7e1fed53ab5dc105">LoadGame</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp, char *fileName)</td></tr>
 <tr class="memdesc:abb960680378fa7da7e1fed53ab5dc105"><td class="mdescLeft">&#160;</td><td class="mdescRight">加载游戏  <a href="#abb960680378fa7da7e1fed53ab5dc105">更多...</a><br/></td></tr>
 <tr class="separator:abb960680378fa7da7e1fed53ab5dc105"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7cb959cbc635c8e5c1c44aaf862b6df"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8h.html#ac7cb959cbc635c8e5c1c44aaf862b6df">TextMatchChess</a> (char *text, char player)</td></tr>
+<tr class="memdesc:ac7cb959cbc635c8e5c1c44aaf862b6df"><td class="mdescLeft">&#160;</td><td class="mdescRight">文本匹配棋子  <a href="#ac7cb959cbc635c8e5c1c44aaf862b6df">更多...</a><br/></td></tr>
+<tr class="separator:ac7cb959cbc635c8e5c1c44aaf862b6df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c926e9bbe079c4ff6b4a0b15f83fb16"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8h.html#a9c926e9bbe079c4ff6b4a0b15f83fb16">ParseNumber</a> (char *text, char player, int *len)</td></tr>
+<tr class="memdesc:a9c926e9bbe079c4ff6b4a0b15f83fb16"><td class="mdescLeft">&#160;</td><td class="mdescRight">解析数字  <a href="#a9c926e9bbe079c4ff6b4a0b15f83fb16">更多...</a><br/></td></tr>
+<tr class="separator:a9c926e9bbe079c4ff6b4a0b15f83fb16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad4ec33685405d73e446b993269234d5"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8h.html#aad4ec33685405d73e446b993269234d5">ParseMaunal</a> (struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *cp, FILE *fp)</td></tr>
+<tr class="memdesc:aad4ec33685405d73e446b993269234d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">解析棋谱  <a href="#aad4ec33685405d73e446b993269234d5">更多...</a><br/></td></tr>
+<tr class="separator:aad4ec33685405d73e446b993269234d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">宏定义说明</h2>
 <a class="anchor" id="a9b2cffdfa0bef1998c48c6f612e96f96"></a>
@@ -350,6 +359,68 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 
 </div>
 </div>
+<a class="anchor" id="aad4ec33685405d73e446b993269234d5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char ParseMaunal </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_chess_board.html">ChessBoard</a> *&#160;</td>
+          <td class="paramname"><em>cp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>解析棋谱 </p>
+
+</div>
+</div>
+<a class="anchor" id="a9c926e9bbe079c4ff6b4a0b15f83fb16"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ParseNumber </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>解析数字 </p>
+
+</div>
+</div>
 <a class="anchor" id="a85b3275ed21730997870a60e627cb336"></a>
 <div class="memitem">
 <div class="memproto">
@@ -377,6 +448,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 <p>保存游戏 </p>
 <p>形参fileName不包含路径。</p>
 <p>成功返回1，失败返回0。 </p>
+
+</div>
+</div>
+<a class="anchor" id="ac7cb959cbc635c8e5c1c44aaf862b6df"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char TextMatchChess </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>文本匹配棋子 </p>
 
 </div>
 </div>
@@ -413,7 +512,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-生成于 2014年 三月 21日 星期五 22:18:24 , 为 双人象棋使用  &#160;<a href="http://www.doxygen.org/index.html">
+生成于 2014年 三月 26日 星期三 16:01:11 , 为 双人象棋使用  &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
