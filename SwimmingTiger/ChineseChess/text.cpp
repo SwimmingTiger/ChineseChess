@@ -773,9 +773,9 @@ int ParseNumber(char *text, char player, int *len)
 }
 
 /**
-* @brief 解析棋谱
+* @brief 按棋谱走子
 */
-char ParseMaunal(struct ChessBoard *cp, FILE *fp)
+char MoveChessByMaunal(struct ChessBoard *cp, FILE *fp)
 {
     char action = ACT_UNKNOWN;
     char step[11];
@@ -793,16 +793,19 @@ char ParseMaunal(struct ChessBoard *cp, FILE *fp)
     if (0 == fscanf(fp, "%10s", step))
     {
         action = ACT_STOP_GAME;
+		failed = 1;
     }
     else if (strcmp("红胜", step) || strcmp("红方胜", step))
     {
         PlayerWin(cp, PLY_RED);
         action = ACT_STOP_GAME;
+        failed = 1;
     }
     else if (strcmp("黑胜", step) || strcmp("黑方胜", step))
     {
         PlayerWin(cp, PLY_BLACK);
         action = ACT_STOP_GAME;
+		failed = 1;
     }
     //重子记法，如：前马进一 前5进1
     else if (memcmp(step, "前", 2) || memcmp(step, "中", 2) || memcmp(step, "后", 2))
@@ -998,6 +1001,11 @@ char ParseMaunal(struct ChessBoard *cp, FILE *fp)
             }
         }
     }
+
+	if (0 == failed)
+	{
+	    MoveChess(cp, sourPos, destPos);
+	}
 
     return action;
 }

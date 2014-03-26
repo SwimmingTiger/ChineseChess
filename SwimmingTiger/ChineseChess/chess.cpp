@@ -145,7 +145,13 @@ void StartGame(struct ChessBoard *cp)
     DrawChessBoard(cp);
     DrawAllChess(cp);
 
-    while (action != ACT_STOP_GAME)
+
+	//°´ÆåÆ××ß×Ó²âÊÔ
+	/*FILE *fp;
+	fp = fopen(GAME_SAVE_DIR"/maunal/0.txt", "r");
+	MoveChessByMaunal(cp, fp);*/
+    
+	while (action != ACT_STOP_GAME)
     {
         key = getch();
         action = ParseKey(key, &keyStat, actionMap, (struct KeyCode*)keyMap, GAME_CONTROL_KEY_NUM, KEYCODE_MAX_NUM);

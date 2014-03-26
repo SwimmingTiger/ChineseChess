@@ -47,8 +47,8 @@ char TextMatchChess(char *text, char player);
 /*解析数字*/
 int ParseNumber(char *text, char player, int *len);
 
-/*解析棋谱*/
-char ParseMaunal(struct ChessBoard *cp, FILE *fp);
+/*按棋谱走子*/
+char MoveChessByMaunal(struct ChessBoard *cp, FILE *fp);
 
 /*********************************预处理结束*********************************/
 #endif

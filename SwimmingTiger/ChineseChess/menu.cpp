@@ -77,20 +77,20 @@ char MainMenuSelect()
 
     DecideMenuRect(rc.left, rc.top, &rc);
 
-    DrawRect(rc.left-5, rc.top-5, rc.right+5, rc.bottom+5,
-             0, 0,
-             MENU_BACKGROUND_COLOR, MENU_BACKGROUND_COLOR);
-    DrawRect(rc.left, rc.top, rc.right, rc.bottom,
-             MENU_BORDER_WIDTH, MENU_BORDER_STYLE,
-             MENU_BORDER_COLOR, MENU_BACKGROUND_COLOR);
-    DrawMenuText("中国象棋", MENU_TITLE_FONT_HEIGHT, MENU_TITLE_FONT_WIDTH, rc, 65, 10);
-    DrawMenuText("1. 新游戏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 60);
-    DrawMenuText("2. 载入存档", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 100);
-    DrawMenuText("3. 按键说明", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 140);
-    DrawMenuText("4. 退出游戏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 180);
-
     while (action == ACT_UNKNOWN)
     {
+		DrawRect(rc.left-5, rc.top-5, rc.right+5, rc.bottom+5,
+			0, 0,
+			MENU_BACKGROUND_COLOR, MENU_BACKGROUND_COLOR);
+		DrawRect(rc.left, rc.top, rc.right, rc.bottom,
+			MENU_BORDER_WIDTH, MENU_BORDER_STYLE,
+			MENU_BORDER_COLOR, MENU_BACKGROUND_COLOR);
+		DrawMenuText("中国象棋", MENU_TITLE_FONT_HEIGHT, MENU_TITLE_FONT_WIDTH, rc, 65, 10);
+		DrawMenuText("1. 新游戏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 60);
+		DrawMenuText("2. 载入存档", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 100);
+		DrawMenuText("3. 按键说明", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 140);
+		DrawMenuText("4. 退出游戏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 180);
+
         key = getch();
         action = ParseKey(key, &keyStat, actionMap, (struct KeyCode*)keyMap, keyNum, 1);
     }
@@ -133,21 +133,21 @@ char GameMenuSelect()
 
     DecideMenuRect(rc.left, rc.top, &rc);
 
-    DrawRect(rc.left-5, rc.top-5, rc.right+5, rc.bottom+5,
-             0, 0,
-             MENU_BACKGROUND_COLOR, MENU_BACKGROUND_COLOR);
-    DrawRect(rc.left, rc.top, rc.right, rc.bottom,
-             MENU_BORDER_WIDTH, MENU_BORDER_STYLE,
-             MENU_BORDER_COLOR, MENU_BACKGROUND_COLOR);
-    DrawMenuText("请选择操作", MENU_TITLE_FONT_HEIGHT, MENU_TITLE_FONT_WIDTH, rc, 50, 10);
-    DrawMenuText("1. 返回游戏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 60);
-    DrawMenuText("2. 存档并退出", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 100);
-    DrawMenuText("3. 查看下棋过程", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 140);
-    DrawMenuText("4. 按键说明", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 180);
-    DrawMenuText("5. 结束游戏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 220);
-
     while (action == ACT_UNKNOWN)
     {
+		DrawRect(rc.left-5, rc.top-5, rc.right+5, rc.bottom+5,
+			0, 0,
+			MENU_BACKGROUND_COLOR, MENU_BACKGROUND_COLOR);
+		DrawRect(rc.left, rc.top, rc.right, rc.bottom,
+			MENU_BORDER_WIDTH, MENU_BORDER_STYLE,
+			MENU_BORDER_COLOR, MENU_BACKGROUND_COLOR);
+		DrawMenuText("请选择操作", MENU_TITLE_FONT_HEIGHT, MENU_TITLE_FONT_WIDTH, rc, 50, 10);
+		DrawMenuText("1. 返回游戏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 60);
+		DrawMenuText("2. 存档并退出", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 100);
+		DrawMenuText("3. 查看下棋过程", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 140);
+		DrawMenuText("4. 按键说明", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 180);
+		DrawMenuText("5. 结束游戏", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 220);
+		
         key = getch();
         action = ParseKey(key, &keyStat, actionMap, (struct KeyCode*)keyMap, keyNum, 1);
     }
@@ -184,21 +184,21 @@ char PlayerWinSelect(char player)
         {27, -1} //Esc键
     };
 
-    DecideMenuRect(rc.left, rc.top, &rc);
-
-    DrawRect(rc.left-5, rc.top-5, rc.right+5, rc.bottom+5,
-             0, 0,
-             MENU_BACKGROUND_COLOR, MENU_BACKGROUND_COLOR);
-    DrawRect(rc.left, rc.top, rc.right, rc.bottom,
-             MENU_BORDER_WIDTH, MENU_BORDER_STYLE,
-             MENU_BORDER_COLOR, MENU_BACKGROUND_COLOR);
-    DrawMenuText(player==PLY_RED ? "红方胜" : "黑方胜", MENU_TITLE_FONT_HEIGHT, MENU_TITLE_FONT_WIDTH, rc, 80, 10);
-    DrawMenuText("1. 重新开始", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 60);
-    DrawMenuText("2. 查看下棋过程", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 100);
-    DrawMenuText("3. 返回主菜单", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 140);
-
     while (action == ACT_UNKNOWN)
     {
+		DecideMenuRect(rc.left, rc.top, &rc);
+		
+		DrawRect(rc.left-5, rc.top-5, rc.right+5, rc.bottom+5,
+			0, 0,
+			MENU_BACKGROUND_COLOR, MENU_BACKGROUND_COLOR);
+		DrawRect(rc.left, rc.top, rc.right, rc.bottom,
+			MENU_BORDER_WIDTH, MENU_BORDER_STYLE,
+			MENU_BORDER_COLOR, MENU_BACKGROUND_COLOR);
+		DrawMenuText(player==PLY_RED ? "红方胜" : "黑方胜", MENU_TITLE_FONT_HEIGHT, MENU_TITLE_FONT_WIDTH, rc, 80, 10);
+		DrawMenuText("1. 重新开始", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 60);
+		DrawMenuText("2. 查看下棋过程", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 100);
+		DrawMenuText("3. 返回主菜单", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 140);
+		
         key = getch();
         action = ParseKey(key, &keyStat, actionMap, (struct KeyCode*)keyMap, keyNum, 1);
     }
@@ -304,18 +304,18 @@ char LoadSaveSelect(char *title)
 
     DecideMenuRect(rc.left, rc.top, &rc);
 
-    DrawRect(rc.left-5, rc.top-5, rc.right+5, rc.bottom+5,
-             0, 0,
-             MENU_BACKGROUND_COLOR, MENU_BACKGROUND_COLOR);
-    DrawRect(rc.left, rc.top, rc.right, rc.bottom,
-             MENU_BORDER_WIDTH, MENU_BORDER_STYLE,
-             MENU_BORDER_COLOR, MENU_BACKGROUND_COLOR);
-    DrawMenuText(title, MENU_TITLE_FONT_HEIGHT, MENU_TITLE_FONT_WIDTH, rc, 110, 10);
-    DrawMenuText("请输入存档序号（0到9）", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 60);
-    DrawMenuText("按Esc或小数点键退出...", MENU_TIP_FONT_HEIGHT, MENU_TIP_FONT_WIDTH, rc, 30, 110);
-
     while (action == ACT_UNKNOWN)
     {
+		DrawRect(rc.left-5, rc.top-5, rc.right+5, rc.bottom+5,
+			0, 0,
+			MENU_BACKGROUND_COLOR, MENU_BACKGROUND_COLOR);
+		DrawRect(rc.left, rc.top, rc.right, rc.bottom,
+			MENU_BORDER_WIDTH, MENU_BORDER_STYLE,
+			MENU_BORDER_COLOR, MENU_BACKGROUND_COLOR);
+		DrawMenuText(title, MENU_TITLE_FONT_HEIGHT, MENU_TITLE_FONT_WIDTH, rc, 110, 10);
+		DrawMenuText("请输入存档序号（0到9）", MENU_FONT_HEIGHT, MENU_FONT_WIDTH, rc, 30, 60);
+		DrawMenuText("按Esc或小数点键退出...", MENU_TIP_FONT_HEIGHT, MENU_TIP_FONT_WIDTH, rc, 30, 110);
+		
         key = getch();
         action = ParseKey(key, &keyStat, actionMap, (struct KeyCode*)keyMap, keyNum, 1);
     }
