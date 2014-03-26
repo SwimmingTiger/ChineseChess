@@ -280,7 +280,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 <div class="ttc" id="chess_8cpp_html_a6c7a0b2cefbc1b1ec1c5df159d925199"><div class="ttname"><a href="chess_8cpp.html#a6c7a0b2cefbc1b1ec1c5df159d925199">StartGame</a></div><div class="ttdeci">void StartGame(struct ChessBoard *cp)</div><div class="ttdoc">游戏流程控制函数 </div><div class="ttdef"><b>Definition:</b> chess.cpp:112</div></div>
 <div class="ttc" id="struct_chess_board_html_a33f60431e628232199f32a7da4e23567"><div class="ttname"><a href="struct_chess_board.html#a33f60431e628232199f32a7da4e23567">ChessBoard::blackChessNum</a></div><div class="ttdeci">char blackChessNum</div><div class="ttdoc">黑方棋子数 </div><div class="ttdef"><b>Definition:</b> chess.h:129</div></div>
 <div class="ttc" id="chess_8cpp_html_a102c95bd8aa385bfdae87d8a09496c15"><div class="ttname"><a href="chess_8cpp.html#a102c95bd8aa385bfdae87d8a09496c15">InactivePlayerWin</a></div><div class="ttdeci">void InactivePlayerWin(struct ChessBoard *cp)</div><div class="ttdoc">当前非活动玩家获胜 </div><div class="ttdef"><b>Definition:</b> chess.cpp:732</div></div>
-<div class="ttc" id="struct_chess_board_html_a9cd5f5a35b76a0cdd8a9eebb18b65ea8"><div class="ttname"><a href="struct_chess_board.html#a9cd5f5a35b76a0cdd8a9eebb18b65ea8">ChessBoard::map</a></div><div class="ttdeci">char map[10][9]</div><div class="ttdef"><b>Definition:</b> chess.h:114</div></div>
+<div class="ttc" id="struct_chess_board_html_a9cd5f5a35b76a0cdd8a9eebb18b65ea8"><div class="ttname"><a href="struct_chess_board.html#a9cd5f5a35b76a0cdd8a9eebb18b65ea8">ChessBoard::map</a></div><div class="ttdeci">char map[10][9]</div><div class="ttdoc">棋盘格子数据。 一个十行九列的二维数组，前五行为黑方棋盘，后五行为红方棋盘。 （当前玩家是黑方时，虽将黑方绘制在下，但黑方棋盘数据仍在前五行。） 每个数组元素代表棋盘上的一个交叉点，其值为棋子类型枚举值...</div><div class="ttdef"><b>Definition:</b> chess.h:114</div></div>
 <div class="ttc" id="chess_8cpp_html_ac36bfed6c244f90754e2919d776c7813"><div class="ttname"><a href="chess_8cpp.html#ac36bfed6c244f90754e2919d776c7813">BelowChessCount</a></div><div class="ttdeci">int BelowChessCount(struct ChessBoard *cp, char chessType, struct ChessPos sourPos, char player)</div><div class="ttdoc">统计当前棋子往下（相对于特定玩家）还有几个同样的棋子 </div><div class="ttdef"><b>Definition:</b> chess.cpp:900</div></div>
 <div class="ttc" id="chess_8cpp_html_ae4a34947ebcaf3cdada833919e8f9676"><div class="ttname"><a href="chess_8cpp.html#ae4a34947ebcaf3cdada833919e8f9676">InitChessBoard</a></div><div class="ttdeci">void InitChessBoard(struct ChessBoard *cp, enum Player player)</div><div class="ttdoc">初始化棋盘 </div><div class="ttdef"><b>Definition:</b> chess.cpp:359</div></div>
 <div class="ttc" id="chess_8cpp_html_aac2e1a09635946a27181f193c215584b"><div class="ttname"><a href="chess_8cpp.html#aac2e1a09635946a27181f193c215584b">InactiveCursor</a></div><div class="ttdeci">struct ChessPos * InactiveCursor(struct ChessBoard *cp)</div><div class="ttdoc">取当前非活动玩家光标 </div><div class="ttdef"><b>Definition:</b> chess.cpp:645</div></div>
@@ -340,7 +340,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-生成于 2014年 三月 26日 星期三 16:01:11 , 为 双人象棋使用  &#160;<a href="http://www.doxygen.org/index.html">
+生成于 2014年 三月 26日 星期三 20:31:32 , 为 双人象棋使用  &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

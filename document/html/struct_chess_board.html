@@ -95,6 +95,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 成员变量</h2></td></tr>
 <tr class="memitem:a9cd5f5a35b76a0cdd8a9eebb18b65ea8"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_chess_board.html#a9cd5f5a35b76a0cdd8a9eebb18b65ea8">map</a> [10][9]</td></tr>
+<tr class="memdesc:a9cd5f5a35b76a0cdd8a9eebb18b65ea8"><td class="mdescLeft">&#160;</td><td class="mdescRight">棋盘格子数据。 一个十行九列的二维数组，前五行为黑方棋盘，后五行为红方棋盘。 （当前玩家是黑方时，虽将黑方绘制在下，但黑方棋盘数据仍在前五行。） 每个数组元素代表棋盘上的一个交叉点，其值为棋子类型枚举值。  <a href="#a9cd5f5a35b76a0cdd8a9eebb18b65ea8">更多...</a><br/></td></tr>
 <tr class="separator:a9cd5f5a35b76a0cdd8a9eebb18b65ea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac99759da7d87a6cade34b7e3287c7238"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_chess_board.html#ac99759da7d87a6cade34b7e3287c7238">player</a></td></tr>
 <tr class="memdesc:ac99759da7d87a6cade34b7e3287c7238"><td class="mdescLeft">&#160;</td><td class="mdescRight">本机玩家，其值为玩家枚举类型，用于联网对战标识玩家，目前无意义。  <a href="#ac99759da7d87a6cade34b7e3287c7238">更多...</a><br/></td></tr>
@@ -272,7 +273,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
         </tr>
       </table>
 </div><div class="memdoc">
-<p>棋盘格子数据， 一个十行九列的二维数组，前五行为黑方棋盘，后五行为红方棋盘。 （当前玩家是黑方时，虽将黑方绘制在下，但黑方棋盘数据仍在前五行。） 每个数组元素代表棋盘上的一个交叉点，其值为棋子类型枚举值。 </p>
+
+<p>棋盘格子数据。 一个十行九列的二维数组，前五行为黑方棋盘，后五行为红方棋盘。 （当前玩家是黑方时，虽将黑方绘制在下，但黑方棋盘数据仍在前五行。） 每个数组元素代表棋盘上的一个交叉点，其值为棋子类型枚举值。 </p>
 
 </div>
 </div>
@@ -324,7 +326,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-生成于 2014年 三月 26日 星期三 16:01:11 , 为 双人象棋使用  &#160;<a href="http://www.doxygen.org/index.html">
+生成于 2014年 三月 26日 星期三 20:31:32 , 为 双人象棋使用  &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
